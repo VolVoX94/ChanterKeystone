@@ -44,7 +44,7 @@ Page.schema.virtual('content.full').get(function () {
 // Update navigation on page save
 Page.schema.post('save', function () {
 	console.log('Save Post');
-	updateNavigation();
+	//updateNavigation();
 });
 
 Page.defaultColumns = 'title, state|100%, in Navigation';

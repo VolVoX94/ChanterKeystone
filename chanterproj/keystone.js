@@ -57,6 +57,10 @@ keystone.set('navigation', [{
 	key: 'blog',
 	href: '/blog'
 }, {
+	label: 'Choir',
+	key: 'choir',
+	href: '/choir'
+},{
 	label: 'Contact',
 	key: 'contact',
 	href: '/contact'
