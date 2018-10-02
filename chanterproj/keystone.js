@@ -57,6 +57,7 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
+	posts: ['posts', 'post-categories'],
 	galleries: 'galleries',
 	enquiries: 'enquiries',
 	users: 'users',
@@ -68,12 +69,12 @@ keystone.set('nav', {
 
 if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
 	console.log('----------------------------------------'
-	+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
-	+ '\n----------------------------------------'
-	+ '\nYou have opted into email sending but have not provided'
-	+ '\nmailgun credentials. Attempts to send will fail.'
-	+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
-	+ '\nset up your mailgun integration');
+		+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
+		+ '\n----------------------------------------'
+		+ '\nYou have opted into email sending but have not provided'
+		+ '\nmailgun credentials. Attempts to send will fail.'
+		+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
+		+ '\nset up your mailgun integration');
 }
 
 

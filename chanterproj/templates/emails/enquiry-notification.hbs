@@ -2,13 +2,13 @@
 <p class="text-larger">An enquiry was just submitted to {{brand}}:</p>
 {{#if enquiry.email}}
 	<p class="text-larger">From
-	{{#if enquiry.name.full}}
-		<strong>{{enquiry.name.full}}</strong>
-	{{/if}}
+		{{#if enquiry.name.full}}
+			<strong>{{enquiry.name.full}}</strong>
+		{{/if}}
 
-	{{#if enquiry.email}}
-		(<a href="mailto:{{enquiry.email}}">{{enquiry.email}}</a>)
-	{{/if}}
+		{{#if enquiry.email}}
+			(<a href="mailto:{{enquiry.email}}">{{enquiry.email}}</a>)
+		{{/if}}
 	</p>
 
 	{{#if enquiry.phone}}
