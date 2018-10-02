@@ -1,3 +1,4 @@
+
 /**
  * This file contains the common middleware used by your routes.
  *
@@ -8,7 +9,7 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
-
+var keystone = require('keystone');
 
 /**
  Initialises the standard view locals
@@ -18,17 +19,25 @@ var _ = require('lodash');
  or replace it with your own templates / logic.
  */
 exports.initLocals = function (req, res, next) {
-	res.locals.navLinks = [
+
+
+	var locals = res.locals;
+	//default navs
+	/*res.locals.navLinks = [
 		{label: 'Home', key: 'home', href: '/'},
 		{label: 'Gallery', key: 'gallery', href: '/gallery'},
 		{label: 'Events', key: 'events', href: '/events'},
 		{label: 'Contact', key: 'contact', href: '/contact'},
 		{label: 'Blog', key: 'blog', href: '/blog'},
-	];
+	];*/
+
+	res.locals.navLinks = keystone.get('navigation');
+
+	
+	//adding dynamic site from Page model
 	res.locals.user = req.user;
 	next();
 };
-
 
 /**
  Fetches and clears the flashMessages before a view is rendered

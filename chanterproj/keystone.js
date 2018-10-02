@@ -36,7 +36,31 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	
+	
 });
+
+keystone.set('navigation', [{
+	label: 'Home',
+	key: 'home',
+	href: '/'
+},  {
+	label: 'Gallery',
+	key: 'gallery',
+	href: '/gallery'
+},  {
+	label: 'Events',
+	key: 'events',
+	href: '/events'
+},  {
+	label: 'Blog',
+	key: 'blog',
+	href: '/blog'
+}, {
+	label: 'Contact',
+	key: 'contact',
+	href: '/contact'
+}]);
 
 // Load your project's Models
 keystone.import('models');
