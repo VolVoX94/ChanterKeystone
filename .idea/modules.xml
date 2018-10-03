@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ChanterKeystone.iml" filepath="$PROJECT_DIR$/.idea/ChanterKeystone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/chanterKeystone.iml" filepath="$PROJECT_DIR$/.idea/chanterKeystone.iml" />
     </modules>
   </component>
 </project>
