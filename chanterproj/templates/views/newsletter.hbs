@@ -1,0 +1,41 @@
+<div class="container">
+
+	{{#if user}}
+		{{#each user}}
+			{{isSubscriber}} 
+			<h1>{{email}}</h1>
+		{{/each}}
+	{{/if}}
+	
+	{{user.email}}
+		
+	{{#if newsletter}}
+		{{#each newsletter}}
+			<div>
+				<h3>{{title}}</h3>
+				<p><b>State:</b>{{state}} {{sendDate}}</p>
+				<p><b>Deutscher Text:</b> {{contentGerman}}</p>
+				<p><b>Texte francais:</b> {{contentFrench}}</p>
+			</div>
+			<div>
+				<form method="POST"
+					  action="mailto:organisers@event.com?subject=newsletter: {{title}}&body={{contentGerman}}">
+					<input type="submit" class="btn btn-lg btn-primary" value="Send german Newsletter">
+				</form>
+			</div>
+			<p/>
+			<div>
+				<form method="POST"
+					  action="mailto:organisers@event.com?subject=newsletter: {{title}}&body={{contentFrench}}">
+					<input type="submit" class="btn btn-lg btn-primary" value="Send french Newsletter">
+				</form>
+			</div>
+			<hr/>
+		{{/each}}
+	{{else}}
+		<!-- else -->
+		<h3 class="text-muted">There are no newsletters</h3>
+	{{/if}}
+</div>
+
+<script src="https://rawgithub.com/oncletom/mailto/dist/mailto.min.js"></script>

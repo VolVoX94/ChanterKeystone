@@ -16,7 +16,11 @@ Page.add({
 	state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true},
 	image: {type: Types.CloudinaryImage},
 	inNavigation: {type: Types.Boolean},
-	content: {
+	contentGerman: {
+		brief: {type: Types.Html, wysiwyg: true, height: 150},
+		extended: {type: Types.Html, wysiwyg: true, height: 400},
+	},
+	contentFrench: {
 		brief: {type: Types.Html, wysiwyg: true, height: 150},
 		extended: {type: Types.Html, wysiwyg: true, height: 400},
 	},
@@ -38,7 +42,7 @@ function updateNavigation() {
 }
 
 Page.schema.virtual('content.full').get(function () {
-	return this.content.extended || this.content.brief;
+	return this.contentGerman.extended || this.contentGerman.brief || this.contentFrench.extended || this.contentFrench.brief;
 });
 
 // Update navigation on page save
@@ -47,7 +51,7 @@ Page.schema.post('save', function () {
 	//updateNavigation();
 });
 
-Page.defaultColumns = 'title, state|100%, in Navigation';
+Page.defaultColumns = 'title, state, in Navigation';
 Page.register();
 
 updateNavigation();

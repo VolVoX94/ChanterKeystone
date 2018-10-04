@@ -40,6 +40,8 @@ keystone.init({
 	
 });
 
+keystone.set({language: 'german'});
+
 keystone.set('navigation', [{
 	label: 'Home',
 	key: 'home',
@@ -90,6 +92,7 @@ keystone.set('nav', {
 	enquiries: 'enquiries',
 	users: 'users',
 	events: 'events',
+	
 });
 
 // Start Keystone to connect to your database and initialise the web server

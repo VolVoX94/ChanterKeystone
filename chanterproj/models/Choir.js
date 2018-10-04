@@ -10,6 +10,10 @@ Choir.add({
 	president: {type: Types.Relationship, ref: 'User', index: true},
 });
 
+Choir.schema.virtual('canAccessKeystone').get(function () {
+	return true;
+});
+
 Choir.defaultColumns = 'name, place, plz, director, president';
 
 Choir.register();

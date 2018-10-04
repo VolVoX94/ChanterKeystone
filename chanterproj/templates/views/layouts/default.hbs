@@ -39,8 +39,15 @@
 										<a href="{{ href }}">{{ label }}</a>
 									</li>
 								{{/each}}
+								
+								{{#if user.isAdmin}}
+									<li><a href="/newsletter">Newsletter</a></li>
+								{{/if}}	
 							</ul>
+							
 							<ul class="nav navbar-nav navbar-right">
+								<li><a onclick="germanLanguage()">Deutsch</a></li>
+								<li><a onclick="frenchLanguage()">French</a></li>
 								{{#if user}}
 								<li><a href="/keystone/signout">Sign Out</a></li>
 								{{else}}
@@ -94,6 +101,7 @@
 			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
 			//- you can upgrade to 2.1.4 (also bundled) for better performance.
 		--}}
+		
 		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
 		{{!--
 			//- Customise which Bootstrap javascript files are served by including
