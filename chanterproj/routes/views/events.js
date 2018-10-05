@@ -13,5 +13,5 @@ exports = module.exports = function (req, res) {
 	view.query('events', keystone.list('Event').model.find().sort('sortOrder'));
 
 	// Render the view
-	view.render('events');
+	view.render('events', { title: 'Events', message: 'Look at our recent and upcoming events' });
 };

@@ -30,5 +30,5 @@ exports = module.exports = function (req, res) {
 	});
 	
 	// Render the view
-	view.render('newsletter');
+	view.render('newsletter', { title: 'Newsletter', message: 'Read the latest news' });
 };

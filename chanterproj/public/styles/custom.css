@@ -1,0 +1,31 @@
+.imagebutton{
+	background: transparent;
+}
+
+.sizingButton{
+	text-align: center;
+}
+
+#img1{
+	width: 110%; 
+	height: auto;
+	display: block; 
+}
+
+#img2{
+	width: 75%;
+	height: auto;
+	display: block;
+}
+
+#img1Modal{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+#img2Modal{
+	width: 100%;
+	height: auto;
+	display: block;
+}

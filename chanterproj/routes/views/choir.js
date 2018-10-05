@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 var keystone = require('keystone');
 
 exports = module.exports = function (req, res) {
@@ -12,6 +13,6 @@ exports = module.exports = function (req, res) {
 	view.query('choirs', keystone.list('Choir').model.find().sort('sortOrder'));
 
 	// Render the view
-	view.render('choir');
+	view.render('choir', { title: 'Choir', message: 'See our Choirs' });
 
 };
