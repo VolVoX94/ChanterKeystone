@@ -1,21 +1,65 @@
 <div class="container">
 	{{#if events}}
-		{{#each events}}
-			<h2>{{name}}
-				<div class="pull-right text-muted">19th May 2014</div>
-			</h2>
-			<div class="row gallery-images">
-				<div class="col-sm-8 col-md-8">
-					<div class="row">
-						<div class="col-xs-4 col-sm-4 col-md-3 gallery-image">
-							<h1>Hallo</h1>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Name</th>
+				<th>Anfang</th>
+				<th>Ort</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{#each events}}
+				<tr>
+					<td>{{name}}</td>
+					<td>{{date startTime}}</td>
+					<td>{{location.suburb}}</td>
+					<td>
+						<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">See
+							Details
+						</button>
+					</td>
+				</tr>
+				<div class="modal fade" id="{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1"
+					 aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{name}}</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-lg-3">
+										<p><strong>Ort: </strong>{{location.suburb}}</p>
+									</div>
+									<div class="col-lg-3">
+										<p><strong>Straße: </strong>{{location.street1}}</p>
+									</div>
+									<div class="col-lg-3">
+										<p><strong>Anfang: </strong>{{date startTime}}</p>
+									</div>
+									<div class="col-lg-3">
+										<p><strong>Ende: </strong>{{date endTime}}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-10 col-lg-offset-1">
+										<h3>Beschreibung</h3>
+										<p>{{{description}}}</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		{{/each}}
+			{{/each}}
+			</tbody>
+		</table>
 	{{else}}
 		<!-- else -->
 		<h3 class="text-muted">There are no events galleries yet.</h3>
 	{{/if}}
 </div>
+
