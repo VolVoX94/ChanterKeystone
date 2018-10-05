@@ -1,36 +1,19 @@
+<body>
 <div class="container">
-	
-	
+
+	<h2>Actual Subscribers:</h2>
 	{{#each useritem}}
-		{{email}}
-	{{/each}}	
-	
-	
+		{{email}};
+	{{/each}}
+
 	{{#if newsletter}}
 		{{#each newsletter}}
 			<div>
 				<h3>{{title}}</h3>
 				<p><b>State:</b>{{state}} {{sendDate}}</p>
-				<p><b>Deutscher Text:</b> {{contentGerman}}</p>
-				<p><b>Texte francais:</b> {{contentFrench}}</p>
-				{{#each subscribers}}
-					{{subscribers}}
-				{{/each}}
-				<p><b>Subscribers:</b> {{subscribers}}</p>
-				
-			</div>
-			<div>
-				<form method="POST"
-					  action="mailto:organisers@event.com?subject=newsletter: {{title}}&body={{contentGerman}}">
-					<input type="submit" class="btn btn-lg btn-primary" value="Send german Newsletter">
-				</form>
-			</div>
-			<p/>
-			<div>
-				<form method="POST"
-					  action="mailto:organisers@event.com?subject=newsletter: {{title}}&body={{contentFrench}}">
-					<input type="submit" class="btn btn-lg btn-primary" value="Send french Newsletter">
-				</form>
+				<p><b>Link to the news</b> {{linkToNews}}</p>
+				<button onclick=getEmailsGerman("{{title}}","{{linkToNews}}")>Send german Newsletter</button>
+				<button onclick=getEmailsFrench("{{title}}","{{linkToNews}}")>Send french Newsletter</button>
 			</div>
 			<hr/>
 		{{/each}}
@@ -40,4 +23,28 @@
 	{{/if}}
 </div>
 
-<script src="https://rawgithub.com/oncletom/mailto/dist/mailto.min.js"></script>
+</body>
+
+<script>
+	function getEmailsGerman(title, body) {
+		var emails = "mailto:";
+
+		{{#each useritem}}
+			emails = emails.concat("{{email}},");
+		{{/each}}
+		
+		emails = emails.concat("?subject=newsletter:" +title+"&body=Es gibt Neuigkeiten lesen Sie unsere News: "+body);
+		location.href = emails;
+	}
+
+	function getEmailsFrench(title, body) {
+		var emails = "mailto:";
+
+		{{#each useritem}}
+			emails = emails.concat("{{email}},");
+		{{/each}}
+
+		emails = emails.concat("?subject=newsletter:" +title+"&body=Il y a des nouvelles pour vous, lisez nos nouvelles : "+body);
+		location.href = emails;
+	}
+</script>
