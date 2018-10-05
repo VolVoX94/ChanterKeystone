@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 	});
 	
 	view.on('init', function (next) {
-	var q = keystone.list('User').model.find().sort();
+	var q = keystone.list('User').model.find({isSubscriber: true}).sort();
 		q.exec(function (err, results) {
 			locals.useritem = results;
 			next(err);
@@ -30,5 +30,5 @@ exports = module.exports = function (req, res) {
 	});
 	
 	// Render the view
-	view.render('newsletter');
+	view.render('newsletter', { title: 'Newsletter', message: 'Read the latest news' });
 };

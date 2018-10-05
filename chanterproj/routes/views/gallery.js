@@ -12,6 +12,6 @@ exports = module.exports = function (req, res) {
 	view.query('galleries', keystone.list('Gallery').model.find().sort('sortOrder'));
 
 	// Render the view
-	view.render('gallery');
+	view.render('gallery', { title: 'Gallery', message: 'See what our gallery has to offer to you eyes!' });
 
 };

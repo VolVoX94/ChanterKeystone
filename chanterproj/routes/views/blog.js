@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 var keystone = require('keystone');
 var async = require('async');
 
@@ -79,5 +80,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('blog');
+	view.render('blog', { title: 'Blog', message: 'Read the newest blogs' });
 };
