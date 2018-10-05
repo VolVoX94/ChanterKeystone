@@ -1,14 +1,11 @@
 <div class="container">
-
-	{{#if user}}
-		{{#each user}}
-			{{isSubscriber}} 
-			<h1>{{email}}</h1>
-		{{/each}}
-	{{/if}}
 	
-	{{user.email}}
-		
+	
+	{{#each useritem}}
+		{{email}}
+	{{/each}}	
+	
+	
 	{{#if newsletter}}
 		{{#each newsletter}}
 			<div>
@@ -16,6 +13,11 @@
 				<p><b>State:</b>{{state}} {{sendDate}}</p>
 				<p><b>Deutscher Text:</b> {{contentGerman}}</p>
 				<p><b>Texte francais:</b> {{contentFrench}}</p>
+				{{#each subscribers}}
+					{{subscribers}}
+				{{/each}}
+				<p><b>Subscribers:</b> {{subscribers}}</p>
+				
 			</div>
 			<div>
 				<form method="POST"

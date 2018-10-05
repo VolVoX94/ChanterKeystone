@@ -4,18 +4,31 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	//var chos = keystone.list('Choir').model.find({plz: 3900}).sort('sortOrder');
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'home';
+	locals.section = 'newsletter';
 
 	// Load the galleries by sortOrder
-	view.query('newsletter', keystone.list('Newsletter').model.find().sort('sortOrder'));
+	//view.query('newsletter', keystone.list('Newsletter').model.find().sort('sortOrder'));
 
-	keystone.list('User').model.find({where: {isSubscriber: true}}).then((user) => {
-		view.render('newsletter', {User: user});
+	view.on('init', function (next) {
+		var q = keystone.list('Newsletter').model.find().sort('sortOrder');
+		q.exec(function (err, results) {
+			locals.newsletter = results;
+			next(err);
+		});
 	});
-
+	
+	view.on('init', function (next) {
+	var q = keystone.list('User').model.find().sort();
+		q.exec(function (err, results) {
+			locals.useritem = results;
+			next(err);
+		});
+	});
+	
 	// Render the view
-	//view.render('newsletter', {User: keystone.list('User').model.find()});
+	view.render('newsletter');
 };

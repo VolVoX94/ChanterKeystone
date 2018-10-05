@@ -10,6 +10,7 @@ Newsletter.add({
 	sendTime: {type: Types.Datetime},
 	contentGerman: {type: Types.Html, wysiwyg: true, height: 400},
 	contentFrench: {type: Types.Html, wysiwyg: true, height: 400},
+	subscribers: {type: Types.Relationship, many:true, ref: 'User', index: true},
 });
 
 Newsletter.schema.virtual('canAccessKeystone').get(function () {
