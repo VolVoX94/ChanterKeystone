@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 	});
 	
 	view.on('init', function (next) {
-	var q = keystone.list('User').model.find().sort();
+	var q = keystone.list('User').model.find({isSubscriber: true}).sort();
 		q.exec(function (err, results) {
 			locals.useritem = results;
 			next(err);

@@ -8,8 +8,7 @@ Newsletter.add({
 	state: {type: Types.Select, options: 'save, send', default: 'send', index: true},
 	contentAttache: {type: Types.CloudinaryImage},
 	sendTime: {type: Types.Datetime},
-	contentGerman: {type: Types.Html, wysiwyg: true, height: 400},
-	contentFrench: {type: Types.Html, wysiwyg: true, height: 400},
+	linkToNews: {type: String, wysiwyg: true, height: 400},
 	subscribers: {type: Types.Relationship, many:true, ref: 'User', index: true},
 });
 
