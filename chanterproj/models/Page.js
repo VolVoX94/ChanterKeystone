@@ -26,18 +26,65 @@ Page.add({
 	},
 });
 
-function updateNavigation() {
+function updateNavigation(itemDeleted) {
 	Page.model.find({
 		state: 'published',
 		inNavigation: true
 	}, function(err, pages) {
 		console.log(pages.length);
-		pages.forEach(function(page, i) {
-			var navPoint = {label: page.title, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()};
-			var navLink = keystone.get('navigation');
-			
-			navLink.push(navPoint);
-		});
+		var navLink = keystone.get('navigation');
+		
+		if(itemDeleted === true){
+			var navLinkTemp = [{
+				label: 'Home',
+				key: 'home',
+				href: '/'
+			},  {
+				label: 'Gallery',
+				key: 'gallery',
+				href: '/gallery'
+			},  {
+				label: 'Events',
+				key: 'events',
+				href: '/events'
+			},  {
+				label: 'Blog',
+				key: 'blog',
+				href: '/blog'
+			}, {
+				label: 'Choir',
+				key: 'choir',
+				href: '/choir'
+			},{
+				label: 'Contact',
+				key: 'contact',
+				href: '/contact'
+			}];
+			pages.forEach(function (page){
+				navLinkTemp.push({label: page.title, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()});
+				//console.log("navlink "+ link.label);
+				//console.log(navLinkTemp.indexOf(link));
+				
+				console.log("page:" + page.title)
+				//navLinkTemp.splice(navLinkTemp.indexOf(link), 1)
+			});
+			navLink = navLinkTemp;
+			keystone.set('navigation', navLink);
+		}
+		else{
+			pages.forEach(function(page, i) {
+				var navPoint = {label: page.title, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()};
+				
+
+				if((JSON.stringify(navLink)).includes(JSON.stringify(navPoint))){
+					console.log("true")
+				}
+				else{
+					console.log("false added " + navPoint.label + " to Nav")
+					navLink.push(navPoint);
+				}
+			});
+		}
 	});
 }
 
@@ -48,10 +95,16 @@ Page.schema.virtual('content.full').get(function () {
 // Update navigation on page save
 Page.schema.post('save', function () {
 	console.log('Save Post');
-	//updateNavigation();
+	updateNavigation(false);
+});
+
+// Update navigation on page save
+Page.schema.post('remove', function () {
+	console.log('Delete Post');
+	updateNavigation(true);
 });
 
 Page.defaultColumns = 'title, state, in Navigation';
 Page.register();
 
-updateNavigation();
+updateNavigation(false);

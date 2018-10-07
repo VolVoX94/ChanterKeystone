@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 	locals.section = 'choir';
 
 	// Load the items by sortOrder
-	view.query('choirs', keystone.list('Choir').model.find().sort('sortOrder'));
+	view.query('choirs', keystone.list('Choir').model.find().sort('sortOrder').populate('president', 'name'));
 
 	// Render the view
 	view.render('choir', { title: 'Choir', message: 'See our Choirs' });
