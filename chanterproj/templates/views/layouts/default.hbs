@@ -49,8 +49,8 @@
 							</ul>
 							
 							<ul class="nav navbar-nav navbar-right">
-								<li><a onclick="germanLanguage()">Deutsch</a></li>
-								<li><a onclick="frenchLanguage()">French</a></li>
+								<li><a onclick="setGerman()" href="#">Deutsch</a></li>
+								<li><a onclick="setFrench()" href="#">Francaise</a></li>
 								{{#if user}}
 								<li><a href="/keystone/signout">Sign Out</a></li>
 								{{else}}
@@ -119,5 +119,29 @@
 		--}}
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 		{{{isAdminEditorJS user}}}
+	
+		<script>
+			function setGerman(){
+				var url = window.location.href;
+				if(url.length > 22){
+					url = url.substring(21);
+				}
+				else{
+					url = "/Index";
+				}
+				window.location.replace("/setToGerman" + url);
+			}
+			function setFrench(){
+				var url = window.location.href;
+				if(url.length > 22){
+					url = url.substring(21);
+				}
+				else{
+					url = "/Index";
+				}
+				window.location.replace("/setToFrench" + url);
+			}
+		</script>
+	
 	</body>
 </html>
