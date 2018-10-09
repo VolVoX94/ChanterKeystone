@@ -26,7 +26,11 @@
 			</div>
 		{{/each}}
 	{{else}}
-		<!-- else -->
-		<h3 class="text-muted">There are no image galleries yet.</h3>
+		{{#if isGerman}}
+			<h3 class="text-muted">Zurzeit existieren in der Gallerie keine Bilder</h3>
+		{{else}}
+			<h3 class="text-muted">Pour le moment il n'y a pas d'images dans la galerie.</h3>
+		{{/if}}
+		
 	{{/if}}
 </div>
