@@ -68,6 +68,8 @@
 	{{/if}}
 </div>
 
+<button onclick="pdf()">PDF</button>
+
 <script>
 	function myFunction() {
 		// Declare variables 
@@ -145,5 +147,11 @@
 				}
 			}
 		}
+	}
+
+	function pdf() {
+		var doc = new jsPDF(); 
+		doc.text(20,20, 'Test'); 
+		doc.save('Test.pdf');
 	}
 </script>
