@@ -40,7 +40,7 @@ keystone.init({
 	
 });
 
-keystone.set({language: 'german'});
+keystone.set('language', {isGerman: true});
 
 keystone.set('navigation', [{
 	label: 'Home',

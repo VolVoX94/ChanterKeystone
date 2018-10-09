@@ -36,6 +36,27 @@ exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/pages/page/:page', routes.views.page);
+	app.get('/setToGerman/:previousPage', (req,res,next) => {
+		keystone.set('language', {isGerman: true});
+		console.log("Lang changed to German");
+		if(req.params.previousPage === 'Index'){
+			res.redirect('/');
+		}
+		else{
+			res.redirect('/'+ req.params.previousPage);
+		}
+		
+	});
+	app.get('/setToFrench/:previousPage', (req,res,next) => {
+		keystone.set('language', {isGerman: false});
+		console.log("Lang changed to French");
+		if(req.params.previousPage === 'Index'){
+			res.redirect('/');
+		}
+		else{
+			res.redirect('/'+ req.params.previousPage);
+		}
+	});
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
