@@ -6,23 +6,23 @@
 		<div class="col-sm-8 col-md-9">
 			<h1>{{data.page.title}}</h1>
 				{{#if isGerman}}
-					<h2>{{data.page.contentGerman.brief}}</h2>
-					{{data.page.contentGerman.extended}}
+					<h2>{{{data.page.contentGerman.brief}}}</h2>
+					{{{data.page.contentGerman.extended}}}
 				{{else}}
-					<h2>{{data.page.contentFrench.brief}}</h2>
-					{{data.page.contentFrench.extended}}
+					<h2>{{{data.page.contentFrench.brief}}}</h2>
+					{{{data.page.contentFrench.extended}}}
 				{{/if}}
 		</div>
 		<div class="col-sm-4 col-md-3">
 			{{#if isGerman}}
 				{{#if data.page}}
-					{{data.page.contentGerman.full}}
+					{{{data.page.contentGerman.full}}}
 				{{else}}
 					<h2>Kein Inhalt angefügt</h2>
 				{{/if}}
 			{{else}}
 				{{#if data.page}}
-					{{data.page.contentGerman.full}}
+					{{{data.page.contentGerman.full}}}
 				{{else}}
 					<h2>Aucun contenu ajouté</h2>
 				{{/if}}

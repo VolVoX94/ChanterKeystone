@@ -43,9 +43,15 @@ exports = module.exports = function (app) {
 			res.redirect('/');
 		}
 		else{
-			res.redirect('/'+ req.params.previousPage);
+			if(req.params.previousPage.includes("DynamicPage")){
+				res.redirect('/pages/page/'+ req.params.previousPage.replace("DynamicPage", ""));
+				console.log('/pages/page/'+ req.params.previousPage)
+			}
+			else{
+				res.redirect('/'+ req.params.previousPage);
+			}
 		}
-		
+
 	});
 	app.get('/setToFrench/:previousPage', (req,res,next) => {
 		keystone.set('language', {isGerman: false});
@@ -54,7 +60,13 @@ exports = module.exports = function (app) {
 			res.redirect('/');
 		}
 		else{
-			res.redirect('/'+ req.params.previousPage);
+			if(req.params.previousPage.includes("DynamicPage")){
+				res.redirect('/pages/page/'+ req.params.previousPage.replace("DynamicPage", ""));
+				console.log('/pages/page/'+ req.params.previousPage)
+			}
+			else{
+				res.redirect('/'+ req.params.previousPage);
+			}
 		}
 	});
 	app.get('/blog/:category?', routes.views.blog);
@@ -64,7 +76,7 @@ exports = module.exports = function (app) {
 	app.get('/newsletter', routes.views.newsletter);
 	app.get('/choir', routes.views.choir);
 	app.all('/contact', routes.views.contact);
-	
+
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
