@@ -3,6 +3,8 @@
 		<input type="text" class="myInput" id="myInput" onkeyup="myFunction()"
 			   placeholder="Search for names, dates or whatever you like...">
 
+		<button type="button" class="btn btn-primary" onclick="pdf()">Download List as PDF</button>
+
 		<table id="myTable" class="table myTable">
 			<thead>
 			<tr>
@@ -68,7 +70,7 @@
 	{{/if}}
 </div>
 
-<button onclick="pdf()">PDF</button>
+
 
 <script>
 	function myFunction() {
@@ -151,7 +153,45 @@
 
 	function pdf() {
 		var doc = new jsPDF(); 
-		doc.text(20,20, 'Test'); 
+		
+		var table = document.getElementById("myTable");
+
+		var height = 20;
+		var width = 20;
+		var counter = 0; 
+
+		doc.setFontSize(40); 
+		doc.text(width, height, "Aufstellung der Events");
+
+		doc.setFontSize(15);
+		
+		var table = document.getElementById("myTable");
+		for (var i = 1, row; row = table.rows[i]; i++) {
+			
+			if(row.style.display=="") {
+				counter++; 
+				
+				if(i%13==0){
+					doc.addPage();
+					height = 20;
+				}
+
+				width = 20;
+
+				height = height + 20;
+
+				doc.text(width, height, counter.toString()+".");
+
+				width = width +10;
+
+				for (var j = 0, col; col = row.cells[j], j < row.cells.length - 1; j++, width = width + 60) {
+					doc.text(width, height, col.innerHTML);
+					doc.line(10, height + 8, 200, height + 8);
+				}
+			}
+		}
+		
 		doc.save('Test.pdf');
+		
 	}
 </script>
