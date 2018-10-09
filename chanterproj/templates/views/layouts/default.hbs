@@ -128,7 +128,13 @@
 			function setGerman(){
 				var url = window.location.href;
 				if(url.length > 22){
-					url = url.substring(21);
+					if(url.includes("/pages/page")){
+						url = url.substring(32); // also /pages/page will be cutted off
+						url = url + "DynamicPage"
+					}
+					else{
+						url = url.substring(21);
+					}
 				}
 				else{
 					url = "/Index";
@@ -138,7 +144,13 @@
 			function setFrench(){
 				var url = window.location.href;
 				if(url.length > 22){
-					url = url.substring(21);
+					if(url.includes("/pages/page")){
+						url = url.substring(32); // also /pages/page will be cutted off
+						url = url + "DynamicPage"
+					}
+					else{
+						url = url.substring(21);
+					}
 				}
 				else{
 					url = "/Index";

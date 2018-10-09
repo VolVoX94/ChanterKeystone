@@ -5,16 +5,28 @@
 	<div class="row">
 		<div class="col-sm-8 col-md-9">
 			<h1>{{data.page.title}}</h1>
-			<h2>{{data.page.contentGerman.brief}}</h2>
-			<h2>{{data.page.contentFrench.brief}}</h2>
-			{{data.page.contentGerman.extended}}
+				{{#if isGerman}}
+					<h2>{{{data.page.contentGerman.brief}}}</h2>
+					{{{data.page.contentGerman.extended}}}
+				{{else}}
+					<h2>{{{data.page.contentFrench.brief}}}</h2>
+					{{{data.page.contentFrench.extended}}}
+				{{/if}}
 		</div>
 		<div class="col-sm-4 col-md-3">
-			{{#if data.page}}
-				{{data.page.contentGerman.full}}
+			{{#if isGerman}}
+				{{#if data.page}}
+					{{{data.page.contentGerman.full}}}
+				{{else}}
+					<h2>Kein Inhalt angefügt</h2>
+				{{/if}}
 			{{else}}
-				<h2>Nothing there</h2>
-			{{/if}}	
+				{{#if data.page}}
+					{{{data.page.contentGerman.full}}}
+				{{else}}
+					<h2>Aucun contenu ajouté</h2>
+				{{/if}}
+			{{/if}}
 		</div>
 	</div>
 	{{>pagination}}

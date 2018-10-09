@@ -4,6 +4,7 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	var language = keystone.get('language');
 
 	// Set locals
 	locals.section = 'blog';
@@ -42,5 +43,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('post', { title: 'Post' });
+	view.render('post', { title: 'Post',isGerman: language.isGerman  });
 };
