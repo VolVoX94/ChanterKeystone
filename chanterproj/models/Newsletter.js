@@ -9,7 +9,6 @@ Newsletter.add({
 	contentAttache: {type: Types.CloudinaryImage},
 	sendTime: {type: Types.Datetime},
 	linkToNews: {type: String, wysiwyg: true, height: 400},
-	subscribers: {type: Types.Relationship, many:true, ref: 'User', index: true},
 });
 
 Newsletter.schema.virtual('canAccessKeystone').get(function () {
