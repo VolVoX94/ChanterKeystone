@@ -21,6 +21,7 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+var Choir = new keystone.List('Choir');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -36,13 +37,99 @@ exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/pages/page/:page', routes.views.page);
+	app.get('/setToGerman/:previousPage', (req,res,next) => {
+		keystone.set('language', {isGerman: true});
+		console.log("Lang changed to German");
+		if(req.params.previousPage === 'Index'){
+			res.redirect('/');
+		}
+		else{
+			if(req.params.previousPage.includes("DynamicPage")){
+				res.redirect('/pages/page/'+ req.params.previousPage.replace("DynamicPage", ""));
+				console.log('/pages/page/'+ req.params.previousPage)
+			}
+			else{
+				res.redirect('/'+ req.params.previousPage);
+			}
+		}
+
+	});
+	app.get('/setToFrench/:previousPage', (req,res,next) => {
+		keystone.set('language', {isGerman: false});
+		console.log("Lang changed to French");
+		if(req.params.previousPage === 'Index'){
+			res.redirect('/');
+		}
+		else{
+			if(req.params.previousPage.includes("DynamicPage")){
+				res.redirect('/pages/page/'+ req.params.previousPage.replace("DynamicPage", ""));
+				console.log('/pages/page/'+ req.params.previousPage)
+			}
+			else{
+				res.redirect('/'+ req.params.previousPage);
+			}
+		}
+	});
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
+	app.get('/dashboard', routes.views.dashboard);
 	app.get('/events', routes.views.events);
 	app.get('/newsletter', routes.views.newsletter);
 	app.get('/choir', routes.views.choir);
 	app.all('/contact', routes.views.contact);
+
+	app.post('/dashboardChoir', (req,res,next) => {
+		console.log("Choir updated")
+		var today = new Date();
+		keystone.list('Choir').model.update(
+			{ _id: req.body.id },
+			{
+				$set: {
+					name: 				req.body.name,
+					place: 				req.body.place,
+					plz:				req.body.plz,
+					directorLastname:	req.body.directorLastname,
+					directorFirstname:	req.body.directorFirstname,
+					secretaryLastname:	req.body.secretaryLastname,
+					secretaryFirstname:	req.body.secretaryFirstname,
+					cashierLastname:	req.body.cashierLastname,
+					cashierFirstname:	req.body.cashierFirstname,
+					foundingYear:		req.body.foundingYear,
+					homepage:			req.body.homepage,
+					lastUpdate:			today
+				}
+			}
+		).exec(function(err,result){
+			//Query will be executed
+		});
+		res.redirect('/dashboard');
+	});
+
+	app.post('/dashboardUser', (req,res,next) => {
+		console.log("user updated");
+		var name = req.body.firstname + " " + req.body.lastname;
+		console.log(name);
+		keystone.list('User').model.update(
+			{ _id: req.body.id },
+			{
+				$set: {
+					name:				{first: req.body.firstname, last: req.body.lastname},
+					email: 				req.body.email,
+					password:			req.body.plz,
+					isSubscriber:		req.body.directorLastname,
+					isAdmin:			req.body.admin
+				}
+			}
+		).exec(function(err,result){
+			//Query will be executed
+		});
+		res.redirect('/dashboard');
+
+
+		
+		
+	});
 	
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

@@ -1,0 +1,129 @@
+<div class="container">
+
+	{{#if choirs}}
+
+			{{#each choirs}}
+				<form action="/dashboardChoir" method = "post">
+					<h1>Your choir: {{name}}</h1>
+					<input type="hidden" name="id" value="{{_id}}">
+					<br>
+					Name:<br>
+					<input type="text" name="name" value="{{name}}">
+					<br>
+					PLZ:<br>
+					<input type="text" name="plz" value="{{plz}}">
+					<br>
+					Place:<br>
+					<input type="number" name="place" value="{{place}}">
+					<br>
+					Director firstname:<br>
+					<input type="text" name="directorFirstname" value="{{directorFirstname}}">
+					<br>
+					Director lastname:<br>
+					<input type="text" name="directorLastname" value="{{directorLastname}}">
+					<br>
+					Cashier firstname:<br>
+					<input type="text" name="cashierFirstname" value="{{cashierFirstname}}">
+					<br>
+					Cashier lastname:<br>
+					<input type="text" name="cashierLastname" value="{{cashierLastname}}">
+					<br>
+					Secretary firstname:<br>
+					<input type="text" name="secretaryFirstname" value="{{secretaryFirstname}}">
+					<br>
+					Secretary lastname:<br>
+					<input type="text" name="secretaryLastname" value="{{secretaryLastname}}">
+					<br>
+					Founding year:<br>
+					<input type="number" name="foundingYear" value="{{foundingYear}}">
+					<br>
+					Homepage:<br>
+					<input type="text" name="homepage" value="{{homepage}}">
+					<br>
+					Last updated:<br>
+					<input type="text" name="lastUpdate" value="{{lastUpdate}}">
+					<br> <br>
+					<input type="submit" value="Submit">
+				</form>
+			
+			{{/each}}
+		
+
+	{{else}}
+		<!-- else -->
+		<h3 class="text-muted">There are no choirs yet.</h3>
+	{{/if}}
+
+	<h1>My User:</h1>
+	<form action="/dashboardUser" method = "post">
+		<input type="hidden" name="id" value="{{user._id}}">
+		Firstname:<br>
+		<input type="text" name="firstname" value="{{user.name.first}}">
+		<br>
+		Lastname:<br>
+		<input type="text" name="lastname" value="{{user.name.last}}">
+		<br>
+		Email:<br>
+		<input type="text" name="email" value="{{user.email}}">
+		<br>
+		Password:<br>
+		<input type="password" name="passwordOne" value="">
+		<br>
+		Confirm password:<br>
+		<input type="password" name="passwordTwo" value="">
+		<br>
+		Subscribe Newsletter?<br>
+		<input type="checkbox" name="subscriber" 
+		{{#if user.isSubscriber}}
+			checked
+		{{/if}}>
+		<br> <br>
+		<input type="hidden" name="admin" value="{{user.isAdmin}}">
+		<input type="submit" value="Submit">
+	</form>
+	
+	{{#if user.isAdmin}}
+		<canvas id="barChart"></canvas>
+		
+		<script>
+			//bar
+			var ctxB = document.getElementById("barChart").getContext('2d');
+			var myBarChart = new Chart(ctxB, {
+			type: 'bar',
+			data: {
+			labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+			datasets: [{
+			label: '# of Votes',
+			data: [12, 19, 3, 5, 2, 3],
+			backgroundColor: [
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)',
+			'rgba(255, 206, 86, 0.2)',
+			'rgba(75, 192, 192, 0.2)',
+			'rgba(153, 102, 255, 0.2)',
+			'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+			'rgba(255,99,132,1)',
+			'rgba(54, 162, 235, 1)',
+			'rgba(255, 206, 86, 1)',
+			'rgba(75, 192, 192, 1)',
+			'rgba(153, 102, 255, 1)',
+			'rgba(255, 159, 64, 1)'
+			],
+			borderWidth: 1
+			}]
+			},
+			options: {
+			scales: {
+			yAxes: [{
+			ticks: {
+			beginAtZero:true
+			}
+			}]
+			}
+			}
+			});
+		</script>
+	{{/if}}
+</div>

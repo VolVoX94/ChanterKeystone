@@ -6,6 +6,7 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	var language = keystone.get('language');
 
 	// Init locals
 	locals.section = 'blog';
@@ -80,5 +81,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('blog', { title: 'Blog', message: 'Read the newest blogs' });
+	view.render('blog', { title: 'Blog', message: 'Read the newest blogs', isGerman: language.isGerman  });
 };

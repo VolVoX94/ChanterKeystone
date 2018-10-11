@@ -4,6 +4,7 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	var language = keystone.get('language');
 	//var chos = keystone.list('Choir').model.find({plz: 3900}).sort('sortOrder');
 
 	// locals.section is used to set the currently selected
@@ -30,5 +31,5 @@ exports = module.exports = function (req, res) {
 	});
 	
 	// Render the view
-	view.render('newsletter', { title: 'Newsletter', message: 'Read the latest news' });
+	view.render('newsletter', { title: 'Newsletter', message: 'Read the latest news', isGerman: language.isGerman  });
 };
