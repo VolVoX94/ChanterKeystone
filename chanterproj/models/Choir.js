@@ -6,16 +6,14 @@ Choir.add({
 	name: {type: String, required: true, initial: true},
 	place: {type: String},
 	plz: {type: Types.Number},
-	president: {type: Types.Relationship, ref: 'User', index: true},
-	directorLastname: {type: String},
-	directorFirstname: {type: String},
 	
-	secondDirectorFirstname: {type: String},
-	secondDirectorLastname: {type: String},
-	secretaryLastname:{type: String},
-	secretaryFirstname: {type: String},
-	cashierLastname: {type: String},
-	cashierFirstname: {type: String},
+	choirAdmin: {type: Types.Relationship, ref: 'User', index: true},
+	president: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	director: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	secondDirector: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	secretary:{type: Types.Relationship, ref: 'User', index: true, many:true},
+	cashier: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	
 	foundingYear: {type: Types.Number},
 
 	typeChoir: {type: Types.Select, options: 'CX, CD, CH, CJ, CE, Select', default: 'Select', index: true},

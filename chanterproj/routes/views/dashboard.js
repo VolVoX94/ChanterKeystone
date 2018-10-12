@@ -34,7 +34,11 @@ exports = module.exports = function (req, res) {
 	else{
 		
 		view.on('init', function (next) {
-			var q = keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name');
+			var q = keystone.list('Choir').model.find({choirAdmin: res.locals.user}).sort('sortOrder')
+							.populate('president', 'name')
+							.populate('cashier', 'name')
+							.populate('secretary', 'name')
+							.populate('director');
 			q.exec(function (err, results) {
 				locals.choirs = results;
 				next(err);
@@ -48,7 +52,16 @@ exports = module.exports = function (req, res) {
 				next(err);
 			});
 		});
-		
+
+		view.on('init', function (next) {
+			var q = keystone.list('User').model.find().sort();
+			q.exec(function (err, results) {
+				locals.useritem = results;
+				next(err);
+			});
+		});
+
+
 		// Load the items by sortOrder
 		//view.query('choirs', keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name'));
 
