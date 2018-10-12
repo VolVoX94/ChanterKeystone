@@ -14,8 +14,8 @@ Statistic.add({
 	
 	countSentTicket: {type: Types.Number, required: true, initial: true},
 	countSentNewsletter: {type: Types.Number, required: true, initial: true},
-	
-	isStored: {type: Boolean, required: true,},
+		
+	actuelMonth: {type: Types.Number, required: true, initial: true},
 });
 
 Statistic.schema.virtual('canAccessKeystone').get(function () {
