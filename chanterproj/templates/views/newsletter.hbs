@@ -5,6 +5,8 @@
 	{{#each useritem}}
 		{{email}};
 	{{/each}}
+	
+	<hr/>
 
 	{{#if newsletter}}
 		{{#each newsletter}}
@@ -12,8 +14,8 @@
 				<h3>{{title}}</h3>
 				<p><b>State:</b>{{state}} {{sendDate}}</p>
 				<p><b>Link to the news</b> {{linkToNews}}</p>
-				<button onclick=getEmailsGerman("{{title}}","{{linkToNews}}")>Send german Newsletter</button>
-				<button onclick=getEmailsFrench("{{title}}","{{linkToNews}}")>Send french Newsletter</button>
+				<button onclick=getEmailsGerman("{{title}}","{{linkToNews}}") class="btn-primary">Send german Newsletter</button>
+				<button onclick=getEmailsFrench("{{title}}","{{linkToNews}}") class="btn-info	">Send french Newsletter</button>
 			</div>
 			<hr/>
 		{{/each}}

@@ -116,14 +116,29 @@ exports = module.exports = function (app) {
 				$set: {
 					name:				{first: req.body.firstname, last: req.body.lastname},
 					email: 				req.body.email,
-					password:			req.body.plz,
-					isSubscriber:		req.body.directorLastname,
+					isSubscriber:		req.body.isSubscriber,
 					isAdmin:			req.body.admin
 				}
 			}
 		).exec(function(err,result){
 			//Query will be executed
 		});
+		
+		keystone.list('User').model.findOne(
+			{_id : req.body.id}, 
+			function(findError, user) {
+			if (findError) {
+				// handle error
+			} else {
+				user.password = req.body.password;
+				user.save(function(saveError) {
+					if (saveError) {
+						// handle error
+					}
+				});
+			}
+		});
+		
 		res.redirect('/dashboard');
 
 
