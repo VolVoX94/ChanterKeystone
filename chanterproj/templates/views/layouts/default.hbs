@@ -135,13 +135,13 @@
 				var home = "http://192.168.99.100:3000";
 				var home2 = "http://localhost:3000";
 				
-				if(url.length > home.length+1){
+				if(url.length > home2.length+1){
 					if(url.includes("/pages/page")){
-						url = url.substring(home.length+11); // also /pages/page will be cutted off
+						url = url.substring(home2.length+11); // also /pages/page will be cutted off
 						url = url + "DynamicPage"
 					}
 					else{
-						url = url.substring(home.length);
+						url = url.substring(home2.length);
 					}
 				}
 				else{
@@ -152,14 +152,15 @@
 			function setFrench(){
 				var url = window.location.href;
 				var home = "http://192.168.99.100:3000";
+				var home2 = "http://localhost:3000";
 
-				if(url.length > home.length+1){
+				if(url.length > home2.length+1){
 					if(url.includes("/pages/page")){
-						url = url.substring(home.length+11); // also /pages/page will be cutted off
+						url = url.substring(home2.length+11); // also /pages/page will be cutted off
 						url = url + "DynamicPage"
 					}
 					else{
-						url = url.substring(home.length);
+						url = url.substring(home2.length);
 					}
 				}
 				else{

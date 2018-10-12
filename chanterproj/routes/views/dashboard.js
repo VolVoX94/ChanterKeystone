@@ -25,7 +25,7 @@ exports = module.exports = function (req, res) {
 		});
 
 		view.on('init', function (next) {
-			var q = keystone.list('Statistic').model.find({isStored: false}).sort();
+			var q = keystone.list('Statistic').model.find().sort();
 			q.exec(function (err, results) {
 				locals.statistic = results;
 				next(err);
