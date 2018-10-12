@@ -125,7 +125,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="president">President:</label>
 							<select name="president" class="form-control">
-								<option>{{president.name.first}} {{president.name.last}}</option>
+								<option value="{{president._id}}">{{president.name.first}} {{president.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
@@ -135,7 +135,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="director">Director:</label>
 							<select name="director" class="form-control">
-								<option>{{director.name.first}} {{director.name.last}}</option>
+								<option value="{{director._id}}">{{director.name.first}} {{director.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
@@ -145,7 +145,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-3" for="secondDirector">Second director:</label>
 							<select name="secondDirector" class="form-control">
-								<option>{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
+								<option value="{{secondDirector._id}}">{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
@@ -155,7 +155,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="cashier">Cashier:</label>
 							<select name="cashier" class="form-control">
-								<option>{{cashier.name.first}} {{cashier.name.last}}</option>
+								<option value="{{cashier._id}}">{{cashier.name.first}} {{cashier.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
@@ -165,7 +165,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="secretary">Secretary:</label>
 							<select name="secretary" class="form-control">
-								<option>{{secretary.name.first}} {{secretary.name.last}}</option>
+								<option value="{{secretary._id}}">{{secretary.name.first}} {{secretary.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}

@@ -82,7 +82,15 @@ exports = module.exports = function (app) {
 	app.post('/dashboardChoir', (req,res,next) => {
 		console.log("Choir updated");
 		var today = new Date();
+		console.log(req.body.plz);
+		console.log(req.body.foundingYear);
+		if(req.body.plz === ""){
+			req.body.plz = 0;
+		}
 		
+		if(req.body.foundingYear === ""){
+			req.body.foundingYear = 0;
+		}
 		keystone.list('Choir').model.update(
 			{ _id: req.body.id },
 			{
