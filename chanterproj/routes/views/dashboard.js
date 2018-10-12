@@ -15,8 +15,25 @@ exports = module.exports = function (req, res) {
 		view.render('index', { title: 'Home', message: 'Home, sweet Home', isGerman: language.isGerman });
 	}
 	else{
+		
+		view.on('init', function (next) {
+			var q = keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name');
+			q.exec(function (err, results) {
+				locals.choirs = results;
+				next(err);
+			});
+		});
+
+		view.on('init', function (next) {
+			var q = keystone.list('Statistic').model.find({isStored: false}).sort();
+			q.exec(function (err, results) {
+				locals.statistic = results;
+				next(err);
+			});
+		});
+		
 		// Load the items by sortOrder
-		view.query('choirs', keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name'));
+		//view.query('choirs', keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name'));
 
 		// Render the view
 		view.render('dashboard', { title: 'Choir', message: 'Manage your data', isGerman: language.isGerman  });

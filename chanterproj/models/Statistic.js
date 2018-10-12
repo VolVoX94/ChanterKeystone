@@ -4,7 +4,18 @@ var Types = keystone.Field.Types;
 var Statistic = new keystone.List('Statistic');
 
 Statistic.add({
-	title: {type: String, required: true, initial: true},
+	countIndex: {type: Types.Number, required: true, initial: true},
+	countGallery: {type: Types.Number, required: true, initial: true},
+	countEvents: {type: Types.Number, required: true, initial: true},
+	countBlog: {type: Types.Number, required: true, initial: true},
+	countChoir: {type: Types.Number, required: true, initial: true},
+	countContact: {type: Types.Number, required: true, initial: true},
+	countDashboard: {type: Types.Number, required: true, initial: true},
+	
+	countSentTicket: {type: Types.Number, required: true, initial: true},
+	countSentNewsletter: {type: Types.Number, required: true, initial: true},
+	
+	isStored: {type: Boolean, required: true,},
 });
 
 Statistic.schema.virtual('canAccessKeystone').get(function () {
@@ -12,10 +23,7 @@ Statistic.schema.virtual('canAccessKeystone').get(function () {
 });
 
 Statistic.schema.post('save', function () {
-	this.sendTime = Date.now();
-	if(this.state = 'send'){
-		//require("openurl").open("http://rauschma.de");
-	}
+
 });
 
 Statistic.defaultColumns = 'title';
