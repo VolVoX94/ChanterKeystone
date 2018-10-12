@@ -26,5 +26,5 @@ Statistic.schema.post('save', function () {
 
 });
 
-Statistic.defaultColumns = 'title';
+Statistic.defaultColumns = 'title, actuelMonth';
 Statistic.register();

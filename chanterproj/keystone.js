@@ -42,6 +42,8 @@ keystone.init({
 
 keystone.set('language', {isGerman: true});
 
+keystone.set('adminui custom styles', './public/styles/keystone.less');
+
 keystone.set('navigation', [{
 	label: 'Home',
 	key: 'home',
@@ -87,12 +89,11 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	posts: ['posts', 'post-categories'],
+	posts: ['pages', 'posts', 'post-categories'],
+	users: ['choirs', 'committees', 'users'],
+	events: ['events', 'newsletters'],
 	galleries: 'galleries',
-	enquiries: 'enquiries',
-	users: 'users',
-	events: 'events',
-	
+	enquiries: ['enquiries', 'statistics'],
 });
 
 // Start Keystone to connect to your database and initialise the web server
@@ -107,6 +108,5 @@ if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
 		+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
 		+ '\nset up your mailgun integration');
 }
-
 
 keystone.start();
