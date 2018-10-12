@@ -196,10 +196,13 @@
 			<h4>Please choose a month:</h4>
 
 			<div class="card m-5">
-
-
+				
+				<h3>Total statistic</h3>
+				<canvas id="totalChart" style="max-width: 1200px"></canvas>
+				
+				<h3>Monthly statistics</h3>				
+				
 				<div class="btn-group">
-
 					<div class="btn-group">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 							Dropdown
@@ -221,11 +224,9 @@
 						</ul>
 					</div>
 				</div>
-				<h3>Most visited pages</h3>				
+
 				<canvas id="myChart" style="max-width: 1200px"></canvas>
 
-				<h3>Send newsletters</h3>
-				<canvas id="myChart" style="max-width: 1200px"></canvas>
 			</div>
 			
 			
@@ -244,9 +245,89 @@
 
 		<script>
 			var ctx = document.getElementById("myChart").getContext('2d');
+			var ttx = document.getElementById("totalChart").getContext('2d');
 
+			//used for monthyl statistics
 			var dataset = [];
 			
+			//used for total statistic
+			var dataSetTotal = [0,0,0,0,0,0,0,0,0];
+			
+				{{#each statistic}}
+					
+					dataSetTotal = [
+						//Index	
+						{{countIndex}}+ dataSetTotal[0],
+						//Gallery	
+						{{countGallery}} + dataSetTotal[1],
+						//Events	
+						{{countEvents}}+ dataSetTotal[2],
+						//Contacts	
+						{{countContact}} + dataSetTotal[3],
+						//Blog	
+						{{countBlog}} + dataSetTotal[4],
+						//Choir	
+						{{countChoir}} + dataSetTotal[5],
+						//Dashboard	
+						{{countDashboard}} + dataSetTotal[6],
+						//Sent tickets	
+						{{countSentTicket}} + dataSetTotal[7],
+						//Sent newsletters	
+						{{countSentNewsletter}} + dataSetTotal[8]
+					];
+				{{/each}}
+			
+			//---------------------- TOTAL STATISTIC
+
+			var totalChart = new Chart(ttx, {
+				type: 'bar',
+				data: {
+					labels: ["Index", "Gallery", "Events", "Contact", "Blog", "Choir", "Dashboard", "Sent tickets", "sent newsletters"],
+					datasets: [{
+						label: '# of Votes',
+						data: dataSetTotal,
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(153, 102, 255, 0.2)'
+						],
+						borderColor: [
+							'rgba(255,99,132,1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(153, 102, 255, 1)'
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero:true
+							}
+						}]
+					}
+				}
+			});
+			
+
+
+
+
+
+			//----------------------- MONTHLY STATISTIC
 			function getJanData(){
 				var actuelMonth;
 				dataset = [];
@@ -687,6 +768,8 @@
 					}
 				});
 			}
+			
+			//------------ END MONTHLY STATISTICs
 			
 
 			var check = function() {
