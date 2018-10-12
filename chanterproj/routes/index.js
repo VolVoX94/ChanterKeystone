@@ -80,8 +80,9 @@ exports = module.exports = function (app) {
 	app.all('/contact', routes.views.contact);
 
 	app.post('/dashboardChoir', (req,res,next) => {
-		console.log("Choir updated")
+		console.log("Choir updated");
 		var today = new Date();
+		
 		keystone.list('Choir').model.update(
 			{ _id: req.body.id },
 			{
@@ -89,12 +90,11 @@ exports = module.exports = function (app) {
 					name: 				req.body.name,
 					place: 				req.body.place,
 					plz:				req.body.plz,
-					directorLastname:	req.body.directorLastname,
-					directorFirstname:	req.body.directorFirstname,
-					secretaryLastname:	req.body.secretaryLastname,
-					secretaryFirstname:	req.body.secretaryFirstname,
-					cashierLastname:	req.body.cashierLastname,
-					cashierFirstname:	req.body.cashierFirstname,
+					president:			req.body.president,
+					director:			req.body.director,
+					secondDirector:		req.body.secondDirector,
+					secretary:			req.body.secretary,
+					cashier:			req.body.cashier,
 					foundingYear:		req.body.foundingYear,
 					homepage:			req.body.homepage,
 					lastUpdate:			today

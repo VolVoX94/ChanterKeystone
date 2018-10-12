@@ -38,7 +38,8 @@ exports = module.exports = function (req, res) {
 							.populate('president', 'name')
 							.populate('cashier', 'name')
 							.populate('secretary', 'name')
-							.populate('director');
+							.populate('director', 'name')
+							.populate('secondDirector', 'name');
 			q.exec(function (err, results) {
 				locals.choirs = results;
 				next(err);

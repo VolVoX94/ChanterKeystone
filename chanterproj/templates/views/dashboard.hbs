@@ -111,78 +111,61 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="plz">PLZ:</label>
 							<div class="col-sm-10">
-								<input required type="text" value="{{plz}}" class="form-control" name="plz" placeholder="Enter plz">
+								<input type="number" value="{{plz}}" class="form-control" name="plz" placeholder="Enter plz">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="place">Place:</label>
 							<div class="col-sm-10">
-								<input type="number" value="{{place}}" class="form-control" name="place" placeholder="Enter place">
+								<input type="text" value="{{place}}" class="form-control" name="place" placeholder="Enter place">
 							</div>
 						</div>
 
-						<label for="exampleFormControlSelect1">Current presidents</label>
-						<select class="form-control" id="exampleFormControlSelect1" readonly>
-							{{#each president}}
-								<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-							{{/each}}
-						</select>
-
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="directorFirstname">Presidents:</label>
-							<select name="presidents" multiple class="form-control">
+							<label class="control-label col-sm-2" for="president">President:</label>
+							<select name="president" class="form-control">
+								<option>{{president.name.first}} {{president.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
-								<option value="asdasd">aaa</option>
 							</select>
 						</div>
 
-						<label for="exampleFormControlSelect1">Current directors</label>
-						<select class="form-control" id="exampleFormControlSelect1" readonly>
-							{{#each director}}
-								<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-							{{/each}}
-						</select>
-
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="directorFirstname">Directors:</label>
-							<select name="directors" multiple class="form-control">
+							<label class="control-label col-sm-2" for="director">Director:</label>
+							<select name="director" class="form-control">
+								<option>{{director.name.first}} {{director.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
-								<option value="asdasd">aaa</option>
 							</select>
 						</div>
 
-						<label for="exampleFormControlSelect1">Current chashier</label>
-						<select class="form-control" id="exampleFormControlSelect1" readonly>
-							{{#each cashier}}
-								<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-							{{/each}}
-						</select>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="secondDirector">Second director:</label>
+							<select name="secondDirector" class="form-control">
+								<option>{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
+								{{#each ../useritem}}
+									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
+								{{/each}}
+							</select>
+						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="directorFirstname">Cashiers:</label>
-							<select name="cashiers" multiple class="form-control">
+							<label class="control-label col-sm-2" for="cashier">Cashier:</label>
+							<select name="cashier" class="form-control">
+								<option>{{cashier.name.first}} {{cashier.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
-								<option value="asdasd">aaa</option>
 							</select>
 						</div>
 
-						<label for="exampleFormControlSelect1">Current secretaries</label>
-						<select class="form-control" id="exampleFormControlSelect1" readonly>
-							{{#each director}}
-								<option value="{{_id}}">{{_id}}</option>
-							{{/each}}
-						</select>
-
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="directorFirstname">Secretaries:</label>
-							<select name="secretaries" multiple class="form-control">
+							<label class="control-label col-sm-2" for="secretary">Secretary:</label>
+							<select name="secretary" class="form-control">
+								<option>{{secretary.name.first}} {{secretary.name.last}}</option>
 								{{#each ../useritem}}
 									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
 								{{/each}}
