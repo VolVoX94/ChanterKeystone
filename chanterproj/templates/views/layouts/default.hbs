@@ -54,8 +54,8 @@
 							</ul>
 							
 							<ul class="nav navbar-nav navbar-right">
-								<li><a onclick="setGerman()" href="#">Deutsch</a></li>
-								<li><a onclick="setFrench()" href="#">Francaise</a></li>
+								<li><a onclick="setGerman()" href="#"><img src="images/german.png" height="16" width="30"></a></li>
+								<li><a onclick="setFrench()" href="#"><img src="images/french.png" height="16" width="30"></a></li>
 								{{#if user}}
 								<li><a href="/keystone/signout">Sign Out</a></li>
 								{{else}}
@@ -108,7 +108,9 @@
 		</div>
 		<div class="container">
 			<div id="footer">
-				<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
+				{{#if user}}
+					<a href="/dashboard">Dashboard</a>
+				{{/if}}
 			</div>
 		</div>
 		{{!--
