@@ -10,21 +10,20 @@
 
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#home">User</a></li>
+		<li id="one" class="active"><a data-toggle="tab" href="#home">User</a></li>
 	{{#if choirs}}
-		<li><a data-toggle="tab" href="#menu1">Choir</a></li>
+		<li id="two" class=""><a data-toggle="tab" href="#menu1">Choir</a></li>
 	{{/if}}
 	{{#if user.isAdmin}}
-		<li><a data-toggle="tab" href="#menu2">Statistics</a></li>
+		<li id="three" class=""><a data-toggle="tab" href="#menu2">Statistics</a></li>
 	{{/if}}
 	</ul>
 
 	<div class="tab-content">
 		<div id="home" class="tab-pane fade in active">
 			
-			
 			<form action="/dashboardUser" method = "post" class="form-horizontal">
-				<div class="col-lg-10 col-lg-offset-1">
+				<div id="heada" class="">
 					<h1>My User:</h1>
 				</div>
 				<input type="hidden" class="form-control" name="id" value="{{user._id}}">
@@ -93,48 +92,96 @@
 
 
 			{{#each choirs}}
-				<div class="">
-					<form action="/dashboardChoir" method = "post">
+				<div class="col-lg-6">
+					<form action="/dashboardChoir" method = "post" class="form-horizontal">
 						<h1>Your choir: {{name}}</h1>
 						<input type="hidden" name="id" value="{{_id}}">
-						<br>
-						Name:<br>
-						<input type="text" name="name" value="{{name}}">
-						<br>
-						PLZ:<br>
-						<input type="text" name="plz" value="{{plz}}">
-						<br>
-						Place:<br>
-						<input type="number" name="place" value="{{place}}">
-						<br>
-						Director firstname:<br>
-						<input type="text" name="directorFirstname" value="{{directorFirstname}}">
-						<br>
-						Director lastname:<br>
-						<input type="text" name="directorLastname" value="{{directorLastname}}">
-						<br>
-						Cashier firstname:<br>
-						<input type="text" name="cashierFirstname" value="{{cashierFirstname}}">
-						<br>
-						Cashier lastname:<br>
-						<input type="text" name="cashierLastname" value="{{cashierLastname}}">
-						<br>
-						Secretary firstname:<br>
-						<input type="text" name="secretaryFirstname" value="{{secretaryFirstname}}">
-						<br>
-						Secretary lastname:<br>
-						<input type="text" name="secretaryLastname" value="{{secretaryLastname}}">
-						<br>
-						Founding year:<br>
-						<input type="number" name="foundingYear" value="{{foundingYear}}">
-						<br>
-						Homepage:<br>
-						<input type="text" name="homepage" value="{{homepage}}">
-						<br>
-						Last updated:<br>
-						<input type="text" name="lastUpdate" value="{{lastUpdate}}">
-						<br> <br>
-						<input type="submit" value="Submit">
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="name">Name:</label>
+							<div class="col-sm-10">
+								<input required type="text" value="{{name}}" class="form-control" name="name" placeholder="Enter Name">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="plz">PLZ:</label>
+							<div class="col-sm-10">
+								<input required type="text" value="{{plz}}" class="form-control" name="plz" placeholder="Enter plz">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="place">Place:</label>
+							<div class="col-sm-10">
+								<input type="number" value="{{place}}" class="form-control" name="place" placeholder="Enter place">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="directorFirstname">Director firstname:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{directorFirstname}}" class="form-control" name="directorFirstname" placeholder="Enter director firstname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="directorLastname">Director lastname:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{directorLastname}}" class="form-control" name="directorLastname" placeholder="Enter director lastname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="cashierFirstname">Cashier firstname:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{cashierFirstname}}" class="form-control" name="cashierFirstname" placeholder="Enter cashier firstname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="cashierLastname">Cashier lastname:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{cashierLastname}}" class="form-control" name="cashierLastname" placeholder="Enter cashier lastname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="secretaryFirstname">Secretary firstname:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{secretaryFirstname}}" class="form-control" name="secretaryFirstname" placeholder="Enter secretary firstname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="secretaryLastname">Secretary lastname:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{secretaryLastname}}" class="form-control" name="secretaryLastname" placeholder="Enter secretary lastname">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="foundingYear">Founding year:</label>
+							<div class="col-sm-10">
+								<input type="number" value="{{foundingYear}}" class="form-control" name="foundingYear" placeholder="Enter founding year">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="homepage">Homepage:</label>
+							<div class="col-sm-10">
+								<input type="number" value="{{homepage}}" class="form-control" name="homepage" placeholder="Enter homepage">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="lastUpdate">Last updated:</label>
+							<div class="col-sm-10">
+								<input type="number" value="{{lastUpdate}}" class="form-control" name="lastUpdate" placeholder="Enter lastUpdated">
+							</div>
+						</div>
+						
+						<button id="submit1" type="submit" value="Submit" class="btn btn-default" onclick="setChoirsActive()">Submit</button>
 					</form>
 				</div>
 			{{/each}}
@@ -652,8 +699,17 @@
 					document.getElementById('submit').disabled = true;
 				}
 			}
-			
 
-			
+			var setChoirsActive = function() {
+				var one = document.getElementById('one');
+				var two = document.getElementById('two');
+				one.classList.toggle("active");
+				two.classList.toggle("active"); 
+			}
+
+			var setStatisticsActive = function() {
+				var three = document.getElementById('three');
+				three.classList.toggle("active");
+			}
 		</script>
 </div>
