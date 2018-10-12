@@ -1,16 +1,85 @@
 <div class="container">
-
-	<input type="text" class="myInput" id="myInput" onkeyup="myFunction()"
-		   placeholder="Search for names, dates or whatever you like...">
 	
 	{{#if choirs}}
+
+		<div class="row">
+			<div class="col-lg-8">
+				<input type="text" class="myInput" id="myInput" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+			<div class="col-lg-2">
+				<button id="btn1" class="btn-info myInput" onclick="showSearch2()">Add Filter</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<input style="display:none;" type="text" class="myInput" id="myInput1" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+			<div class="col-lg-2">
+				<button id="btn2" style="display:none;" class="btn-info myInput" onclick="showSearch3()">Add Filter</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<input style="display:none;" type="text" class="myInput" id="myInput2" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+			<div class="col-lg-2">
+				<button id="btn3" style="display:none;" class="btn-info myInput" onclick="showSearch4()">Add Filter</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<input style="display:none;" type="text" class="myInput" id="myInput3" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+			<div class="col-lg-2">
+				<button id="btn4" style="display:none;" class="btn-info myInput" onclick="showSearch5()">Add Filter</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<input style="display:none;" type="text" class="myInput" id="myInput4" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+			<div class="col-lg-2">
+				<button id="btn5" style="display:none;" class="btn-info myInput" onclick="showSearch6()">Add Filter</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<input style="display:none;" type="text" class="myInput" id="myInput4" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+			<div class="col-lg-4">
+				<button id="btn5" style="display:none;" class="btn-default myInput" onclick="showSearch6()">Add Filter</button>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-lg-8">
+				<input style="display:none;" type="text" class="myInput" id="myInput5" onkeyup="myFunction(this)"
+					   placeholder="Search for names, dates or whatever you like...">
+			</div>
+		</div>
+		
+		
 		<button type="button" class="btn btn-primary" onclick="pdf()">Download List as PDF</button>
 		<table id="myTable" class="table myTable">
 			<thead>
 			<tr>
 				<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(1)">Plz<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(2)">Ort<img class="imageSort" src="images/sort.png"></th>
+				<th class="cursor" onclick="sortTable(1)">Ort<img class="imageSort" src="images/sort.png"></th>
+				<th class="cursor" onclick="sortTable(2)">President<img class="imageSort" src="images/sort.png"></th>
+				<th class="cursor" onclick="sortTable(3)">Director<img class="imageSort" src="images/sort.png"></th>
+				<th class="cursor" onclick="sortTable(4)">Type Choir<img class="imageSort" src="images/sort.png"></th>
+				<th class="cursor" onclick="sortTable(5)">Language<img class="imageSort" src="images/sort.png"></th>
 				<th>Details</th>
 			</tr>
 			</thead>
@@ -18,8 +87,11 @@
 			{{#each choirs}}
 				<tr>
 					<td>{{name}}</td>
-					<td>{{plz}}</td>
 					<td>{{place}}</td>
+					<td>{{president.name.first}} {{president.name.last}}</td>
+					<td>{{director.name.first}} {{director.name.last}}</td>
+					<td>{{typeChoir}}</td>
+					<td>{{lang}}</td>
 					<td>
 						<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">See
 							Details
@@ -48,7 +120,7 @@
 										<p><strong>President: </strong>{{president.name.first}} {{president.name.last}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Direktor: </strong>{{director}}</p>
+										<p><strong>Direktor: </strong>{{director.name.first}} {{director.name.last}}</p>
 									</div>
 								</div>
 							</div>
@@ -65,13 +137,57 @@
 </div>
 
 <script>
+
+	function showSearch2() {
+		document.getElementById("btn1").style.display = "none";
+		document.getElementById("myInput1").style.display = "";
+		document.getElementById("btn2").style.display = "";
+	}
+
+	function showSearch3() {
+		document.getElementById("btn2").style.display = "none";
+		document.getElementById("myInput2").style.display = "";
+		document.getElementById("btn3").style.display = "";
+	}
+
+	function showSearch4() {
+		document.getElementById("btn3").style.display = "none";
+		document.getElementById("myInput3").style.display = "";
+		document.getElementById("btn4").style.display = "";
+	}
+
+	function showSearch5() {
+		document.getElementById("btn4").style.display = "none";
+		document.getElementById("myInput4").style.display = "";
+		document.getElementById("btn5").style.display = "";
+	}
+
+	function showSearch6() {
+		document.getElementById("btn5").style.display = "none";
+		document.getElementById("myInput5").style.display = "";
+		document.getElementById("myInput1").style.display = "";
+	}
+	
 	function myFunction() {
-		// Declare variables 
-		var input, filter, table, tr, td1, td2, td3, i;
+		var input, input1, input2, input3, input4, input5, filter, filter1, filter2, filter3, filter4, filter5, table, tr1, td1, td2, td3, i;
+
 		input = document.getElementById("myInput");
+		input1 = document.getElementById("myInput1");
+		input2 = document.getElementById("myInput2");
+		input3 = document.getElementById("myInput3");
+		input4 = document.getElementById("myInput4");
+		input5 = document.getElementById("myInput5");
+
 		filter = input.value.toUpperCase();
+		filter1 = input1.value.toUpperCase();
+		filter2 = input2.value.toUpperCase();
+		filter3 = input3.value.toUpperCase();
+		filter4 = input4.value.toUpperCase();
+		filter5 = input5.value.toUpperCase();
+
 		table = document.getElementById("myTable");
 		tr = table.getElementsByTagName("tr");
+
 
 		// Loop through all table rows, and hide those who don't match the search query
 		for (i = 0; i < tr.length; i++) {
@@ -79,7 +195,7 @@
 			td2 = tr[i].getElementsByTagName("td")[1];
 			td3 = tr[i].getElementsByTagName("td")[2];
 			if (td1 || td2 || td3) {
-				if (td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				if ((td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) && (td1.innerHTML.toUpperCase().indexOf(filter1) > -1 || td2.innerHTML.toUpperCase().indexOf(filter1) > -1 || td3.innerHTML.toUpperCase().indexOf(filter1) > -1)&& (td1.innerHTML.toUpperCase().indexOf(filter2) > -1 || td2.innerHTML.toUpperCase().indexOf(filter2) > -1 || td3.innerHTML.toUpperCase().indexOf(filter2) > -1)&& (td1.innerHTML.toUpperCase().indexOf(filter3) > -1 || td2.innerHTML.toUpperCase().indexOf(filter3) > -1 || td3.innerHTML.toUpperCase().indexOf(filter3) > -1)&& (td1.innerHTML.toUpperCase().indexOf(filter4) > -1 || td2.innerHTML.toUpperCase().indexOf(filter4) > -1 || td3.innerHTML.toUpperCase().indexOf(filter4) > -1)&& (td1.innerHTML.toUpperCase().indexOf(filter5) > -1 || td2.innerHTML.toUpperCase().indexOf(filter5) > -1 || td3.innerHTML.toUpperCase().indexOf(filter5) > -1)) {
 					tr[i].style.display = "";
 				} else {
 					tr[i].style.display = "none";

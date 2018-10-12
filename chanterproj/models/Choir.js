@@ -8,11 +8,11 @@ Choir.add({
 	plz: {type: Types.Number},
 	
 	choirAdmin: {type: Types.Relationship, ref: 'User', index: true},
-	president: {type: Types.Relationship, ref: 'User', index: true, many: true},
-	director: {type: Types.Relationship, ref: 'User', index: true, many: true},
-	secondDirector: {type: Types.Relationship, ref: 'User', index: true, many: true},
-	secretary:{type: Types.Relationship, ref: 'User', index: true, many:true},
-	cashier: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	president: {type: Types.Relationship, ref: 'User', index: true},
+	director: {type: Types.Relationship, ref: 'User', index: true},
+	secondDirector: {type: Types.Relationship, ref: 'User', index: true},
+	secretary:{type: Types.Relationship, ref: 'User', index: true},
+	cashier: {type: Types.Relationship, ref: 'User', index: true},
 	
 	foundingYear: {type: Types.Number},
 

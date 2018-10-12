@@ -28,7 +28,11 @@ exports = module.exports = function (req, res) {
 	locals.section = 'choir';
 
 	// Load the items by sortOrder
-	view.query('choirs', keystone.list('Choir').model.find().sort('sortOrder').populate('president', 'name'));
+	view.query('choirs', keystone.list('Choir').model.find().sort('sortOrder')
+		.populate('president', 'name')
+		.populate('cashier', 'name')
+		.populate('secretary', 'name')
+		.populate('director', 'name'));
 
 	// Render the view
 	view.render('choir', { title: 'Choir', message: 'See our Choirs', isGerman: language.isGerman  });
