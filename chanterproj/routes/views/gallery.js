@@ -6,6 +6,23 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 	var language = keystone.get('language');
 
+	//---------------- STATISTIC COUNTER --------------------------------
+	var d = new Date();
+	var n = d.getMonth();
+
+	keystone.list('Statistic').model.update(
+		{actuelMonth: n},
+		{
+			$inc: {
+				countGallery: 1
+			}
+		},
+		{upsert: true}
+	).exec(function(err,result){
+		//Query will be executed
+	});
+	//---------------- STATISTIC COUNTER --------------------------------
+
 	// Set locals
 	locals.section = 'gallery';
 
