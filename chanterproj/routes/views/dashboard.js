@@ -34,7 +34,11 @@ exports = module.exports = function (req, res) {
 	else{
 		
 		view.on('init', function (next) {
-			var q = keystone.list('Choir').model.find({choirAdmin: res.locals.user}).sort('sortOrder').populate('president', 'name').populate('cashier','name');
+			var q = keystone.list('Choir').model.find({choirAdmin: res.locals.user}).sort('sortOrder')
+							.populate('president', 'name')
+							.populate('cashier', 'name')
+							.populate('secretary', 'name')
+							.populate('director');
 			q.exec(function (err, results) {
 				locals.choirs = results;
 				next(err);
