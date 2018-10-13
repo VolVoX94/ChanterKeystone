@@ -54,6 +54,56 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label col-sm-2" for="address">Address:</label>
+					<div class="col-sm-10">
+						<input required type="text" name="address" value="{{user.address}}" class="form-control" placeholder="Enter place">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="address">Second address:</label>
+					<div class="col-sm-10">
+						<input required type="text" name="secondAddress" value="{{user.secondAddress}}" class="form-control" placeholder="Enter place">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="plz">PLZ:</label>
+					<div class="col-sm-10">
+						<input required type="number" name="plz" value="{{user.plz}}" class="form-control" placeholder="Enter plz">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="place">Place:</label>
+					<div class="col-sm-10">
+						<input required type="text" name="place" value="{{user.place}}" class="form-control" placeholder="Enter place">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="privatePhone">Private phone:</label>
+					<div class="col-sm-10">
+						<input required type="text" name="privatePhone" value="{{user.privatePhone}}" class="form-control" placeholder="Enter private phone">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="businessPhone">Business phone:</label>
+					<div class="col-sm-10">
+						<input required type="text" name="businessPhone" value="{{user.businessPhone}}" class="form-control" placeholder="Enter business phone">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="fax">Business phone:</label>
+					<div class="col-sm-10">
+						<input required type="text" name="fax" value="{{user.fax}}" class="form-control" placeholder="Enter fax">
+					</div>
+				</div>
+				
+
+				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">Password:</label>
 					<div class="col-sm-10">
 						<input required type="password" name="password" id="password" value="" class="form-control" placeholder="Enter new password" onkeyup='check();'>
@@ -64,6 +114,13 @@
 					<label class="control-label col-sm-2" for="email">Confirm password:</label>
 					<div class="col-sm-10">
 						<input required type="password" id="confirm_password" value="" class="form-control" placeholder="Confirm new password" onkeyup='check();'>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-1" for="lastUpdate">Last updated:</label>
+					<div class="col-sm-12">
+						<input type="text" value="{{user.lastUpdate}}" class="form-control" name="lastUpdate" readonly>
 					</div>
 				</div>
 
@@ -143,7 +200,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-3" for="secondDirector">Second director:</label>
+							<label class="control-label col-sm-2" for="secondDirector">Second director:</label>
 							<select name="secondDirector" class="form-control">
 								<option value="{{secondDirector._id}}">{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
 								{{#each ../useritem}}
@@ -182,14 +239,151 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="homepage">Homepage:</label>
 							<div class="col-sm-10">
-								<input type="number" value="{{homepage}}" class="form-control" name="homepage" placeholder="Enter homepage">
+								<input type="text" value="{{homepage}}" class="form-control" name="homepage" placeholder="Enter homepage">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="typeChoir">Type Choir:</label>
+							<select name="typeChoir" class="form-control">
+								<option value="{{typeChoir}}">{{typeChoir}}</option>
+								<option value="CX">CX</option>
+								<option value="CD">CD</option>
+								<option value="CJ">CJ</option>
+								<option value="CH">CH</option>
+								<option value="CE">CE</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="secondTypeChoir">Second type Choir:</label>
+							<select name="secondTypeChoir" class="form-control">
+								<option value="{{secondTypeChoir}}">{{secondTypeChoir}}</option>
+								<option value="CX">CX</option>
+								<option value="CD">CD</option>
+								<option value="CJ">CJ</option>
+								<option value="CH">CH</option>
+								<option value="CE">CE</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="groupMt">Group MT:</label>
+							<select name="groupMt" class="form-control">
+								<option value="{{groupMt}}">{{groupMt}}</option>
+								<option value="BV_Y">BV_Y</option>
+								<option value="BV_N">BV_N</option>
+								<option value="UCC_Y">UCC_Y</option>
+								<option value="UCC_N">UCC_N</option>
+								<option value="VC_Y">VC_Y</option>
+								<option value="VC_N">VC_N</option>
+								<option value="VOG_Y">VOG_Y</option>
+								<option value="VOG_N">VOG_N</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="entranceGroupMt">Entrance group MT:</label>
+							<div class="col-sm-10">
+								{{entranceGroupMt}}
+								<input type="date" value="" class="form-control" name="entranceGroupMt" placeholder="Enter entrance GroupMt">
+								<input type="hidden" value="{{entranceGroupMt}}" class="form-control" name="entranceGroupMtPrevious">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="lastUpdate">Last updated:</label>
+								<div class="checkbox">
+									<label><input name="chGospel" type="checkbox" {{#if chGospel}}
+												  checked
+									{{/if}}>chGospel</label>
+								</div>
+						</div>
+
+						<div class="form-group">
+							<div class="checkbox">
+								<label><input name="chEglise" type="checkbox" {{#if chEglise}}
+											  checked
+								{{/if}}>chEglise</label>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="type2">Type2:</label>
 							<div class="col-sm-10">
-								<input type="number" value="{{lastUpdate}}" class="form-control" name="lastUpdate" placeholder="Enter lastUpdated">
+								<input type="text" value="{{type2}}" class="form-control" name="type2" placeholder="Enter type2">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="memberUSC">Member USC:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{memberUSC}}" class="form-control" name="memberUSC" placeholder="Enter memberUSC">
+							</div>
+						</div>
+
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="entranceUSC">Entrance USC:</label>
+							<div class="col-sm-10">
+								{{entranceUSC}}
+								<input type="date" value="{{entranceUSC}}" class="form-control" name="entranceUSC" placeholder="Enter entrance entranceUSC">
+								<input type="hidden" value="{{entranceUSC}}" class="form-control" name="entranceUSCprevious">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="memberFC">Member USC:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{memberFC}}" class="form-control" name="memberFC" placeholder="Enter memberFC">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="entranceFC">Entrance FC:</label>
+							<div class="col-sm-10">
+								{{entranceFC}}
+								<input type="date" value="" class="form-control" name="entranceFC" placeholder="Enter entrance entranceFC">
+								<input type="hidden" value="{{entranceFC}}" class="form-control" name="entranceFCprevious">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="courierName">Courier Name:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{courierName}}" class="form-control" name="courierName" placeholder="Enter courierName">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">Dekanat:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{dekanat}}" class="form-control" name="dekanat" placeholder="Enter dekanat">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="lang">Language:</label>
+							<select name="lang" class="form-control">
+								<option value="{{lang}}">{{lang}}</option>
+								<option value="Deutsch">Deutsch</option>
+								<option value="Français">Français</option>
+								<option value="English">English</option>
+								<option value="Italiano">Italiano</option>
+								<option value="Español">Español</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">Remarks:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{remarks}}" class="form-control" name="remarks" placeholder="Enter remark">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-1" for="lastUpdate">Last updated:</label>
+							<div class="col-sm-12">
+								<input type="text" value="{{lastUpdate}}" class="form-control" name="lastUpdate" readonly>
 							</div>
 						</div>
 						

@@ -18,7 +18,6 @@ User.add({
 	privatePhone: {type: Types.Number, index: true},
 	businessPhone: {type: Types.Number, index: true},
 	fax: {type: Types.Number, index: true},
-	mobilePhone: {type: Types.Number, index: true},
 	email: {type: Types.Email, initial: true, required: true, unique: true, index: true},
 	password: {type: Types.Password, initial: true, required: true},
 	isSubscriber: {type: Boolean},
@@ -32,6 +31,9 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
+User.schema.post('save', function () {
+	this.lastUpdate = Date.now();
+});
 
 /**
  * Registration

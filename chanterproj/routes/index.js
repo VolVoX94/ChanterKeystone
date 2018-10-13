@@ -91,6 +91,20 @@ exports = module.exports = function (app) {
 		if(req.body.foundingYear === ""){
 			req.body.foundingYear = 0;
 		}
+		
+		if(req.body.entranceGroupMt === ""){
+			req.body.entranceGroupMt = req.body.entranceGroupMtPrevious;
+		}
+
+		if(req.body.entranceFC === ""){
+			req.body.entranceFC = req.body.entranceFCprevious;
+		}
+
+		if(req.body.entranceUSC === ""){
+			req.body.entranceUSC = req.body.entranceUSCprevious;
+		}
+		
+		
 		keystone.list('Choir').model.update(
 			{ _id: req.body.id },
 			{
@@ -104,6 +118,21 @@ exports = module.exports = function (app) {
 					secretary:			req.body.secretary,
 					cashier:			req.body.cashier,
 					foundingYear:		req.body.foundingYear,
+					typeChoir:			req.body.typeChoir,
+					secondTypeChoir:	req.body.secondTypeChoir,
+					groupMt:			req.body.groupMt,
+					entranceGroupMt:	req.body.entranceGroupMt,
+					chEglise:			req.body.chEglise,
+					chGospel:			req.body.chGospel,
+					type2:				req.body.type2,
+					memberUSC:			req.body.memberUSC,
+					memberFC:			req.body.memberFC,
+					entranceFC:			req.body.entranceFC,
+					entranceUSC:		req.body.entranceUSC,
+					courierName:		req.body.courierName,
+					dekanat:			req.body.dekanat,
+					lang:				req.body.lang,
+					remarks:			req.body.remarks,
 					homepage:			req.body.homepage,
 					lastUpdate:			today
 				}
@@ -116,16 +145,24 @@ exports = module.exports = function (app) {
 
 	app.post('/dashboardUser', (req,res,next) => {
 		console.log("user updated");
+		var today = new Date();
 		var name = req.body.firstname + " " + req.body.lastname;
-		console.log(name);
 		keystone.list('User').model.update(
 			{ _id: req.body.id },
 			{
 				$set: {
 					name:				{first: req.body.firstname, last: req.body.lastname},
+					address:			req.body.address,
+					secondAddress:		req.body.secondAddress,
+					plz:				req.body.plz,
+					place:				req.body.place,
+					privatePhone:		req.body.privatePhone,
+					businessPhone:		req.body.businessPhone,
+					fax:				req.body.fax,
 					email: 				req.body.email,
 					isSubscriber:		req.body.isSubscriber,
-					isAdmin:			req.body.admin
+					isAdmin:			req.body.admin,
+					lastUpdate:			today
 				}
 			}
 		).exec(function(err,result){
