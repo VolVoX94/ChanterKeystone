@@ -4,70 +4,19 @@
 
 		<div class="row">
 			<div class="col-lg-8">
-				<input type="text" class="myInput" id="myInput" onkeyup="myFunction(this)"
+				<input type="text" class="myInput" id="myInput"
 					   placeholder="Search for names, dates or whatever you like...">
 			</div>
 			<div class="col-lg-2">
-				<button id="btn1" class="btn-info myInput" onclick="showSearch2()">Add Filter</button>
+				<button id="btn1" class="btn-info myInput" onclick="addFilter()">Add Filter</button>
+			</div>
+			<div id="dynFil" class="col-lg-2">
+				<ol id="list" style="list-style: none">
+					<li><strong>Filters</strong></li>
+				</ol>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-8">
-				<input style="display:none;" type="text" class="myInput" id="myInput1" onkeyup="myFunction(this)"
-					   placeholder="Search for names, dates or whatever you like...">
-			</div>
-			<div class="col-lg-2">
-				<button id="btn2" style="display:none;" class="btn-info myInput" onclick="showSearch3()">Add Filter</button>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-8">
-				<input style="display:none;" type="text" class="myInput" id="myInput2" onkeyup="myFunction(this)"
-					   placeholder="Search for names, dates or whatever you like...">
-			</div>
-			<div class="col-lg-2">
-				<button id="btn3" style="display:none;" class="btn-info myInput" onclick="showSearch4()">Add Filter</button>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-8">
-				<input style="display:none;" type="text" class="myInput" id="myInput3" onkeyup="myFunction(this)"
-					   placeholder="Search for names, dates or whatever you like...">
-			</div>
-			<div class="col-lg-2">
-				<button id="btn4" style="display:none;" class="btn-info myInput" onclick="showSearch5()">Add Filter</button>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-8">
-				<input style="display:none;" type="text" class="myInput" id="myInput4" onkeyup="myFunction(this)"
-					   placeholder="Search for names, dates or whatever you like...">
-			</div>
-			<div class="col-lg-2">
-				<button id="btn5" style="display:none;" class="btn-info myInput" onclick="showSearch6()">Add Filter</button>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-8">
-				<input style="display:none;" type="text" class="myInput" id="myInput4" onkeyup="myFunction(this)"
-					   placeholder="Search for names, dates or whatever you like...">
-			</div>
-			<div class="col-lg-4">
-				<button id="btn5" style="display:none;" class="btn-default myInput" onclick="showSearch6()">Add Filter</button>
-			</div>
-		</div>
-	
-		<div class="row">
-			<div class="col-lg-8">
-				<input style="display:none;" type="text" class="myInput" id="myInput5" onkeyup="myFunction(this)"
-					   placeholder="Search for names, dates or whatever you like...">
-			</div>
-		</div>
 		
 		
 		<button type="button" class="btn btn-primary" onclick="pdf()">Download List as PDF</button>
@@ -153,53 +102,70 @@
 
 <script>
 
-	function showSearch2() {
-		document.getElementById("btn1").style.display = "none";
-		document.getElementById("myInput1").style.display = "";
-		document.getElementById("btn2").style.display = "";
+	var lastid = 0;
+	
+	function addFilter() {
+		if(document.getElementById('myInput').value != "" && document.getElementById('list').getElementsByTagName("li").length <= 6) {
+			var list = document.getElementById('list');
+			var filter = document.getElementById('myInput').value;
+			var entry = document.createElement('li');
+			entry.appendChild(document.createTextNode(filter));
+			entry.setAttribute('id', 'item' + lastid);
+			var removeButton = document.createElement('button');
+			removeButton.appendChild(document.createTextNode("-"));
+			removeButton.setAttribute('onClick', 'removeName("' + 'item' + lastid + '")');
+			removeButton.setAttribute('class', 'btn-danger');
+			entry.appendChild(removeButton);
+			list.appendChild(entry);
+			lastid++;
+			document.getElementById('myInput').value = ""; 
+			myFunction();
+		}
 	}
-
-	function showSearch3() {
-		document.getElementById("btn2").style.display = "none";
-		document.getElementById("myInput2").style.display = "";
-		document.getElementById("btn3").style.display = "";
-	}
-
-	function showSearch4() {
-		document.getElementById("btn3").style.display = "none";
-		document.getElementById("myInput3").style.display = "";
-		document.getElementById("btn4").style.display = "";
-	}
-
-	function showSearch5() {
-		document.getElementById("btn4").style.display = "none";
-		document.getElementById("myInput4").style.display = "";
-		document.getElementById("btn5").style.display = "";
-	}
-
-	function showSearch6() {
-		document.getElementById("btn5").style.display = "none";
-		document.getElementById("myInput5").style.display = "";
-		document.getElementById("myInput1").style.display = "";
+	
+	function removeName(itemid) {
+		var item = document.getElementById(itemid);
+		list.removeChild(item);
+		myFunction();
 	}
 	
 	function myFunction() {
 		var input, input1, input2, input3, input4, input5, filter, filter1, filter2, filter3, filter4, filter5, table, tr1, td1, td2, td3, i;
 
-		input = document.getElementById("myInput");
-		input1 = document.getElementById("myInput1");
-		input2 = document.getElementById("myInput2");
-		input3 = document.getElementById("myInput3");
-		input4 = document.getElementById("myInput4");
-		input5 = document.getElementById("myInput5");
+		
+		filter = ""; 
+		filter1 = ""; 
+		filter2 = ""; 
+		filter3 = ""; 
+		filter4 = ""; 
+		filter5 = "";
 
-		filter = input.value.toUpperCase();
-		filter1 = input1.value.toUpperCase();
-		filter2 = input2.value.toUpperCase();
-		filter3 = input3.value.toUpperCase();
-		filter4 = input4.value.toUpperCase();
-		filter5 = input5.value.toUpperCase();
+		var inputs = document.getElementById('list').getElementsByTagName("li");
 
+		if(inputs[1] != null){
+			filter = inputs[1].innerText.replace("-", "").toUpperCase();
+		}
+		if(inputs[2] != null){
+			filter1 = inputs[2].innerText.replace("-", "").toUpperCase();
+		}
+
+		if(inputs[3] != null){
+			filter2 = inputs[3].innerText.replace("-", "").toUpperCase();
+		}
+
+		if(inputs[4] != null){
+			filter3 = inputs[4].innerText.replace("-", "").toUpperCase();
+		}
+
+		if(inputs[5] != null){
+			filter4 = inputs[5].innerText.replace("-", "").toUpperCase();
+		}
+		
+		if(inputs[6] != null){
+			filter5 = inputs[6].innerText.replace("-", "").toUpperCase();
+		}
+		
+		
 		table = document.getElementById("myTable");
 		tr = table.getElementsByTagName("tr");
 
