@@ -19,6 +19,8 @@ User.add({
 	businessPhone: {type: Types.Number, index: true},
 	fax: {type: Types.Number, index: true},
 	email: {type: Types.Email, initial: true, required: true, unique: true, index: true},
+	comiteRole: {type: String, index: true},
+	image: {type: Types.CloudinaryImage},
 	password: {type: Types.Password, initial: true, required: true},
 	isSubscriber: {type: Boolean},
 	lastUpdate: {type: Date},
