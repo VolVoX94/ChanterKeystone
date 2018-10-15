@@ -47,7 +47,16 @@ keystone.set('adminui custom styles', './public/styles/keystone.less');
 keystone.set('navigation', [{
 	label: 'Home',
 	key: 'home',
-	href: '/'
+	href: '/',
+	child: [{
+		label: 'asdsad',
+		key: 'as',
+		href: '/',
+	},{
+		label: 'eeee',
+		key: 'ee',
+		href: '/',
+	}]
 },  {
 	label: 'Gallery',
 	key: 'gallery',
@@ -68,7 +77,38 @@ keystone.set('navigation', [{
 	label: 'Contact',
 	key: 'contact',
 	href: '/contact'
-}]);
+},{
+	label: 'Services',
+	key: 'contact',
+	href: '/contact',
+	child: [{
+		label: 'Petite annonces',
+		key: 'petite_annonces',
+		href: '/',
+	},{
+		label: 'Forum des présidents',
+		key: 'forum_des_présidents',
+		href: '/',
+	},{
+		label: 'Soutien aux choeurs',
+		key: 'soutien_aux_choeur',
+		href: '/',
+	},{
+		label: 'newsletter_service',
+		key: 'newsletter_service',
+		href: '/',
+	},{
+		label: 'Service depannage',
+		key: 'service_depannage',
+		href: '/',
+	},{
+		label: 'Contact_service',
+		key: 'contact_service',
+		href: '/',
+	}]
+}
+
+]);
 
 // Load your project's Models
 keystone.import('models');

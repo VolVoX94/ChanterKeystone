@@ -90,3 +90,39 @@
 #dynFil{
 	margin-top: 22px;
 }
+
+#visible:hover #hidden {
+	display: block;
+}
+
+#hidden a{
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+#hidden ul{
+	list-style-type: none;
+	width: 200px;
+}
+
+#hidden li{
+	list-style-type: none;
+	width: 200px;
+	margin: 0px;
+}
+
+#hidden{
+	list-style-type: none;
+	text-decoration: none;
+	display: none;
+	position: absolute;
+	background-color: lightgray;
+	z-index: 1;
+}
+
+#hidden li:hover {
+	background-color: #eee;
+	color: black;
+}

@@ -36,8 +36,15 @@
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
 									{{# each navLinks}}
-									<li {{#ifeq ../section key}}class=""{{else}}{{/ifeq}}>
+									<li {{#ifeq ../section key}}class=""{{else}}{{/ifeq}}  id="visible">
 										<a href="{{ href }}">{{ label }}</a>
+										<ul id="hidden" class="sub-menu">
+											{{#each child}}
+											<li>
+												<a href="{{ href }}">{{ label }}</a>
+											</li>
+										{{/each}}
+										</ul>
 									</li>
 									{{/each}}
 								<li class="">
@@ -135,6 +142,16 @@
 		{{{isAdminEditorJS user}}}
 	
 		<script>
+			//Subnav
+			$('.nav li > .sub-menu').parent().hover(function() {
+				var submenu = $(this).children('.sub-menu');
+				if ( $(submenu).is(':hidden') ) {
+					$(submenu).slideDown(200);
+				} else {
+					$(submenu).slideUp(200);
+				}
+			});
+			
 			function setGerman(){
 				var url = window.location.href;
 				var home = "http://192.168.99.100:3000";
@@ -174,6 +191,6 @@
 				window.location.replace("/setToFrench" + url);
 			}
 		</script>
-	
+
 	</body>
 </html>

@@ -16,6 +16,7 @@ Page.add({
 	state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true},
 	image: {type: Types.CloudinaryImage},
 	inNavigation: {type: Types.Boolean},
+	inSubnavigationFrom: {type: Types.Relationship, ref: 'Page', index: true},
 	contentGerman: {
 		brief: {type: Types.Html, wysiwyg: true, height: 150},
 		extended: {type: Types.Html, wysiwyg: true, height: 400},
@@ -74,14 +75,17 @@ function updateNavigation(itemDeleted) {
 		else{
 			pages.forEach(function(page, i) {
 				var navPoint = {label: page.title, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()};
-				
 
+				
 				if((JSON.stringify(navLink)).includes(JSON.stringify(navPoint))){
 					console.log("true")
 				}
 				else{
-					console.log("false added " + navPoint.label + " to Nav")
-					navLink.push(navPoint);
+					console.log("false added " + navPoint.label + " to Nav");
+					
+					
+						navLink.push(navPoint);
+					
 				}
 			});
 		}
