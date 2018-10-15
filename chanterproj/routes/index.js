@@ -75,6 +75,7 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 	app.get('/dashboard', routes.views.dashboard);
 	app.get('/events', routes.views.events);
+	app.get('/comitee', routes.views.comitee);
 	app.get('/newsletter', routes.views.newsletter);
 	app.get('/choir', routes.views.choir);
 	app.all('/contact', routes.views.contact);

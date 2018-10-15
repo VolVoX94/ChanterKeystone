@@ -4,16 +4,12 @@ var Types = keystone.Field.Types;
 var Committee = new keystone.List('Committee');
 
 Committee.add({
-	firstName: {type: String, required: true, initial: true},
-	lastName: {type: String, required: true, initial: true},
-	address: {type: String, required: true, initial: true},
-	plz: {type: Types.Number, required: true, initial: true},
-	place: {type: String, required: true, initial: true},
-	phoneNumber: {type: String, required: true, initial: true},
-	email: {type: Types.Email, required: true, initial: true},
-	functionCommittee: {type: String, required: true, initial: true},
-	profileImage: {type: Types.CloudinaryImages},
-
+	
+	director: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	president: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	coPresident: {type: Types.Relationship, ref: 'User', index: true, many: true},
+	porteDrapeau:{type: Types.Relationship, ref: 'User', index: true, many: true},
+	
 	fscv: {type: Types.Select, options: 'CC, CM, MH, CO, PD, None', default: 'None', index: true},
 	gscbv: {type: Types.Select, options: 'CO, CM, MH, None', default: 'None', index: true},
 	ucc: {type: Types.Select, options: 'CO, CM, MH, None', default: 'None', index: true},
