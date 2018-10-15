@@ -66,10 +66,6 @@ keystone.set('navigation', [{
 	key: 'events',
 	href: '/events'
 },  {
-	label: 'Blog',
-	key: 'blog',
-	href: '/blog'
-}, {
 	label: 'Choir',
 	key: 'choir',
 	href: '/choir'
@@ -82,9 +78,9 @@ keystone.set('navigation', [{
 	key: 'contact',
 	href: '/contact',
 	child: [{
-		label: 'Petite annonces',
-		key: 'petite_annonces',
-		href: '/',
+		label: 'Kleinanzeigen',
+		key: 'blog',
+		href: '/blog'
 	},{
 		label: 'Forum des présidents',
 		key: 'forum_des_présidents',

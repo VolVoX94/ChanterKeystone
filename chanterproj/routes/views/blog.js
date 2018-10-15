@@ -7,6 +7,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "Kleinanzeigen";
+	var message = "Lesen Sie unsere neusten Kleinanzeigen";
+	
+	if(language.isGerman === true){
+		title = "Kleinanzeigen";
+		message = "Lesen Sie unsere neusten Kleinanzeigen";
+	}
+	else{
+		title = "Petite annonces";
+		message = "Lisez nos dernières petites annonces";
+	}
 
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
@@ -96,7 +107,8 @@ exports = module.exports = function (req, res) {
 			next(err);
 		});
 	});
+	
 
 	// Render the view
-	view.render('blog', { title: 'Blog', message: 'Read the newest blogs', isGerman: language.isGerman  });
+	view.render('blog', { title: title, message: message, isGerman: language.isGerman  });
 };

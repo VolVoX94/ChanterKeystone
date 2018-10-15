@@ -48,6 +48,9 @@ exports = module.exports = function (app) {
 				res.redirect('/pages/page/'+ req.params.previousPage.replace("DynamicPage", ""));
 				console.log('/pages/page/'+ req.params.previousPage)
 			}
+			else if(req.params.previousPage.includes("AdsPage")){
+				res.redirect('/blog/post/'+ req.params.previousPage.replace("AdsPage", ""));
+			}
 			else{
 				res.redirect('/'+ req.params.previousPage);
 			}
@@ -64,6 +67,10 @@ exports = module.exports = function (app) {
 			if(req.params.previousPage.includes("DynamicPage")){
 				res.redirect('/pages/page/'+ req.params.previousPage.replace("DynamicPage", ""));
 				console.log('/pages/page/'+ req.params.previousPage)
+			}
+			else if(req.params.previousPage.includes("AdsPage")){
+				console.log("hallo");
+				res.redirect('/blog/post/'+ req.params.previousPage.replace("AdsPage", ""));
 			}
 			else{
 				res.redirect('/'+ req.params.previousPage);

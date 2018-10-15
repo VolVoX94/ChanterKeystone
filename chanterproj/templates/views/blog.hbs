@@ -1,5 +1,11 @@
 <div class="container">
-	<h1>Blog</h1>
+	
+	{{#if isGerman}}
+		<h1>Kleinanzeigen</h1>
+	{{else}}
+		<h1>Petite annonces</h1>
+	{{/if}}	
+	
 </div>
 <div class="container">
 	<div class="row">
@@ -14,8 +20,8 @@
 						</p>
 						{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
 										  class="img pull-right">{{/if}}
-						<p>{{{content.brief}}}</p>
-						{{#if content.extended}}
+						
+						{{#if contentGerman.extended}}
 							<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>{{/if}}
 					</div>
 				{{/each}}

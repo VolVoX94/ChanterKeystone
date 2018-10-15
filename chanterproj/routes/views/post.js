@@ -6,6 +6,15 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 	var language = keystone.get('language');
 
+	if(language.isGerman === true){
+		title = "Kleinanzeigen";
+		message = "Lesen Sie unsere neusten Kleinanzeigen";
+	}
+	else{
+		title = "Petite annonces";
+		message = "Lisez nos dernières petites annonces";
+	}
+
 	// Set locals
 	locals.section = 'blog';
 	locals.filters = {
@@ -43,5 +52,5 @@ exports = module.exports = function (req, res) {
 	});
 
 	// Render the view
-	view.render('post', { title: 'Post',isGerman: language.isGerman  });
+	view.render('post', { title: title, message: message ,isGerman: language.isGerman  });
 };
