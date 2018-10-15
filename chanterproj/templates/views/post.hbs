@@ -2,7 +2,16 @@
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 			<article>
-				<p><a href="/blog">&larr; back to the blog</a></p>
+				<p><a href="/blog">
+					&larr; 
+					{{#if isGerman}}
+						zurück zu den Kleinanzeigen
+					{{else}}
+							retour aux petites annonces
+					{{/if}}
+					
+				</a>
+				</p>
 				<hr>
 				<header>
 					<h1>{{data.post.title}}</h1>
@@ -15,7 +24,14 @@
 					{{#if data.post.image}}
 						<img src="{{{cloudinaryUrl data.post.image width=570 height=270 crop='fit' }}}"
 							 class="img-responsive">{{/if}}
-					{{{data.post.content.extended}}}
+					{{#if isGerman}}
+						{{{data.post.contentGerman.brief}}}
+						{{{data.post.contentGerman.extended}}}
+						{{else}}
+						{{{data.post.contentFrench.brief}}}
+						{{{data.post.contentFrench.extended}}}
+					{{/if}}
+					
 				</div>
 			</article>
 		</div>

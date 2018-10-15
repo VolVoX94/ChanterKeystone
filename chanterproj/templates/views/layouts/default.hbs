@@ -58,6 +58,18 @@
 												<li><a href="#">Prochaine formation AVCC</a></li>
 											</ul>
 										</li>
+
+										<li class="dropdown nav">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Service<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="/blog">Kleinanzeigen</a></li>
+												<li><a href="#">Forum des présidents</a></li>
+												<li><a href="#">Soutien aux choeurs</a></li>
+												<li><a href="#">newsletter service</a></li>
+												<li><a href="#">Service depannage</a></li>
+											</ul>
+										</li>
+										
 									{{/ifeq}}
 								
 									<li {{#ifeq ../section key}}class=""{{else}}{{/ifeq}}>
@@ -70,8 +82,8 @@
 							</ul>
 							
 							<ul class="nav navbar-nav navbar-right">
-								<li><a onclick="setGerman()" href="#"><img src="images/german.png" height="16" width="30"></a></li>
-								<li><a onclick="setFrench()" href="#"><img src="images/french.png" height="16" width="30"></a></li>
+								<li><a onclick="setGerman()" href="#"><img src="/images/german.png" height="16" width="30"></a></li>
+								<li><a onclick="setFrench()" href="#"><img src="/images/french.png" height="16" width="30"></a></li>
 								{{#if user}}
 								<li><a href="/keystone/signout">Sign Out</a></li>
 								{{else}}
@@ -161,6 +173,10 @@
 						url = url.substring(home2.length+11); // also /pages/page will be cutted off
 						url = url + "DynamicPage"
 					}
+					else if (url.includes("/blog/post")){
+						url = url.substring(home2.length+10); // also /pages/page will be cutted off
+						url = url + "AdsPage"
+					}
 					else{
 						url = url.substring(home2.length);
 					}
@@ -179,6 +195,10 @@
 					if(url.includes("/pages/page")){
 						url = url.substring(home2.length+11); // also /pages/page will be cutted off
 						url = url + "DynamicPage"
+					}
+					else if (url.includes("/blog/post")){
+						url = url.substring(home2.length+10); // also /pages/page will be cutted off
+						url = url + "AdsPage"
 					}
 					else{
 						url = url.substring(home2.length);
