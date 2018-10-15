@@ -80,6 +80,7 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
+	app.get('/subscribeNewsletter', routes.views.subscriberNewsletter);
 	app.get('/dashboard', routes.views.dashboard);
 	app.get('/events', routes.views.events);
 	app.get('/newsletter', routes.views.newsletter);
@@ -149,11 +150,36 @@ exports = module.exports = function (app) {
 		});
 		res.redirect('/dashboard');
 	});
+	
+	app.post('/subscribeNewsletter', (req,res,next) => {
+		var User = keystone.list('User');
+		var today = new Date();
+		var newUser = new User.model({
+			name: {first: req.body.firstname, last:req.body.lastname},
+			address: "",
+			secondAddress: "",
+			plz: "",
+			place: "",
+			privatePhone: 0,
+			businessPhone: 0,
+			fax: 0,
+			email: req.body.email,
+			isSubscriber: true,
+			isAdmin: false,
+			password: req.body.password,
+			lastUpdate: today
+		});
+		
+		newUser.save(function(err) {
+			// post has been saved
+		});
+
+		res.redirect('/subscribeNewsletter');
+	});
 
 	app.post('/dashboardUser', (req,res,next) => {
 		console.log("user updated");
 		var today = new Date();
-		var name = req.body.firstname + " " + req.body.lastname;
 		keystone.list('User').model.update(
 			{ _id: req.body.id },
 			{

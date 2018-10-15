@@ -13,10 +13,11 @@ var Page = new keystone.List('Page', {
 
 Page.add({
 	title: {type: String, required: true},
+	labelGerman:{type: String},
+	labelFrench:{type: String},
 	state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true},
 	image: {type: Types.CloudinaryImage},
 	inNavigation: {type: Types.Boolean},
-	inSubnavigationFrom: {type: Types.Relationship, ref: 'Page', index: true},
 	contentGerman: {
 		brief: {type: Types.Html, wysiwyg: true, height: 150},
 		extended: {type: Types.Html, wysiwyg: true, height: 400},
