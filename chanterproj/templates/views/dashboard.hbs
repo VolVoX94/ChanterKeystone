@@ -14,12 +14,36 @@
 
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li id="one" class="active"><a data-toggle="tab" href="#home">User</a></li>
+		<li id="one" class="active">
+			<a data-toggle="tab" href="#home">
+				{{#if isGerman}}
+					Benutzer
+					{{else}}
+					Utilisateur
+				{{/if}}		
+			</a>
+		</li>
 	{{#if choirs}}
-		<li id="two" class=""><a data-toggle="tab" href="#menu1">Choir</a></li>
+		<li id="two" class="">
+			<a data-toggle="tab" href="#menu1">
+				{{#if isGerman}}
+					Chöre
+				{{else}}
+					Choir
+				{{/if}}
+			</a>
+		</li>
 	{{/if}}
 	{{#if user.isAdmin}}
-		<li id="three" class=""><a data-toggle="tab" href="#menu2">Statistics</a></li>
+		<li id="three" class="">
+			<a data-toggle="tab" href="#menu2">
+				{{#if isGerman}}
+					Statistik
+				{{else}}
+					Statistique
+				{{/if}}
+			</a>
+		</li>
 	{{/if}}
 	</ul>
 
@@ -33,14 +57,26 @@
 				<input type="hidden" class="form-control" name="id" value="{{user._id}}">
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">Firstname:</label>
+					<label class="control-label col-sm-2" for="email">
+						{{#if isGerman}}
+							Vorname:
+						{{else}}
+							Prénom:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" value="{{user.name.first}}" class="form-control" name="firstname" placeholder="Enter firstname">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">Lastname:</label>
+					<label class="control-label col-sm-2" for="email">
+						{{#if isGerman}}
+							Nachname:
+						{{else}}
+							Nom de famille: 
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" name="lastname" value="{{user.name.last}}" class="form-control" placeholder="Enter lastname">
 					</div>
@@ -54,49 +90,81 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="address">Address:</label>
+					<label class="control-label col-sm-2" for="address">Adresse:</label>
 					<div class="col-sm-10">
 						<input required type="text" name="address" value="{{user.address}}" class="form-control" placeholder="Enter place">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="address">Second address:</label>
+					<label class="control-label col-sm-2" for="address">
+						{{#if isGerman}}
+							Zweite Adresse:
+						{{else}}
+							Deuxième adresse:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" name="secondAddress" value="{{user.secondAddress}}" class="form-control" placeholder="Enter place">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="plz">PLZ:</label>
+					<label class="control-label col-sm-2" for="plz">
+						{{#if isGerman}}
+							PLZ:
+						{{else}}
+							Postcode:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="number" name="plz" value="{{user.plz}}" class="form-control" placeholder="Enter plz">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="place">Place:</label>
+					<label class="control-label col-sm-2" for="place">
+						{{#if isGerman}}
+							Ort:
+						{{else}}
+							lieu:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" name="place" value="{{user.place}}" class="form-control" placeholder="Enter place">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="privatePhone">Private phone:</label>
+					<label class="control-label col-sm-2" for="privatePhone">
+						{{#if isGerman}}
+							Telefon privat:
+						{{else}}
+							Téléphone privé:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" name="privatePhone" value="{{user.privatePhone}}" class="form-control" placeholder="Enter private phone">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="businessPhone">Business phone:</label>
+					<label class="control-label col-sm-2" for="businessPhone">
+						{{#if isGerman}}
+							Telefon geschäftlich:
+						{{else}}
+							Téléphone professionnel:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" name="businessPhone" value="{{user.businessPhone}}" class="form-control" placeholder="Enter business phone">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="fax">Business phone:</label>
+					<label class="control-label col-sm-2" for="fax">
+						Fax:
+					</label>
 					<div class="col-sm-10">
 						<input required type="text" name="fax" value="{{user.fax}}" class="form-control" placeholder="Enter fax">
 					</div>
@@ -104,21 +172,39 @@
 				
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">Password:</label>
+					<label class="control-label col-sm-2" for="email">
+						{{#if isGerman}}
+							Passwort:
+						{{else}}
+							mot de passe:
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="password" name="password" id="password" value="" class="form-control" placeholder="Enter new password" onkeyup='check();'>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="email">Confirm password:</label>
+					<label class="control-label col-sm-2" for="email">
+						{{#if isGerman}}
+							Passwort bestätigen:
+						{{else}}
+							Confirmer le mot de passe: 
+						{{/if}}
+					</label>
 					<div class="col-sm-10">
 						<input required type="password" id="confirm_password" value="" class="form-control" placeholder="Confirm new password" onkeyup='check();'>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-1" for="lastUpdate">Last updated:</label>
+					<label class="control-label col-sm-1" for="lastUpdate">
+						{{#if isGerman}}
+							Letztes update:
+						{{else}}
+							dernière modification:
+						{{/if}}
+					</label>
 					<div class="col-sm-12">
 						<input type="text" value="{{user.lastUpdate}}" class="form-control" name="lastUpdate" readonly>
 					</div>
@@ -131,9 +217,18 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<div class="checkbox">
-							<label><input name="subscriber" type="checkbox" {{#if user.isSubscriber}}
-										  checked
-							{{/if}}>Subscribe to Newsletters</label>
+							<label><input name="subscriber" 
+										  type="checkbox" 
+											{{#if user.isSubscriber}}
+										  		checked
+											{{/if}}
+								>
+								{{#if isGerman}}
+									Newsletter abonniert
+								{{else}}
+									S'abonner à la newsletter
+								{{/if}}
+							</label>
 						</div>
 					</div>
 				</div>
@@ -155,32 +250,62 @@
 			{{#each choirs}}
 				<div class="col-lg-6">
 					<form action="/dashboardChoir" method = "post" class="form-horizontal">
-						<h1>Your choir: {{name}}</h1>
+						<h1>
+							{{#if ../isGerman}}
+								Dein Chor:
+							{{else}}
+								Votre choir:
+							{{/if}} {{name}}
+						</h1>
 						<input type="hidden" name="id" value="{{_id}}">
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="name">Name:</label>
+							<label class="control-label col-sm-2" for="name">
+								{{#if ../isGerman}}
+									Name:
+								{{else}}
+									Nom:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input required type="text" value="{{name}}" class="form-control" name="name" placeholder="Enter Name">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="plz">PLZ:</label>
+							<label class="control-label col-sm-2" for="plz">
+								{{#if ../isGerman}}
+									PLZ:
+								{{else}}
+									Postcode:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="number" value="{{plz}}" class="form-control" name="plz" placeholder="Enter plz">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="place">Place:</label>
+							<label class="control-label col-sm-2" for="place">
+								{{#if ../isGerman}}
+									Ort:
+								{{else}}
+									lieu:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="text" value="{{place}}" class="form-control" name="place" placeholder="Enter place">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="president">President:</label>
+							<label class="control-label col-sm-2" for="president">
+								{{#if ../isGerman}}
+									Präsident/in:
+								{{else}}
+									President:
+								{{/if}}
+							</label>
 							<select name="president" class="form-control">
 								<option value="{{president._id}}">{{president.name.first}} {{president.name.last}}</option>
 								{{#each ../useritem}}
@@ -190,7 +315,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="director">Director:</label>
+							<label class="control-label col-sm-2" for="director">
+								{{#if ../isGerman}}
+									Direktor/in:
+								{{else}}
+									Directeur:
+								{{/if}}
+							</label>
 							<select name="director" class="form-control">
 								<option value="{{director._id}}">{{director.name.first}} {{director.name.last}}</option>
 								{{#each ../useritem}}
@@ -200,7 +331,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="secondDirector">Second director:</label>
+							<label class="control-label col-sm-2" for="secondDirector">
+								{{#if ../isGerman}}
+									Zweiter Direktor/in:
+								{{else}}
+									Deuxième directeur:
+								{{/if}}
+							</label>
 							<select name="secondDirector" class="form-control">
 								<option value="{{secondDirector._id}}">{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
 								{{#each ../useritem}}
@@ -210,7 +347,13 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="cashier">Cashier:</label>
+							<label class="control-label col-sm-2" for="cashier">
+								{{#if ../isGerman}}
+									Kassier/in:
+								{{else}}
+									trésorier:
+								{{/if}}
+							</label>
 							<select name="cashier" class="form-control">
 								<option value="{{cashier._id}}">{{cashier.name.first}} {{cashier.name.last}}</option>
 								{{#each ../useritem}}
@@ -220,7 +363,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="secretary">Secretary:</label>
+							<label class="control-label col-sm-2" for="secretary">
+								{{#if ../isGerman}}
+									Sekretär/in:
+								{{else}}
+									secrétaire:
+								{{/if}}
+							</label>
 							<select name="secretary" class="form-control">
 								<option value="{{secretary._id}}">{{secretary.name.first}} {{secretary.name.last}}</option>
 								{{#each ../useritem}}
@@ -230,7 +379,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="foundingYear">Founding year:</label>
+							<label class="control-label col-sm-2" for="foundingYear">
+								{{#if ../isGerman}}
+									Gründungsjahr:
+								{{else}}
+									Année de fondation:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="number" value="{{foundingYear}}" class="form-control" name="foundingYear" placeholder="Enter founding year">
 							</div>
@@ -244,7 +399,13 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="typeChoir">Type Choir:</label>
+							<label class="control-label col-sm-2" for="typeChoir">
+								{{#if ../isGerman}}
+									Typ Chor:
+								{{else}}
+									Type chœurs:
+								{{/if}}
+							</label>
 							<select name="typeChoir" class="form-control">
 								<option value="{{typeChoir}}">{{typeChoir}}</option>
 								<option value="CX">CX</option>
@@ -256,7 +417,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="secondTypeChoir">Second type Choir:</label>
+							<label class="control-label col-sm-2" for="secondTypeChoir">
+								{{#if ../isGerman}}
+									Zweiter Chor Typ:
+								{{else}}
+									Deuxième type chœurs:
+								{{/if}}
+							</label>
 							<select name="secondTypeChoir" class="form-control">
 								<option value="{{secondTypeChoir}}">{{secondTypeChoir}}</option>
 								<option value="CX">CX</option>
@@ -268,7 +435,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="groupMt">Group MT:</label>
+							<label class="control-label col-sm-2" for="groupMt">
+								{{#if ../isGerman}}
+									GruppeMT:
+								{{else}}
+									GroupMT:
+								{{/if}}
+							</label>
 							<select name="groupMt" class="form-control">
 								<option value="{{groupMt}}">{{groupMt}}</option>
 								<option value="BV_Y">BV_Y</option>
@@ -283,7 +456,13 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="entranceGroupMt">Entrance group MT:</label>
+							<label class="control-label col-sm-2" for="entranceGroupMt">
+								{{#if ../isGerman}}
+									Eintritt Gruppe MT:
+								{{else}}
+									GroupeMT d'admission:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								{{entranceGroupMt}}
 								<input type="date" value="" class="form-control" name="entranceGroupMt" placeholder="Enter entrance GroupMt">
@@ -308,14 +487,26 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="type2">Type2:</label>
+							<label class="control-label col-sm-2" for="type2">
+								{{#if ../isGerman}}
+									Typ 2:
+								{{else}}
+									Type2:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="text" value="{{type2}}" class="form-control" name="type2" placeholder="Enter type2">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="memberUSC">Member USC:</label>
+							<label class="control-label col-sm-2" for="memberUSC">
+								{{#if ../isGerman}}
+									Mitglieder USC:
+								{{else}}
+									Membres USC:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="text" value="{{memberUSC}}" class="form-control" name="memberUSC" placeholder="Enter memberUSC">
 							</div>
@@ -323,7 +514,13 @@
 
 						
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="entranceUSC">Entrance USC:</label>
+							<label class="control-label col-sm-2" for="entranceUSC">
+								{{#if ../isGerman}}
+									Eintritt USC:
+								{{else}}
+									Inscription USC:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								{{entranceUSC}}
 								<input type="date" value="{{entranceUSC}}" class="form-control" name="entranceUSC" placeholder="Enter entrance entranceUSC">
@@ -332,14 +529,26 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="memberFC">Member USC:</label>
+							<label class="control-label col-sm-2" for="memberFC">
+								{{#if ../isGerman}}
+									Mitglieder FC:
+								{{else}}
+									Membres FC:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="text" value="{{memberFC}}" class="form-control" name="memberFC" placeholder="Enter memberFC">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="entranceFC">Entrance FC:</label>
+							<label class="control-label col-sm-2" for="entranceFC">
+								{{#if ../isGerman}}
+									Eintritt FC:
+								{{else}}
+									Inscription FC:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								{{entranceFC}}
 								<input type="date" value="" class="form-control" name="entranceFC" placeholder="Enter entrance entranceFC">
@@ -348,7 +557,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="courierName">Courier Name:</label>
+							<label class="control-label col-sm-2" for="courierName">
+								{{#if ../isGerman}}
+									Kuriername:
+								{{else}}
+									nom de coursier:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="text" value="{{courierName}}" class="form-control" name="courierName" placeholder="Enter courierName">
 							</div>
@@ -362,7 +577,13 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-3" for="lang">Language:</label>
+							<label class="control-label col-sm-3" for="lang">
+								{{#if ../isGerman}}
+									Sprache:
+								{{else}}
+									Langue:
+								{{/if}}
+							</label>
 							<select name="lang" class="form-control">
 								<option value="{{lang}}">{{lang}}</option>
 								<option value="Deutsch">Deutsch</option>
@@ -374,20 +595,38 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-2" for="dekanat">Remarks:</label>
+							<label class="control-label col-sm-2" for="dekanat">
+								{{#if ../isGerman}}
+									Bemerkungen:
+								{{else}}
+									Remarques:
+								{{/if}}
+							</label>
 							<div class="col-sm-10">
 								<input type="text" value="{{remarks}}" class="form-control" name="remarks" placeholder="Enter remark">
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-sm-1" for="lastUpdate">Last updated:</label>
+							<label class="control-label col-sm-1" for="lastUpdate">
+								{{#if ../isGerman}}
+									Letztes update:
+								{{else}}
+									dernière modification:
+								{{/if}}
+							</label>
 							<div class="col-sm-12">
 								<input type="text" value="{{lastUpdate}}" class="form-control" name="lastUpdate" readonly>
 							</div>
 						</div>
 						
-						<button id="submit1" type="submit" value="Submit" class="btn btn-default" onclick="setChoirsActive()">Submit</button>
+						<button id="submit1" type="submit" value="Submit" class="btn btn-default" onclick="setChoirsActive()">
+							{{#if ../isGerman}}
+								Speichern:
+							{{else}}
+								confirmer:
+							{{/if}}
+						</button>
 					</form>
 				</div>
 			{{/each}}
@@ -397,15 +636,39 @@
 		<div id="menu2" class="tab-pane fade">
 
 
-			<h1>Statistics</h1>
+			<h1>
+				{{#if isGerman}}
+					Statistik:
+				{{else}}
+					Statistique:
+				{{/if}}
+			</h1>
 
 			<div class="card m-5">
 				
-				<h3>Total statistic</h3>
+				<h3>
+					{{#if isGerman}}
+						Statistik Total:
+					{{else}}
+						Statistique total:
+					{{/if}}
+				</h3>
 				<canvas id="totalChart" style="max-width: 1200px"></canvas>
 				
-				<h3>Monthly statistics</h3>
-				<h4>Please choose a month:</h4>
+				<h3>
+					{{#if isGerman}}
+						Monatliche Statistik:
+					{{else}}
+						Statistiques mensuelles:
+					{{/if}}
+				</h3>
+				<h4>
+					{{#if isGerman}}
+						Wählen Sie einen Monat:
+					{{else}}
+						Choisissez un mois:
+					{{/if}}
+				</h4>
 				<div class="btn-group">
 					<div class="btn-group">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
