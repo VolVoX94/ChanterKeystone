@@ -18,5 +18,5 @@ exports = module.exports = function (req, res) {
 		.populate('porteDrapeau'));
 
 	// Render the view
-	view.render('comitee', { title: 'Comitee', message: 'See the people organising everything', isGerman: language.isGerman  });
+	view.render('comitee', { title: 'Comité de la FSCV', message: 'See the people organising everything', isGerman: language.isGerman  });
 };
