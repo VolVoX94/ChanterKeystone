@@ -35,6 +35,9 @@
 			emails = emails.concat("{{email}},");
 		{{/each}}
 		
+		{{#each subscriber}}
+			emails = emails.concat("{{email}}");
+		{{/each}}	
 		emails = emails.concat("?subject=newsletter:" +title+"&body=Es gibt Neuigkeiten lesen Sie unsere News: "+body);
 		location.href = emails;
 	}

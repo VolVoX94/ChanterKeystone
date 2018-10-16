@@ -154,31 +154,76 @@ exports = module.exports = function (app) {
 	});
 	
 	app.post('/subscribeNewsletter', (req,res,next) => {
-		var User = keystone.list('User');
+		var Subscriber = keystone.list('Subscriber');
 		var today = new Date();
-		var newUser = new User.model({
-			name: {first: req.body.firstname, last:req.body.lastname},
-			address: "",
-			secondAddress: "",
-			plz: "",
-			place: "",
-			privatePhone: 0,
-			businessPhone: 0,
-			fax: 0,
+		var gotError = false;
+		var lang = keystone.get('language').isGerman;
+		var newSubscriber = new Subscriber.model({
 			email: req.body.email,
-			isSubscriber: true,
-			isAdmin: false,
-			password: req.body.password,
-			lastUpdate: today
+			password: req.body.password
 		});
 		
-		newUser.save(function(err) {
-			// post has been saved
-		});
+		newSubscriber.save(function(err){
 
-		res.redirect('/subscribeNewsletter');
+			if(err){
+				req.flash('error', { title: 'Hoppla', detail: 'Die Email-Adresse ist bereits vergeben' });
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich Ihre Adresse registriert und werden von nun an unsere Newsletter erhalten.' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Vous avez enregistré votre adresse avec succès et vous recevrez dorénavant notre newsletter.' });
+				}
+			}
+
+			res.redirect('/subscribeNewsletter');
+		});
 	});
 
+	app.post('/unScribeNewsletter', (req,res,next) => {
+		var mySubscriber = keystone.list('Subscriber');
+		var today = new Date();
+		var gotError = false;
+		var lang = keystone.get('language').isGerman;
+
+
+		mySubscriber.model.findOne({ email: req.body.email }).exec(function(err, subscriber) {
+			if (subscriber) {
+				subscriber._.password.compare(req.body.passwordNewsletter, function(err, isMatch) {
+					if (!err && isMatch) {
+						subscriber.remove();
+						if(lang === true){
+							req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich Ihren Newsletter deaktiviert.' });
+						}
+						else{
+							req.flash('success', { title: 'Succès!', detail: 'Vous avez désactivé votre newsletter avec succès.' });
+						}
+						res.redirect('/subscribeNewsletter');
+					}
+					else {
+						if(lang === true){
+							req.flash('error', { title: 'Hoppla!', detail: 'Das Passwort ist falsch.' });
+						}
+						else{
+							req.flash('error', { title: 'Hoppla!', detail: 'Le mot de passe est erroné.' });
+						}
+						res.redirect('/subscribeNewsletter');
+					}
+				});
+			} else {
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla!', detail: 'Konto nicht gefunden.' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Pas trouve le compte.' });
+				}
+				res.redirect('/subscribeNewsletter');
+			}
+		});
+			
+	});
+	
 	app.post('/dashboardUser', (req,res,next) => {
 		console.log("user updated");
 		var today = new Date();

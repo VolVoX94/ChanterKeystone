@@ -29,6 +29,14 @@ exports = module.exports = function (req, res) {
 			next(err);
 		});
 	});
+
+	view.on('init', function (next) {
+		var q = keystone.list('Subscriber').model.find().sort();
+		q.exec(function (err, results) {
+			locals.subscriber = results;
+			next(err);
+		});
+	});
 	
 	// Render the view
 	view.render('newsletter', { title: 'Newsletter', message: 'Read the latest news', isGerman: language.isGerman  });
