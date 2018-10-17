@@ -166,7 +166,12 @@ exports = module.exports = function (app) {
 		newSubscriber.save(function(err){
 
 			if(err){
-				req.flash('error', { title: 'Hoppla', detail: 'Die Email-Adresse ist bereits vergeben' });
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Die Email-Adresse ist bereits vergeben' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'L\'adresse e-mail est déjà attribuée.' });
+				}
 			}
 			else{
 				if(lang === true){
