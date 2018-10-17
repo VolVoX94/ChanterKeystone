@@ -31,49 +31,87 @@
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 							</button>
-							<a href="/" class="navbar-brand">ChanterProj</a>
+							<a href="/" class="navbar-brand">
+									Chanter
+							</a>
 						</div>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
-								
+
 								{{# each navLinks}}
 									{{#ifeq @index 1}}
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Presentation <span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												<li><a href="/comitee">Comite de la FSCV</a></li>
-												<li><a href="/commission">Commission de Musique</a></li>
-												<li><a href="#">Groupements</a></li>
-												<li role="separator" class="divider"></li>
-												<li><a href="#">Membres d'honneur</a></li>
+												{{#if ../textLanguage}}
+													<li><a href="/comitee">Komittee FSCV</a></li>
+													<li><a href="/commission">Musikkommission</a></li>
+													<li><a href="#">Gruppierungen</a></li>
+													<li role="separator" class="divider"></li>
+													<li><a href="#">Ehrenmitglieder</a></li>
+												{{else}}
+													<li><a href="/comitee">Comite de la FSCV</a></li>
+													<li><a href="/commission">Commission de Musique</a></li>
+													<li><a href="#">Groupements</a></li>
+													<li role="separator" class="divider"></li>
+													<li><a href="#">Membres d'honneur</a></li>
+												{{/if}}
 											</ul>
 										</li>
 										<li class="dropdown nav">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chefs de choeurs<span class="caret"></span></a>
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												{{#if ../textLanguage}}
+													Chef der Chöre
+												{{else}}
+													Chefs de choeurs
+												{{/if}}
+												<span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												<li><a href="/pages/page/avcc">Presentation AVCC</a></li>
-												<li><a href="/pages/page/avcchistory">Historique AVCC</a></li>
-												<li><a href="/pages/page/avcccommittee">Comite AVCC</a></li>
-												<li><a href="/choirfonds">Fonds choral et Foyer AVCC</a></li>
-												<li><a href="/pages/page/avccformation">Prochaine formation AVCC</a></li>
+												{{#if ../textLanguage}}
+													<li><a href="/pages/page/avcc">Presentation AVCC</a></li>
+													<li><a href="/pages/page/avcchistory">Geschichte AVCC</a></li>
+													<li><a href="/pages/page/avcccommittee">Komittee AVCC</a></li>
+													<li><a href="/choirfonds">Chörefond AVCC</a></li>
+													<li><a href="/pages/page/avccformation">Zukunft AVCC</a></li>
+												{{else}}
+													<li><a href="/pages/page/avcc">Presentation AVCC</a></li>
+													<li><a href="/pages/page/avcchistory">Historique AVCC</a></li>
+													<li><a href="/pages/page/avcccommittee">Comite AVCC</a></li>
+													<li><a href="/choirfonds">Fonds choral et Foyer AVCC</a></li>
+													<li><a href="/pages/page/avccformation">Prochaine formation AVCC</a></li>
+												{{/if}}
 											</ul>
 										</li>
 
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Service<span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												<li><a href="/blog">Kleinanzeigen</a></li>
-												<li><a href="/pages/page/forum-des-presidents-et-contrats">Forum des présidents</a></li>
-												<li><a href="/pages/page/skjf">Soutien aux choeurs</a></li>
-												<li><a href="/subscribeNewsletter">newsletter service</a></li>
-												<li><a href="/pages/page/supportsite">Service depannage</a></li>
+												{{#if ../textLanguage}}
+													<li><a href="/blog">Kleinanzeigen</a></li>
+													<li><a href="/pages/page/forum-des-presidents-et-contrats">Präsidentenforum</a></li>
+													<li><a href="/pages/page/skjf">Unterstützung für Chöre</a></li>
+													<li><a href="/subscribeNewsletter">Newsletter Service</a></li>
+													<li><a href="/pages/page/supportsite">Fehlerbehebungsdienst</a></li>
+												{{else}}
+													<li><a href="/blog">Petite annonces</a></li>
+													<li><a href="/pages/page/forum-des-presidents-et-contrats">Forum des présidents</a></li>
+													<li><a href="/pages/page/skjf">Soutien aux choeurs</a></li>
+													<li><a href="/subscribeNewsletter">newsletter service</a></li>
+													<li><a href="/pages/page/supportsite">Service depannage</a></li>
+												{{/if}}
 											</ul>
 										</li>
 										
 									{{/ifeq}}
 								
 									<li {{#ifeq ../section key}}class=""{{else}}{{/ifeq}}>
-										<a href="{{ href }}">{{ label }}</a>
+										<a href="{{ href }}">
+											{{#if ../textLanguage}}
+												{{ labelGerman }}
+											{{else}}
+												{{ labelFrench }}
+											{{/if}}
+										</a>
 									</li>
 									{{/each}}
 								{{#if user.isAdmin}}
@@ -140,7 +178,12 @@
 					<a href="/dashboard">Dashboard</a>
 				{{/if}}
 				<div style="text-align: center; margin-bottom: 5%">
-				© 2016 - Fédération Sociétés Chant du Valais/Wallis
+
+					{{#if textLanguage}}
+						© 2016 - Vereinigung der Walliser Gesangsvereine
+					{{else}}
+						© 2016 - Fédération Sociétés Chant du Valais
+					{{/if}}
 				</div>
 			</div>
 		</div>

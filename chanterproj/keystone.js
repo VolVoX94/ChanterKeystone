@@ -47,16 +47,7 @@ keystone.set('adminui custom styles', './public/styles/keystone.less');
 keystone.set('navigation', [{
 	label: 'Home',
 	key: 'home',
-	href: '/',
-	child: [{
-		label: 'asdsad',
-		key: 'as',
-		href: '/',
-	},{
-		label: 'eeee',
-		key: 'ee',
-		href: '/',
-	}]
+	href: '/'
 },  {
 	label: 'Gallery',
 	key: 'gallery',
@@ -76,32 +67,7 @@ keystone.set('navigation', [{
 },{
 	label: 'Services',
 	key: 'contact',
-	href: '/contact',
-	child: [{
-		label: 'Kleinanzeigen',
-		key: 'blog',
-		href: '/blog'
-	},{
-		label: 'Forum des présidents',
-		key: 'forum_des_présidents',
-		href: '/',
-	},{
-		label: 'Soutien aux choeurs',
-		key: 'soutien_aux_choeur',
-		href: '/',
-	},{
-		label: 'newsletter_service',
-		key: 'newsletter_service',
-		href: '/',
-	},{
-		label: 'Service depannage',
-		key: 'service_depannage',
-		href: '/',
-	},{
-		label: 'Contact_service',
-		key: 'contact_service',
-		href: '/',
-	}]
+	href: '/contact'
 }
 
 ]);

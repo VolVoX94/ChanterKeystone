@@ -11,8 +11,15 @@
 
 	</p>
 
-	La Médiathèque Valais à Sion se trouve à la Rue de Lausanne 45.
-	<div class="mapouter">
+
+	<div class="mapouter" style="margin:auto">
+		<div style="margin:auto;width: 80%;">
+			{{#if isGerman}}
+				Die Médiathèque Wallis in Sion befindet sich an der Rue de Lausanne 45.
+			{{else}}
+				La Médiathèque Valais à Sion se trouve à la Rue de Lausanne 45
+			{{/if}}
+		</div>
 		<div class="gmap_canvas">
 			<iframe 
 					width="600" height="500" 
@@ -30,6 +37,9 @@
 			.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}
 		</style>
 	</div>
+	
+	<br/>
+	<br/>
 	{{#if isGerman}}
 		<p>F&uuml;r die Recherche und Beratung von Partituren wenden Sie sich bitte vorab an uns:<br />Anne-Fran&ccedil;oise Andenmatten Sierro<br />Privattelefon: 027 323 19 28 oder 079 232 54 54 54 02 02<br />E-Mail: <a href="mailto:annef-vociamici@bluewin.ch">annef-vociamici@bluewin.ch</a></p>
 		<p>Fast 20'000 Partituren</p>

@@ -13,6 +13,8 @@ var Page = new keystone.List('Page', {
 
 Page.add({
 	title: {type: String, required: true},
+	linkLabelGerman: {type: String},
+	linkLabelFrench: {type: String},
 	labelGerman:{type: String},
 	labelFrench:{type: String},
 	state: {type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true},
@@ -38,32 +40,38 @@ function updateNavigation(itemDeleted) {
 		
 		if(itemDeleted === true){
 			var navLinkTemp = [{
-				label: 'Home',
+				labelGerman: 'Home',
+				labelFrench: 'Home',
 				key: 'home',
 				href: '/'
 			},  {
-				label: 'Gallery',
+				labelGerman: 'Bildergallerie',
+				labelFrench: 'Photogalerie',
 				key: 'gallery',
 				href: '/gallery'
 			},  {
-				label: 'Events',
+				labelGerman: 'Events',
+				labelFrench: 'Evenement',
 				key: 'events',
 				href: '/events'
 			},  {
-				label: 'Blog',
+				labelGerman: 'Kleinanzeigen',
+				labelFrench: 'Annonces',
 				key: 'blog',
 				href: '/blog'
 			}, {
-				label: 'Choir',
+				labelGerman: 'Chöre',
+				labelFrench: 'Chorales',
 				key: 'choir',
 				href: '/choir'
 			},{
-				label: 'Contact',
+				labelGerman: 'Kontakt',
+				labelFrench: 'Contact',
 				key: 'contact',
 				href: '/contact'
 			}];
 			pages.forEach(function (page){
-				navLinkTemp.push({label: page.title, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()});
+				navLinkTemp.push({labelGerman: page.linkLabelGerman, labelFrench: page.linkLabelFrench, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()});
 				//console.log("navlink "+ link.label);
 				//console.log(navLinkTemp.indexOf(link));
 				
@@ -75,14 +83,14 @@ function updateNavigation(itemDeleted) {
 		}
 		else{
 			pages.forEach(function(page, i) {
-				var navPoint = {label: page.title, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()};
+				var navPoint = {labelGerman: page.linkLabelGerman, labelFrench: page.linkLabelFrench, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()};
 
 				
 				if((JSON.stringify(navLink)).includes(JSON.stringify(navPoint))){
 					console.log("true")
 				}
 				else{
-					console.log("false added " + navPoint.label + " to Nav");
+					console.log("false added " + navPoint.labelGerman + " to Nav");
 					
 					
 						navLink.push(navPoint);
