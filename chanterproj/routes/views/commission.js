@@ -15,5 +15,10 @@ exports = module.exports = function (req, res) {
 		.populate('members')); 
 
 	// Render the view
-	view.render('commission', { title: 'Commission de la musique', message: 'See the people organising everything', isGerman: language.isGerman  });
+	if(language.isGerman==true){
+		view.render('commission', { title: 'Musikkommission', message: 'Mitglied der Musikkommission', isGerman: language.isGerman  });
+	}
+	else{
+		view.render('commission', { title: 'Commission de musique', message: 'Membres de la commission de musique', isGerman: language.isGerman  });
+	}
 };

@@ -19,7 +19,7 @@ exports = module.exports = function (req, res) {
 
 	// Render the view
 	if(language.isGerman==true){
-		view.render('comitee', { title: 'Vorstand', message: 'Mitglieder des FSCV-Ausschusses', isGerman: language.isGerman  });
+		view.render('comitee', { title: 'Vorstand', message: 'Vorstandsmitglied', isGerman: language.isGerman  });
 	}
 	else{
 		view.render('comitee', { title: 'Comité de la FSCV', message: 'Membres du comité de la FSCV', isGerman: language.isGerman  });
