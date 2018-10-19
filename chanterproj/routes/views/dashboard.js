@@ -6,6 +6,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "Newsletter Registration";
+	var message = "Registrieren Sie sich für den Newsletter";
+
+	if(language.isGerman === true){
+		title = "Datenverwaltung";
+		message = "Verwalten Sie ihre Daten";
+	}
+	else{
+		title = "Gestion des données";
+		message = "Gérez vos données";
+	}
 	
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
@@ -67,6 +78,6 @@ exports = module.exports = function (req, res) {
 		//view.query('choirs', keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name'));
 
 		// Render the view
-		view.render('dashboard', { title: 'Choir', message: 'Manage your data', isGerman: language.isGerman  });
+		view.render('dashboard', { title: title, message: message, isGerman: language.isGerman  });
 	}
 };

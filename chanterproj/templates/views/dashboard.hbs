@@ -52,7 +52,13 @@
 			
 			<form action="/dashboardUser" method = "post" class="form-horizontal">
 				<div id="heada" class="">
-					<h1>My User:</h1>
+					<h1>
+						{{#if isGerman}}
+							Mein Benutzer:
+						{{else}}
+							Mon utilisateur:
+						{{/if}}
+					</h1>
 				</div>
 				<input type="hidden" class="form-control" name="id" value="{{user._id}}">
 
@@ -105,7 +111,7 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" name="secondAddress" value="{{user.secondAddress}}" class="form-control" placeholder="Enter place">
+						<input type="text" name="secondAddress" value="{{user.secondAddress}}" class="form-control" placeholder="Enter place">
 					</div>
 				</div>
 
@@ -144,7 +150,7 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" name="privatePhone" value="{{user.privatePhone}}" class="form-control" placeholder="Enter private phone">
+						<input type="text" name="privatePhone" value="{{user.privatePhone}}" class="form-control" placeholder="Enter private phone">
 					</div>
 				</div>
 
@@ -157,7 +163,7 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" name="businessPhone" value="{{user.businessPhone}}" class="form-control" placeholder="Enter business phone">
+						<input type="text" name="businessPhone" value="{{user.businessPhone}}" class="form-control" placeholder="Enter business phone">
 					</div>
 				</div>
 
@@ -166,7 +172,7 @@
 						Fax:
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" name="fax" value="{{user.fax}}" class="form-control" placeholder="Enter fax">
+						<input type="text" name="fax" value="{{user.fax}}" class="form-control" placeholder="Enter fax">
 					</div>
 				</div>
 				
@@ -306,12 +312,14 @@
 									President:
 								{{/if}}
 							</label>
-							<select name="president" class="form-control">
-								<option value="{{president._id}}">{{president.name.first}} {{president.name.last}}</option>
-								{{#each ../useritem}}
-									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-								{{/each}}
-							</select>
+							<div class="col-sm-10">
+								<select name="president" class="form-control">
+									<option value="{{president._id}}">{{president.name.first}} {{president.name.last}}</option>
+									{{#each ../useritem}}
+										<option value="{{_id}}">{{name.first}} {{name.last}}</option>
+									{{/each}}
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
@@ -322,12 +330,14 @@
 									Directeur:
 								{{/if}}
 							</label>
-							<select name="director" class="form-control">
-								<option value="{{director._id}}">{{director.name.first}} {{director.name.last}}</option>
-								{{#each ../useritem}}
-									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-								{{/each}}
-							</select>
+							<div class="col-sm-10">
+								<select name="director" class="form-control">
+									<option value="{{director._id}}">{{director.name.first}} {{director.name.last}}</option>
+									{{#each ../useritem}}
+										<option value="{{_id}}">{{name.first}} {{name.last}}</option>
+									{{/each}}
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
@@ -338,12 +348,14 @@
 									Deuxième directeur:
 								{{/if}}
 							</label>
-							<select name="secondDirector" class="form-control">
-								<option value="{{secondDirector._id}}">{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
-								{{#each ../useritem}}
-									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-								{{/each}}
-							</select>
+							<div class="col-sm-10">
+								<select name="secondDirector" class="form-control">
+									<option value="{{secondDirector._id}}">{{secondDirector.name.first}} {{secondDirector.name.last}}</option>
+									{{#each ../useritem}}
+										<option value="{{_id}}">{{name.first}} {{name.last}}</option>
+									{{/each}}
+								</select>
+							</div>
 						</div>
 						
 						<div class="form-group">
@@ -354,12 +366,14 @@
 									trésorier:
 								{{/if}}
 							</label>
-							<select name="cashier" class="form-control">
-								<option value="{{cashier._id}}">{{cashier.name.first}} {{cashier.name.last}}</option>
-								{{#each ../useritem}}
-									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-								{{/each}}
-							</select>
+							<div class="col-sm-10">
+								<select name="cashier" class="form-control">
+									<option value="{{cashier._id}}">{{cashier.name.first}} {{cashier.name.last}}</option>
+									{{#each ../useritem}}
+										<option value="{{_id}}">{{name.first}} {{name.last}}</option>
+									{{/each}}
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
@@ -370,18 +384,20 @@
 									secrétaire:
 								{{/if}}
 							</label>
-							<select name="secretary" class="form-control">
-								<option value="{{secretary._id}}">{{secretary.name.first}} {{secretary.name.last}}</option>
-								{{#each ../useritem}}
-									<option value="{{_id}}">{{name.first}} {{name.last}}</option>
-								{{/each}}
-							</select>
+							<div class="col-sm-10">
+								<select name="secretary" class="form-control">
+									<option value="{{secretary._id}}">{{secretary.name.first}} {{secretary.name.last}}</option>
+									{{#each ../useritem}}
+										<option value="{{_id}}">{{name.first}} {{name.last}}</option>
+									{{/each}}
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="foundingYear">
 								{{#if ../isGerman}}
-									Gründungsjahr:
+									Gründungsj.:
 								{{else}}
 									Année de fondation:
 								{{/if}}
@@ -406,14 +422,16 @@
 									Type chœurs:
 								{{/if}}
 							</label>
-							<select name="typeChoir" class="form-control">
-								<option value="{{typeChoir}}">{{typeChoir}}</option>
-								<option value="CX">CX</option>
-								<option value="CD">CD</option>
-								<option value="CJ">CJ</option>
-								<option value="CH">CH</option>
-								<option value="CE">CE</option>
-							</select>
+							<div class="col-sm-10">
+								<select name="typeChoir" class="form-control">
+									<option value="{{typeChoir}}">{{typeChoir}}</option>
+									<option value="CX">CX</option>
+									<option value="CD">CD</option>
+									<option value="CJ">CJ</option>
+									<option value="CH">CH</option>
+									<option value="CE">CE</option>
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
@@ -424,14 +442,16 @@
 									Deuxième type chœurs:
 								{{/if}}
 							</label>
-							<select name="secondTypeChoir" class="form-control">
-								<option value="{{secondTypeChoir}}">{{secondTypeChoir}}</option>
-								<option value="CX">CX</option>
-								<option value="CD">CD</option>
-								<option value="CJ">CJ</option>
-								<option value="CH">CH</option>
-								<option value="CE">CE</option>
-							</select>
+							<div class="col-sm-10">
+								<select name="secondTypeChoir" class="form-control">
+									<option value="{{secondTypeChoir}}">{{secondTypeChoir}}</option>
+									<option value="CX">CX</option>
+									<option value="CD">CD</option>
+									<option value="CJ">CJ</option>
+									<option value="CH">CH</option>
+									<option value="CE">CE</option>
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
@@ -442,17 +462,19 @@
 									GroupMT:
 								{{/if}}
 							</label>
-							<select name="groupMt" class="form-control">
-								<option value="{{groupMt}}">{{groupMt}}</option>
-								<option value="BV_Y">BV_Y</option>
-								<option value="BV_N">BV_N</option>
-								<option value="UCC_Y">UCC_Y</option>
-								<option value="UCC_N">UCC_N</option>
-								<option value="VC_Y">VC_Y</option>
-								<option value="VC_N">VC_N</option>
-								<option value="VOG_Y">VOG_Y</option>
-								<option value="VOG_N">VOG_N</option>
-							</select>
+							<div class="col-sm-10">
+								<select name="groupMt" class="form-control">
+									<option value="{{groupMt}}">{{groupMt}}</option>
+									<option value="BV_Y">BV_Y</option>
+									<option value="BV_N">BV_N</option>
+									<option value="UCC_Y">UCC_Y</option>
+									<option value="UCC_N">UCC_N</option>
+									<option value="VC_Y">VC_Y</option>
+									<option value="VC_N">VC_N</option>
+									<option value="VOG_Y">VOG_Y</option>
+									<option value="VOG_N">VOG_N</option>
+								</select>
+							</div>
 						</div>
 						
 						<div class="form-group">
@@ -472,17 +494,19 @@
 
 						<div class="form-group">
 								<div class="checkbox">
-									<label><input name="chGospel" type="checkbox" {{#if chGospel}}
-												  checked
-									{{/if}}>chGospel</label>
+									<label class="control-label col-sm-2" for="chGospel" ><b>ChGospel</b></label>
+									<div class="col-sm-10">
+										<input name="chGospel" type="checkbox" {{#if chGospel}}checked{{/if}}>
+									</div>
 								</div>
 						</div>
 
 						<div class="form-group">
 							<div class="checkbox">
-								<label><input name="chEglise" type="checkbox" {{#if chEglise}}
-											  checked
-								{{/if}}>chEglise</label>
+								<label class="control-label col-sm-2" for="chGospel" ><b>ChEglise</b></label>
+								<div class="col-sm-10">
+									<input name="chEglise" type="checkbox" {{#if chEglise}}checked{{/if}}>
+								</div>
 							</div>
 						</div>
 
@@ -577,27 +601,29 @@
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-sm-3" for="lang">
+							<label class="control-label col-sm-2" for="lang">
 								{{#if ../isGerman}}
 									Sprache:
 								{{else}}
 									Langue:
 								{{/if}}
 							</label>
-							<select name="lang" class="form-control">
-								<option value="{{lang}}">{{lang}}</option>
-								<option value="Deutsch">Deutsch</option>
-								<option value="Français">Français</option>
-								<option value="English">English</option>
-								<option value="Italiano">Italiano</option>
-								<option value="Español">Español</option>
-							</select>
+							<div class="col-sm-10">
+								<select name="lang" class="form-control">
+									<option value="{{lang}}">{{lang}}</option>
+									<option value="Deutsch">Deutsch</option>
+									<option value="Français">Français</option>
+									<option value="English">English</option>
+									<option value="Italiano">Italiano</option>
+									<option value="Español">Español</option>
+								</select>
+							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="dekanat">
 								{{#if ../isGerman}}
-									Bemerkungen:
+									Bemerk.:
 								{{else}}
 									Remarques:
 								{{/if}}
