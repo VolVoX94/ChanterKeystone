@@ -44,32 +44,7 @@ keystone.set('language', {isGerman: true});
 
 keystone.set('adminui custom styles', './public/styles/keystone.less');
 
-keystone.set('navigation', [{
-	labelGerman: 'Home',
-	labelFrench: 'Home',
-	key: 'home',
-	href: '/'
-},  {
-	labelGerman: 'Bildergallerie',
-	labelFrench: 'Photogalerie',
-	key: 'gallery',
-	href: '/gallery'
-},  {
-	labelGerman: 'Events',
-	labelFrench: 'Evenement',
-	key: 'events',
-	href: '/events'
-},  {
-	labelGerman: 'Chöre',
-	labelFrench: 'Chorales',
-	key: 'choir',
-	href: '/choir'
-},{
-	labelGerman: 'Kontakt',
-	labelFrench: 'Contact',
-	key: 'contact',
-	href: '/contact'
-}]);
+keystone.set('navigation', []);
 
 // Load your project's Models
 keystone.import('models');
