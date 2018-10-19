@@ -29,12 +29,12 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 
 	view.query('headerposts', keystone.list('HeaderPosts').model.find().sort('sortOrder')
-		.populate('posts'));
+		.populate({path: 'posts', populate:{path:'author'}}));
 
 
 	// Render the view
 	if(language.isGerman==true){
-		view.render('index', { title: 'Home', message: 'Präsentation', isGerman: language.isGerman });
+		view.render('index', { title: 'News', message: 'Allerlei themenbasierte Nachrichten', isGerman: language.isGerman });
 	}
 	else{
 		view.render('index', { title: 'Accueil', message: 'Présentation', isGerman: language.isGerman });
