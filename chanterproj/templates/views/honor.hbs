@@ -3,7 +3,7 @@
 		{{#each honor}}
 			<h2>Members</h2>
 			{{#each members}}
-				<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#d{{@index}}">
+				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#d{{@index}}">
 					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
 				</button>
 				<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">

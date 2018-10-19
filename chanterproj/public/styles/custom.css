@@ -126,3 +126,11 @@
 	background-color: #eee;
 	color: black;
 }
+
+.border-button {
+	outline: solid 1px lightgrey !important;
+	transition: outline 0.6s linear !important;
+	margin: 0.5em !important; /* Increased margin since the outline expands outside the element */
+}
+
+.border-button:hover { outline-width: 3px !important; }
