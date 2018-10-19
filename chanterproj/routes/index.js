@@ -86,6 +86,7 @@ exports = module.exports = function (app) {
 	app.get('/comitee', routes.views.comitee);
 	app.get('/commission', routes.views.commission);
 	app.get('/honor', routes.views.honor);
+	app.get('/presentation', routes.views.presentation);
 	app.get('/choirfonds', routes.views.choirfonds);
 	app.get('/newsletter', routes.views.newsletter);
 	app.get('/choir', routes.views.choir);

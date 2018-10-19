@@ -28,8 +28,10 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'home';
 
-	
-	
+	view.query('headerposts', keystone.list('HeaderPosts').model.find().sort('sortOrder')
+		.populate('posts'));
+
+
 	// Render the view
 	if(language.isGerman==true){
 		view.render('index', { title: 'Home', message: 'Präsentation', isGerman: language.isGerman });
