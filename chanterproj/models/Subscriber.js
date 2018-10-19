@@ -12,6 +12,7 @@ var Subscriber = new keystone.List('Subscriber');
 Subscriber.add({
 	email: {type: Types.Email, initial: true, required: true, unique: true, index: true},
 	password: {type: Types.Password, initial: true, required: true},
+	isGermanSubscriber: {type: Boolean},
 	lastUpdate: {type: Date}
 });
 
