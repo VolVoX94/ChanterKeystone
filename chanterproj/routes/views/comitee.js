@@ -18,5 +18,10 @@ exports = module.exports = function (req, res) {
 		.populate('porteDrapeau'));
 
 	// Render the view
-	view.render('comitee', { title: 'Comité de la FSCV', message: 'See the people organising everything', isGerman: language.isGerman  });
+	if(language.isGerman==true){
+		view.render('comitee', { title: 'Vorstand', message: 'Mitglieder des FSCV-Ausschusses', isGerman: language.isGerman  });
+	}
+	else{
+		view.render('comitee', { title: 'Comité de la FSCV', message: 'Membres du comité de la FSCV', isGerman: language.isGerman  });
+	}
 };

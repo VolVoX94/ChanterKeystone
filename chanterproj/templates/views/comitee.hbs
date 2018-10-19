@@ -1,6 +1,11 @@
 <div class="container">
 	{{#if comitees}}
-		<h2>Comite Directeur</h2>
+		{{#if isGerman}}
+			<h2>Leitender Ausschuss</h2>
+		{{else}}
+			<h2>Comité directeur</h2>
+		{{/if}}
+		
 		{{#each comitees}}
 			{{#each director}}
 					<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#d{{@index}}">
@@ -19,19 +24,43 @@
 									{{#if image}}
 										<img src="{{cloudinaryUrl image	 height='400'}}">
 									{{/if}}
-									<h4>Contact</h4>
+									{{#if ../../isGerman}}
+										<h4>Kontact</h4>
+									{{else}}
+										<h4>Contact</h4>
+									{{/if}}
 									<div class="row">
 										<div class="col-lg-3">
-											<p><strong>Email: </strong>{{email}}</p>
+											<p><strong>
+												Email: 
+											</strong>{{email}}</p>
 										</div>
 										<div class="col-lg-3">
-											<p><strong>Place: </strong>{{place}}</p>
+											<p><strong>
+												{{#if ../../isGerman}}
+													Position:
+												{{else}}
+													Place:
+												{{/if}} 
+											</strong>{{place}}</p>
 										</div>
 										<div class="col-lg-3">
-											<p><strong>Phone: </strong>{{businessPhone}}</p>
+											{{#if ../../isGerman}}
+												<strong>Telefon:</strong>
+											{{else}}
+												<strong>Téléphone:</strong>
+											{{/if}} <p>
+												
+											{{businessPhone}}</p>
 										</div>
 										<div class="col-lg-3">
-											<p><strong>Fax: </strong>{{fax}}</p>
+											<p><strong>
+												{{#if ../../isGerman}}
+													Faxgerät:
+												{{else}}
+													Fax:
+												{{/if}} 
+											</strong>{{fax}}</p>
 										</div>
 									</div>
 								</div>
@@ -39,7 +68,11 @@
 						</div>
 					</div>
 			{{/each}}
-			<h2>President</h2>
+			{{#if ../isGerman}}
+				<h2>Kantonalvorstand</h2>
+			{{else}}
+				<h2>Présidents des groupements</h2>
+			{{/if}}
 			{{#each president}}
 				<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#p{{@index}}">
 					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
@@ -57,19 +90,43 @@
 								{{#if image}}
 									<img src="{{cloudinaryUrl image	 height='400'}}">
 								{{/if}}
-								<h4>Contact</h4>
+								{{#if ../../isGerman}}
+									<h4>Kontact</h4>
+								{{else}}
+									<h4>Contact</h4>
+								{{/if}}
 								<div class="row">
 									<div class="col-lg-3">
-										<p><strong>Email: </strong>{{email}}</p>
+										<p><strong>
+											Email:
+										</strong>{{email}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Place: </strong>{{place}}</p>
+										<p><strong>
+											{{#if ../../isGerman}}
+												Position:
+											{{else}}
+												Place:
+											{{/if}}
+										</strong>{{place}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Phone: </strong>{{businessPhone}}</p>
+										{{#if ../../isGerman}}
+											<strong>Telefon:</strong>
+										{{else}}
+											<strong>Téléphone:</strong>
+										{{/if}} <p>
+
+										{{businessPhone}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Fax: </strong>{{fax}}</p>
+										<p><strong>
+											{{#if ../../isGerman}}
+												Faxgerät:
+											{{else}}
+												Fax:
+											{{/if}}
+										</strong>{{fax}}</p>
 									</div>
 								</div>
 							</div>
@@ -77,7 +134,11 @@
 					</div>
 				</div>
 			{{/each}}
-			<h2>Co-President</h2>
+			{{#if ../isGerman}}
+				<h2>Co-Präsidenten der Musikkommission</h2>
+			{{else}}
+				<h2>Co-Présidents de la Commission de Musique</h2>
+			{{/if}}
 			{{#each coPresident}}
 				<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#cP{{@index}}">
 					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
@@ -95,19 +156,43 @@
 								{{#if image}}
 									<img src="{{cloudinaryUrl image	 height='400'}}">
 								{{/if}}
-								<h4>Contact</h4>
+								{{#if ../../isGerman}}
+									<h4>Kontact</h4>
+								{{else}}
+									<h4>Contact</h4>
+								{{/if}}
 								<div class="row">
 									<div class="col-lg-3">
-										<p><strong>Email: </strong>{{email}}</p>
+										<p><strong>
+											Email:
+										</strong>{{email}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Place: </strong>{{place}}</p>
+										<p><strong>
+											{{#if ../../isGerman}}
+												Position:
+											{{else}}
+												Place:
+											{{/if}}
+										</strong>{{place}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Phone: </strong>{{businessPhone}}</p>
+										{{#if ../../isGerman}}
+											<strong>Telefon:</strong>
+										{{else}}
+											<strong>Téléphone:</strong>
+										{{/if}} <p>
+
+										{{businessPhone}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Fax: </strong>{{fax}}</p>
+										<p><strong>
+											{{#if ../../isGerman}}
+												Faxgerät:
+											{{else}}
+												Fax:
+											{{/if}}
+										</strong>{{fax}}</p>
 									</div>
 								</div>
 							</div>
@@ -115,7 +200,11 @@
 					</div>
 				</div>
 			{{/each}}
-			<h2>Porte Drapeau</h2>
+			{{#if ../isGerman}}
+				<h2>Fähnrich und AGACH</h2>
+			{{else}}
+				<h2>Porte-Drapeau et délégué AGACH</h2>
+			{{/if}}
 			{{#each porteDrapeau}}
 				<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#pD{{@index}}">
 					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
@@ -133,19 +222,43 @@
 								{{#if image}}
 									<img src="{{cloudinaryUrl image	 height='400'}}">
 								{{/if}}
-								<h4>Contact</h4>
+								{{#if ../../isGerman}}
+									<h4>Kontact</h4>
+								{{else}}
+									<h4>Contact</h4>
+								{{/if}}
 								<div class="row">
 									<div class="col-lg-3">
-										<p><strong>Email: </strong>{{email}}</p>
+										<p><strong>
+											Email:
+										</strong>{{email}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Place: </strong>{{place}}</p>
+										<p><strong>
+											{{#if ../../isGerman}}
+												Position:
+											{{else}}
+												Place:
+											{{/if}}
+										</strong>{{place}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Phone: </strong>{{businessPhone}}</p>
+										{{#if ../../isGerman}}
+											<strong>Telefon:</strong>
+										{{else}}
+											<strong>Téléphone:</strong>
+										{{/if}} <p>
+
+										{{businessPhone}}</p>
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Fax: </strong>{{fax}}</p>
+										<p><strong>
+											{{#if ../../isGerman}}
+												Faxgerät:
+											{{else}}
+												Fax:
+											{{/if}}
+										</strong>{{fax}}</p>
 									</div>
 								</div>
 							</div>
