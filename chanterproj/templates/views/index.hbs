@@ -26,76 +26,51 @@
 	</a>
 </div>
 
-<div class="container mt-4 mb-4">
-	{{#if isGerman}}
-		<p>Der Verband Walliser Gesangvereine (VWG) ist Mitglied der Schweizerischen Chorvereinigung (SCV) und vereinigt Erwachsenen-, Jugend- und Kinderchöre aus dem Unter- und Oberwallis.</p>
-
-		<p>Der Verband ist 1906 gegründet worden. Ihm gehören die Association Valaisanne des Chefs de Choeurs (AVCC) sowie 4 regionale Gruppierungen an: le Groupement des Sociétés de Chant du Bas-Valais (GSCBV), l’Union Chorale du Centre (UCC), le Groupement des Chanteurs du Valais Central (GCVC) und der Oberwalliser Chor- und Cäcilien Verband (OCV).</p>
-
-		<p>Der Verband besteht heute aus über 160 Erwachsenenchören mit mehr als 5000 Sängerinnen und Sängern. Auch die Jugend- und Kinderchöre sind Mitglieder des Verbands, was ihnen Zugang zum Ausbildungsangebot verschafft und die Unterstützung durch Erwachsenenchöre ermöglicht.</p>
-
-	{{else}}
-		<p>La Fédération des Sociétés de Chant du Valais (FSCV) est une association membre de l’Union Suisse des Chorales (USC) regroupant des chœurs d’adultes, de jeunes et d’enfants du Valais Romand et du Haut-Valais.</p>
-
-		<p>Fondée en 1906, elle chapeaute l’Association Valaisanne des Chefs de Chœurs (AVCC) et 4 groupements régionaux : le Groupement des Sociétés de Chant du Bas-Valais (GSCBV), l’Union Chorale du Centre (UCC), le Groupement des Chanteurs du Valais Central (GCVC) et le Oberwalliser Chor- und Cäcilien Verband (OCV).</p>
-
-		<p>A ce jour, plus de 160 chorales d’adultes avec plus de 5000 chanteurs sont réunis au sein de la Fédération. Les chœurs de jeunes et d’enfants sont également membres de la Fédération, ce qui leur permet d’accéder aux offres de formation et au soutien des chorales d’adultes.</p>
-		
+<div class="container">
+	{{#if headerposts}}
+		{{#each headerposts}}
+			<h2>News</h2>
+			{{#each posts}}
+				<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#d{{@index}}">
+					<p></p>
+				</button>
+			
+			
+				<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}} ({{comiteRole}}</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								{{#if image}}
+									<img src="{{cloudinaryUrl image	 height='400'}}">
+								{{/if}}
+								<h4>Contact</h4>
+								<div class="row">
+									<div class="col-lg-3">
+										<p><strong>Email: </strong>{{email}}</p>
+									</div>
+									<div class="col-lg-3">
+										<p><strong>Place: </strong>{{place}}</p>
+									</div>
+									<div class="col-lg-3">
+										<p><strong>Phone: </strong>{{businessPhone}}</p>
+									</div>
+									<div class="col-lg-3">
+										<p><strong>Fax: </strong>{{fax}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		{{/each}}
 	{{/if}}
-
-	<div class="sizingButton">
-		<button type="button" class="btn imagebutton" data-toggle="modal" data-target="#Modal1">
-			<img id="img1" class="" src="/images/wallis.gif">
-		</button>
-	</div>
-
-	<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Walliser Karte</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<img id="img1Modal" class="" src="/images/wallis.gif">
-				</div>
-			</div>
-		</div>
-	</div>
-	{{#if isGerman}}
-		<h3>Organisation</h3>
-		<p>Der VWG wird von Laurent Bovier mit Kompetenz und Begeisterung präsidiert. Die Organisation besteht aus einem Leitenden Ausschuss, einem Kantonalvorstand und der Musikkommission. Die Präsidenten der regionalen Gruppierungen und der AVCC gehören ebenfalls dem Leitenden Ausschuss an.
-		</p>
-	{{else}}
-		<h3>Organisation</h3>
-		<p>La FSCV est présidée avec compétence et enthousiasme par Laurent Bovier.
-			Elle est composée d’un comité directeur, d’un comité cantonal et de la commission de musique.
-			Les présidents des groupements régionaux et de l’AVCC sont également membres d’office du comité directeur.
-		</p>
-	{{/if}}
-	</p>
-
-	<div class="sizingButton">
-		<button type="button" class="btn imagebutton" data-toggle="modal" data-target="#Modal2">
-			<img id="img2" class="" src="/images/organigram.jpg">
-		</button>
-	</div>
-
-	<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="Modal2" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Walliser Karte</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<img id="img2Modal" class="d-block w-100 mx-auto" src="/images/organigram.jpg">
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
+
+
