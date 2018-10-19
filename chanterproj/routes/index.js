@@ -93,8 +93,7 @@ exports = module.exports = function (app) {
 	app.post('/dashboardChoir', (req,res,next) => {
 		console.log("Choir updated");
 		var today = new Date();
-		console.log(req.body.plz);
-		console.log(req.body.foundingYear);
+		var lang = keystone.get('language').isGerman;
 		if(req.body.plz === ""){
 			req.body.plz = 0;
 		}
@@ -149,9 +148,25 @@ exports = module.exports = function (app) {
 				}
 			}
 		).exec(function(err,result){
-			//Query will be executed
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Chor erfolgreich angepasst' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Chœur adapté avec succès' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich die Daten des Chores abgeändert' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Vous avez modifié avec succès les données du chœur' });
+				}
+			}
+			res.redirect('/dashboard');
 		});
-		res.redirect('/dashboard');
+		
 	});
 	
 	app.post('/subscribeNewsletter', (req,res,next) => {
@@ -233,6 +248,28 @@ exports = module.exports = function (app) {
 	app.post('/dashboardUser', (req,res,next) => {
 		console.log("user updated");
 		var today = new Date();
+		var lang = keystone.get('language').isGerman;
+
+		if(req.body.plz === ""){
+			req.body.plz = 0;
+		}
+
+		if(req.body.secondAddress === ""){
+			req.body.secondAddress = "";
+		}
+
+		if(req.body.privatePhone === ""){
+			req.body.privatePhone = 0;
+		}
+
+		if(req.body.businessPhone === ""){
+			req.body.businessPhone = 0;
+		}
+
+		if(req.body.fax === ""){
+			req.body.fax = 0;
+		}
+		
 		keystone.list('User').model.update(
 			{ _id: req.body.id },
 			{
@@ -252,10 +289,27 @@ exports = module.exports = function (app) {
 				}
 			}
 		).exec(function(err,result){
-			//Query will be executed
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Erfolg!', detail: 'User erfolgreich angepasst' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'User adapté avec succès' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich die Daten des Users abgeändert' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Vous avez modifié avec succès les données du user' });
+				}
+
+				res.redirect('/dashboard');
+			}
 		});
 		
-		keystone.list('User').model.findOne(
+		/*keystone.list('User').model.findOne(
 			{_id : req.body.id}, 
 			function(findError, user) {
 			if (findError) {
@@ -264,17 +318,11 @@ exports = module.exports = function (app) {
 				user.password = req.body.password;
 				user.save(function(saveError) {
 					if (saveError) {
-						// handle error
+
 					}
 				});
 			}
-		});
-		
-		res.redirect('/dashboard');
-
-
-		
-		
+		});*/
 	});
 	
 
