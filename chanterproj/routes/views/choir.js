@@ -6,6 +6,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "";
+	var message = "";
+
+	if(language.isGerman === true){
+		title = "Chöre";
+		message = "Sehe unsere Chöre";
+	}
+	else{
+		title = "Choeur";
+		message = "Voir nos chœurs";
+	}
 	
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
@@ -35,6 +46,6 @@ exports = module.exports = function (req, res) {
 		.populate('director', 'name'));
 
 	// Render the view
-	view.render('choir', { title: 'Choir', message: 'See our Choirs', isGerman: language.isGerman  });
+	view.render('choir', { title: title, message: message, isGerman: language.isGerman  });
 
 };

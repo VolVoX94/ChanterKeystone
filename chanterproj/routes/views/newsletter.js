@@ -5,10 +5,6 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
-	//var chos = keystone.list('Choir').model.find({plz: 3900}).sort('sortOrder');
-
-	// locals.section is used to set the currently selected
-	// item in the header navigation.
 	locals.section = 'newsletter';
 
 	// Load the galleries by sortOrder

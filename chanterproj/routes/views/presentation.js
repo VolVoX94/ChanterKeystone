@@ -5,6 +5,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "";
+	var message = "";
+
+	if(language.isGerman === true){
+		title = "Präsentation";
+		message = "Verband Walliser Gesangvereine";
+	}
+	else{
+		title = "Presentation";
+		message = "La Fédération des Sociétés de Chant du Valais (FSCV)";
+	}
 
 	//---------------- STATISTIC COUNTER --------------------------------
 	/*

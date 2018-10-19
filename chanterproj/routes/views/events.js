@@ -5,6 +5,18 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "";
+	var message = "";
+
+	if(language.isGerman === true){
+		title = "Events";
+		message = "Sehe unsere Events";
+	}
+	else{
+		title = "Evenement";
+		message = "Voir nos evenement";
+	}
+	
 
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
@@ -31,5 +43,5 @@ exports = module.exports = function (req, res) {
 	view.query('events', keystone.list('Event').model.find().sort('sortOrder'));
 
 	// Render the view
-	view.render('events', { title: 'Events', message: 'Look at our recent and upcoming events', isGerman: language.isGerman  });
+	view.render('events', { title: title, message: message, isGerman: language.isGerman  });
 };
