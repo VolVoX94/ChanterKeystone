@@ -15,5 +15,11 @@ exports = module.exports = function (req, res) {
 		.populate('members'));
 
 	// Render the view
-	view.render('honor', { title: 'Membres de Honeur', message: 'See the people organising everything', isGerman: language.isGerman  });
+	if(language.isGerman==true){
+		view.render('honor', { title: 'Ehrenmitglieder', message: '', isGerman: language.isGerman  });
+	}
+	else{
+		view.render('honor', { title: "Membres d'honneur", message: '', isGerman: language.isGerman  });
+	}
+	
 };
