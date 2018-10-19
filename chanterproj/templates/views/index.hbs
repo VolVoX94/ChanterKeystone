@@ -30,45 +30,75 @@
 	{{#if headerposts}}
 		{{#each headerposts}}
 			<h2>News</h2>
-			{{#each posts}}
-				<button type="button" class="btn bg-transparent" data-toggle="modal" data-target="#d{{@index}}">
-					<p></p>
-				</button>
-			
-			
-				<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}} ({{comiteRole}}</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
+
+			<div class="row">
+				{{#each posts}}
+					<div class="col-lg-6">
+						<div class="panel panel-default">
+							{{#if ../../isGerman}}
+								<div class="panel-heading">{{labelGerman}}</div>
+							{{else}}
+								<div class="panel-heading">{{labelFrench}}</div>
+							{{/if}}
+							
+							<div class="panel-body">
+
+								{{#if ../../isGerman}}
+									<h4>{{{contentGerman.brief}}}</h4>
+								{{else}}
+									<h4>{{{contentFrench.brief}}}</h4>
+								{{/if}}
+
+								{{#if image}}
+									<img src="{{cloudinaryUrl image}}" width="100%">
+								{{/if}}
+
+								<p><i>by {{author.name.first}} {{author.name.last}}</i></p>
+
+								<button type="button" class="btn bg-transparent" data-toggle="modal"
+										data-target="#d{{@index}}">
+									See more...
 								</button>
 							</div>
-							<div class="modal-body">
-								{{#if image}}
-									<img src="{{cloudinaryUrl image	 height='400'}}">
-								{{/if}}
-								<h4>Contact</h4>
-								<div class="row">
-									<div class="col-lg-3">
-										<p><strong>Email: </strong>{{email}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Place: </strong>{{place}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Phone: </strong>{{businessPhone}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Fax: </strong>{{fax}}</p>
-									</div>
+						</div>
+					</div>
+
+
+					<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1"
+						 aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+
+									{{#if ../../isGerman}}
+										<h4>{{{contentGerman.brief}}}</h4>
+									{{else}}
+										<h4>{{{contentFrench.brief}}}</h4>
+									{{/if}}
+
+									{{#if image}}
+										<img src="{{cloudinaryUrl image    }}" width="100%">
+									{{/if}}
+
+									{{#if ../../isGerman}}
+										<p>{{{contentGerman.extended}}}</p>
+									{{else}}
+										<p>{{{contentFrench.extended}}}</p>
+									{{/if}}
+
+									<p><i>by {{author.name.first}} {{author.name.last}}</i></p>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 		{{/each}}
 	{{/if}}
 </div>
