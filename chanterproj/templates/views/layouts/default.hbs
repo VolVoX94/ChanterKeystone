@@ -63,6 +63,28 @@
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 												{{#if ../textLanguage}}
+													Formation
+												{{else}}
+													Formations
+												{{/if}}
+												<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												{{#if ../textLanguage}}
+													<li><a href="/pages/page/plan-general">Allgemeiner Trainingsplan</a></li>
+													<li><a href="/pages/page/conference-mouvement-et-musique">Konferenz</a></li>
+													<li><a href="/pages/page/travail-vocal-en-chorale">Gesangsarbeit im Chor</a></li>
+
+												{{else}}
+													<li><a href="/pages/page/plan-general">Plan général de formation </a></li>
+													<li><a href="/pages/page/conference-mouvement-et-musique">Conférence</a></li>
+													<li><a href="/pages/page/travail-vocal-en-chorale">Travail vocal en chorale</a></li>
+
+												{{/if}}
+											</ul>
+										</li>
+										<li class="dropdown nav">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												{{#if ../textLanguage}}
 													Chef der Chöre
 												{{else}}
 													Chefs de choeurs
