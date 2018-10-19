@@ -25,7 +25,6 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, result) {
 			locals.data.page = result;
-			setTitle(locals.data.page);
 			next(err);
 		});
 
@@ -42,11 +41,6 @@ exports = module.exports = function (req, res) {
 		});
 
 	});
-	
-	function setTitle(page) {
-		title = page.labelGerman;
-		console.log("In der funktion:" + title);
-	};
 	
 	view.render('page',{isGerman: language.isGerman });
 };

@@ -39,37 +39,7 @@ function updateNavigation(itemDeleted) {
 		var navLink = keystone.get('navigation');
 		
 		if(itemDeleted === true){
-			var navLinkTemp = [{
-				labelGerman: 'Home',
-				labelFrench: 'Home',
-				key: 'home',
-				href: '/'
-			},  {
-				labelGerman: 'Bildergallerie',
-				labelFrench: 'Photogalerie',
-				key: 'gallery',
-				href: '/gallery'
-			},  {
-				labelGerman: 'Events',
-				labelFrench: 'Evenement',
-				key: 'events',
-				href: '/events'
-			},  {
-				labelGerman: 'Kleinanzeigen',
-				labelFrench: 'Annonces',
-				key: 'blog',
-				href: '/blog'
-			}, {
-				labelGerman: 'Chöre',
-				labelFrench: 'Chorales',
-				key: 'choir',
-				href: '/choir'
-			},{
-				labelGerman: 'Kontakt',
-				labelFrench: 'Contact',
-				key: 'contact',
-				href: '/contact'
-			}];
+			var navLinkTemp = [];
 			pages.forEach(function (page){
 				navLinkTemp.push({labelGerman: page.linkLabelGerman, labelFrench: page.linkLabelFrench, key: page.title.toLowerCase(), href: '/pages/page/'+page.title.toLowerCase()});
 				//console.log("navlink "+ link.label);
