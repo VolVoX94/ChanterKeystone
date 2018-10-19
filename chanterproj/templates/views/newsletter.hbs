@@ -3,7 +3,10 @@
 
 	<h2>Actual Subscribers:</h2>
 	{{#each useritem}}
-		{{email}};
+		{{email}},
+	{{/each}}
+	{{#each subscriber}}
+		{{email}},
 	{{/each}}
 	
 	<hr/>
@@ -36,7 +39,9 @@
 		{{/each}}
 		
 		{{#each subscriber}}
-			emails = emails.concat("{{email}}");
+			{{#if isGermanSubscriber}}
+				emails = emails.concat("{{email}},");
+			{{/if}}
 		{{/each}}	
 		emails = emails.concat("?subject=newsletter:" +title+"&body=Es gibt Neuigkeiten lesen Sie unsere News: "+body);
 		location.href = emails;
@@ -47,6 +52,14 @@
 
 		{{#each useritem}}
 			emails = emails.concat("{{email}},");
+		{{/each}}
+
+		{{#each subscriber}}
+			{{#if isGermanSubscriber}}
+				
+			{{else}}
+				emails = emails.concat("{{email}},");
+			{{/if}}
 		{{/each}}
 
 		emails = emails.concat("?subject=newsletter:" +title+"&body=Il y a des nouvelles pour vous, lisez nos nouvelles : "+body);

@@ -60,11 +60,6 @@ keystone.set('navigation', [{
 	key: 'events',
 	href: '/events'
 },  {
-	labelGerman: 'Kleinanzeigen',
-	labelFrench: 'Annonces',
-	key: 'blog',
-	href: '/blog'
-}, {
 	labelGerman: 'Chöre',
 	labelFrench: 'Chorales',
 	key: 'choir',

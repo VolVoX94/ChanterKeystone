@@ -178,9 +178,9 @@ exports = module.exports = function (app) {
 		var lang = keystone.get('language').isGerman;
 		var newSubscriber = new Subscriber.model({
 			email: req.body.email,
-			password: req.body.password
+			password: req.body.password,
+			isGermanSubscriber: req.body.langSubscriber
 		});
-		
 		newSubscriber.save(function(err){
 
 			if(err){
