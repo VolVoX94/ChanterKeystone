@@ -63,6 +63,28 @@
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 												{{#if ../textLanguage}}
+													Musikalische Projekte
+												{{else}}
+													Projets musicaux
+												{{/if}}
+												<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												{{#if ../textLanguage}}
+													<li><a href="/pages/page/choeur-en-herbe">Lager 2018</a></li>
+													<li><a href="/pages/page/frappfestival">Frapp’Festival</a></li>
+													<li><a href="/pages/page/un-air-de-montagne">Eine Bergmelodie</a></li>
+
+												{{else}}
+													<li><a href="/pages/page/choeur-en-herbe">Choeur en Herbe</a></li>
+													<li><a href="/pages/page/frappfestival">Frapp’Festival</a></li>
+													<li><a href="/pages/page/un-air-de-montagne">Un air de montagne</a></li>
+
+												{{/if}}
+											</ul>
+										</li>
+										<li class="dropdown nav">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												{{#if ../textLanguage}}
 													Formation
 												{{else}}
 													Formations
