@@ -45,32 +45,36 @@ keystone.set('language', {isGerman: true});
 keystone.set('adminui custom styles', './public/styles/keystone.less');
 
 keystone.set('navigation', [{
-	label: 'Home',
+	labelGerman: 'Home',
+	labelFrench: 'Home',
 	key: 'home',
 	href: '/'
 },  {
-	label: 'Gallery',
+	labelGerman: 'Bildergallerie',
+	labelFrench: 'Photogalerie',
 	key: 'gallery',
 	href: '/gallery'
 },  {
-	label: 'Events',
+	labelGerman: 'Events',
+	labelFrench: 'Evenement',
 	key: 'events',
 	href: '/events'
 },  {
-	label: 'Choir',
+	labelGerman: 'Kleinanzeigen',
+	labelFrench: 'Annonces',
+	key: 'blog',
+	href: '/blog'
+}, {
+	labelGerman: 'Chöre',
+	labelFrench: 'Chorales',
 	key: 'choir',
 	href: '/choir'
 },{
-	label: 'Contact',
+	labelGerman: 'Kontakt',
+	labelFrench: 'Contact',
 	key: 'contact',
 	href: '/contact'
-},{
-	label: 'Services',
-	key: 'contact',
-	href: '/contact'
-}
-
-]);
+}]);
 
 // Load your project's Models
 keystone.import('models');
@@ -99,8 +103,6 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
-
-
 if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
 	console.log('----------------------------------------'
 		+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
