@@ -44,32 +44,7 @@ keystone.set('language', {isGerman: true});
 
 keystone.set('adminui custom styles', './public/styles/keystone.less');
 
-keystone.set('navigation', [{
-	labelGerman: 'Home',
-	labelFrench: 'Home',
-	key: 'home',
-	href: '/'
-},  {
-	labelGerman: 'Bildergallerie',
-	labelFrench: 'Photogalerie',
-	key: 'gallery',
-	href: '/gallery'
-},  {
-	labelGerman: 'Events',
-	labelFrench: 'Evenement',
-	key: 'events',
-	href: '/events'
-},  {
-	labelGerman: 'Chöre',
-	labelFrench: 'Chorales',
-	key: 'choir',
-	href: '/choir'
-},{
-	labelGerman: 'Kontakt',
-	labelFrench: 'Contact',
-	key: 'contact',
-	href: '/contact'
-}]);
+keystone.set('navigation', []);
 
 // Load your project's Models
 keystone.import('models');
@@ -90,8 +65,8 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	posts: ['pages', 'posts', 'post-categories'],
-	users: ['choirs', 'committees', 'users'],
+	posts: ['pages', 'posts', 'post-categories', 'header-posts'],
+	users: ['choirs', 'committees', 'users', 'commissions', 'honors', 'subscribers'],
 	events: ['events', 'newsletters'],
 	galleries: 'galleries',
 	enquiries: ['enquiries', 'statistics'],

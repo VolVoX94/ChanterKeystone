@@ -32,18 +32,16 @@
 								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 							</button>
 							<a href="/" class="navbar-brand">
-								<img src="/images/brand2.png" style="margin-top: -10px; width: 45px"/>
+								<img src="/images/brand2.png" style="margin-top: -10px; height: 40px"/>
 							</a>
 						</div>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
 
-								{{# each navLinks}}
-									{{#ifeq @index 1}}
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Presentation <span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													<li><a href="/presentation">Präsentation</a></li>
 													<li><a href="/comitee">Komittee FSCV</a></li>
 													<li><a href="/commission">Musikkommission</a></li>
@@ -74,14 +72,14 @@
 									
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													Musikalische Projekte
 												{{else}}
 													Projets musicaux
 												{{/if}}
 												<span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													<li><a href="/pages/page/choeur-en-herbe">Lager 2018</a></li>
 													<li><a href="/pages/page/frappfestival">Frapp’Festival</a></li>
 													<li><a href="/pages/page/un-air-de-montagne">Eine Bergmelodie</a></li>
@@ -96,14 +94,14 @@
 										</li>
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													Formation
 												{{else}}
 													Formations
 												{{/if}}
 												<span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													<li><a href="/pages/page/plan-general">Allgemeiner Trainingsplan</a></li>
 													<li><a href="/pages/page/conference-mouvement-et-musique">Konferenz</a></li>
 													<li><a href="/pages/page/travail-vocal-en-chorale">Gesangsarbeit im Chor</a></li>
@@ -118,14 +116,14 @@
 										</li>
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													Chef der Chöre
 												{{else}}
 													Chefs de choeurs
 												{{/if}}
 												<span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												{{#if ../textLanguage}}
+												{{#if textLanguage}}
 													<li><a href="/pages/page/avcc">Presentation AVCC</a></li>
 													<li><a href="/pages/page/avcchistory">Geschichte AVCC</a></li>
 													<li><a href="/pages/page/avcccommittee">Komittee AVCC</a></li>
@@ -159,8 +157,11 @@
 												{{/if}}
 											</ul>
 										</li>
-										
-									{{/ifeq}}
+
+								{{# each navLinks}}
+									{{#ifeq @index 1}}
+
+								{{/ifeq}}
 								
 									<li {{#ifeq ../section key}}class=""{{else}}{{/ifeq}}>
 										<a href="{{ href }}">
@@ -171,19 +172,29 @@
 											{{/if}}
 										</a>
 									</li>
-									{{/each}}
-								{{#if user.isAdmin}}
-									<li><a href="/newsletter">Newsletter</a></li>
-								{{/if}}	
+								{{/each}}
 							</ul>
 							
 							<ul class="nav navbar-nav navbar-right">
 								<li><a onclick="setGerman()" href="#"><img src="/images/german.png" height="16" width="30"></a></li>
 								<li><a onclick="setFrench()" href="#"><img src="/images/french.png" height="16" width="30"></a></li>
 								{{#if user}}
-								<li><a href="/keystone/signout">Sign Out</a></li>
+								<li><a href="/keystone/signout">
+									{{user.name.first}}
+									{{#if textLanguage}}
+										Ausloggen
+									{{else}}
+										deconnexion
+									{{/if}}
+								</a></li>
 								{{else}}
-								<li><a href="/keystone/signin">Sign In</a></li>
+								<li><a href="/keystone/signin">
+									{{#if textLanguage}}
+										Einloggen
+									{{else}}
+										connexion
+									{{/if}}
+								</a></li>
 								{{/if}}
 							</ul>
 						</div>
@@ -232,17 +243,24 @@
 		</div>
 		<div class="container">
 			<div id="footer">
-				{{#if user}}
-					<a href="/dashboard">Dashboard</a>
-				{{/if}}
-				<div style="text-align: center; margin-bottom: 5%">
-
-					{{#if textLanguage}}
-						© 2016 - Vereinigung der Walliser Gesangsvereine
-					{{else}}
-						© 2016 - Fédération Sociétés Chant du Valais
+				<ul class="nav navbar-nav">
+					{{#if user}}
+						<li><a href="/dashboard">Dashboard</a></li>
 					{{/if}}
-				</div>
+					{{#if user.isAdmin}}
+						<li><a href="/newsletter">Newsletter</a></li>
+					{{/if}}
+				</ul>
+
+				
+					<div style="text-align: center; margin-bottom: 5%">
+	
+						{{#if textLanguage}}
+							© 2016 - Vereinigung der Walliser Gesangsvereine
+						{{else}}
+							© 2016 - Fédération Sociétés Chant du Valais
+						{{/if}}
+					</div>
 			</div>
 		</div>
 		{{!--
