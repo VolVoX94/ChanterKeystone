@@ -26,7 +26,6 @@ exports.initLocals = function (req, res, next) {
 
 	res.locals.navLinks = keystone.get('navigation');
 	res.locals.textLanguage = keystone.get('language').isGerman;
-	console.log("Language " + res.locals.textLanguage);
 	
 	//adding dynamic site from Page model
 	res.locals.user = req.user;

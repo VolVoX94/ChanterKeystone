@@ -5,6 +5,7 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "";
 
 	// Set locals
 	locals.section = 'pages';
@@ -25,6 +26,7 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, result) {
 			locals.data.page = result;
+			setTitle(locals.data.page);
 			next(err);
 		});
 
@@ -41,7 +43,11 @@ exports = module.exports = function (req, res) {
 		});
 
 	});
-
-	// Render the view
+	
+	function setTitle(page) {
+		title = page.labelGerman;
+		console.log("In der funktion:" + title);
+	};
+	
 	view.render('page',{isGerman: language.isGerman });
 };
