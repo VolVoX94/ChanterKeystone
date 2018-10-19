@@ -31,5 +31,12 @@ exports = module.exports = function (req, res) {
 	
 	
 	// Render the view
-	view.render('index', { title: 'Home', message: 'Home, sweet Home', isGerman: language.isGerman });
+	if(language.isGerman==true){
+		view.render('index', { title: 'Home', message: 'Präsentation', isGerman: language.isGerman });
+	}
+	else{
+		view.render('index', { title: 'Accueil', message: 'Présentation', isGerman: language.isGerman });
+	}
+		
+	
 };
