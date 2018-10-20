@@ -8,8 +8,15 @@
 	{{#each subscriber}}
 		{{email}},
 	{{/each}}
-	
 	<hr/>
+
+	{{#if isGerman}}
+		Geben Sie eine E-Mail Adresse ein, an die Sie die Test-Email senden wollen:
+	{{else}}
+		Entrez l'adresse e-mail à laquelle vous souhaitez envoyer l'e-mail de test:
+	{{/if}}
+	
+	<input id="email" type="email" name="email" placeholder="Enter email">
 
 	{{#if newsletter}}
 		{{#each newsletter}}
@@ -19,6 +26,7 @@
 				<p><b>Link to the news</b> {{linkToNews}}</p>
 				<button onclick=getEmailsGerman("{{title}}","{{linkToNews}}") class="btn-primary">Send german Newsletter</button>
 				<button onclick=getEmailsFrench("{{title}}","{{linkToNews}}") class="btn-info	">Send french Newsletter</button>
+				<button onclick=sendTestMail("{{title}}","{{linkToNews}}") class="btn-warning">Send test version</button>
 			</div>
 			<hr/>
 		{{/each}}
@@ -63,6 +71,14 @@
 		{{/each}}
 
 		emails = emails.concat("?subject=newsletter:" +title+"&body=Il y a des nouvelles pour vous, lisez nos nouvelles : "+body);
+		location.href = emails;
+	}
+
+	function sendTestMail(title, body) {
+		var emails = "mailto:";
+		emails = emails.concat(document.getElementById("email").value);
+		
+		emails = emails.concat("?subject=Test-Version for newsletter:" +title+"&body=FRENCH:Il y a des nouvelles pour vous, lisez nos nouvelles : "+body+"   **** GERMAN Es gibt Neuigkeiten lesen Sie unsere News:"+body);
 		location.href = emails;
 	}
 </script>

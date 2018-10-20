@@ -38,10 +38,10 @@ keystone.list('Statistic').model.update(
 
 	// Render the view
 	if(language.isGerman==true){
-		view.render('presentation', { title: 'Home', message: 'Präsentation', isGerman: language.isGerman });
+		view.render('presentation', { title: title, message: message, isGerman: language.isGerman });
 	}
 	else{
-		view.render('presentation', { title: 'Accueil', message: 'Présentation', isGerman: language.isGerman });
+		view.render('presentation', { title: title, message: message, isGerman: language.isGerman });
 	}
 
 
