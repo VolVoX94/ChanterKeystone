@@ -2,28 +2,52 @@
 	{{#if events}}
 		<div class="row">
 			<div class="col-lg-8">
-				<input type="text" class="myInput" id="myInput"
-					   placeholder="Search for names, dates or whatever you like...">
+				{{#if isGerman}}
+					<input type="text" class="myInput" id="myInput"
+						   placeholder="Suche nach Namen, Daten oder anderen Informationen...">
+				{{else}}
+					<input type="text" class="myInput" id="myInput"
+						   placeholder="Recherchez des noms, des dates ou tout autre information...">
+				{{/if}}
 			</div>
 			<div class="col-lg-2">
-				<button id="btn1" class="btn-info myInput" onclick="addFilter()">Add Filter</button>
+				{{#if isGerman}}
+					<button id="btn1" class="btn-info myInput" onclick="addFilter()">Einen Filter hinzufügen</button>
+				{{else}}
+					<button id="btn1" class="btn-info myInput" onclick="addFilter()">Ajouter un filtre</button>
+				{{/if}}
 			</div>
 			<div id="dynFil" class="col-lg-2">
 				<ol id="list" style="list-style: none">
-					<li><strong>Filters</strong></li>
+					{{#if isGerman}}
+						<li><strong>Filter</strong></li>
+					{{else}}
+						<li><strong>Filtres</strong></li>
+					{{/if}}
 				</ol>
 			</div>
 		</div>
-
-		<button type="button" class="btn btn-primary" onclick="pdf()">Download List as PDF</button>
+		{{#if isGerman}}
+			<button type="button" class="btn btn-primary" onclick="pdf()">Laden Sie die Liste im PDF-Format herunter</button>
+		{{else}}
+			<button type="button" class="btn btn-primary" onclick="pdf()">Télécharger la liste en PDF</button>
+		{{/if}}
+		
 
 		<table id="myTable" class="table myTable">
 			<thead>
 			<tr>
-				<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(1)">Anfang<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(2)">Ort<img class="imageSort" src="images/sort.png"></th>
-				<th>Details</th>
+				{{#if isGerman}}
+					<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(1)">Anfang<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(2)">Ort<img class="imageSort" src="images/sort.png"></th>
+					<th>Details</th>
+				{{else}}
+					<th class="cursor" onclick="sortTable(0)">Titre<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(1)">Date<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(2)">Ville<img class="imageSort" src="images/sort.png"></th>
+					<th>Détails</th>
+				{{/if}}
 			</tr>
 			</thead>
 			<tbody>
@@ -33,9 +57,11 @@
 					<td>{{date startTime}}</td>
 					<td>{{location.suburb}}</td>
 					<td>
-						<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">See
-							Details
-						</button>
+						{{#if isGerman}}
+							<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">Siehe Details</button>
+						{{else}}
+							<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">Voir les details</button>
+						{{/if}}
 					</td>
 				</tr>
 				<div class="modal fade" id="{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1"
@@ -51,21 +77,41 @@
 							<div class="modal-body">
 								<div class="row">
 									<div class="col-lg-3">
-										<p><strong>Ort: </strong>{{location.suburb}}</p>
+										{{#if isGerman}}
+											<p><strong>Ort: </strong>{{location.suburb}}</p>
+										{{else}}
+											<p><strong>Ville: </strong>{{location.suburb}}</p>
+										{{/if}}
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Straße: </strong>{{location.street1}}</p>
+										{{#if isGerman}}
+											<p><strong>Straße: </strong>{{location.street1}}</p>
+										{{else}}
+											<p><strong>Rue: </strong>{{location.street1}}</p>
+										{{/if}}
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Anfang: </strong>{{date startTime}}</p>
+										{{#if isGerman}}
+											<p><strong>Anfang: </strong>{{date startTime}}</p>
+										{{else}}
+											<p><strong>Début: </strong>{{date startTime}}</p>
+										{{/if}}
 									</div>
 									<div class="col-lg-3">
-										<p><strong>Ende: </strong>{{date endTime}}</p>
+										{{#if isGerman}}
+											<p><strong>Ende: </strong>{{date endTime}}</p>
+										{{else}}
+											<p><strong>Fin: </strong>{{date endTime}}</p>
+										{{/if}}
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-10 col-lg-offset-1">
-										<h3>Beschreibung</h3>
+										{{#if isGerman}}
+											<h3>Beschreibung</h3>
+										{{else}}
+											<h3>Description</h3>
+										{{/if}}
 										<p>{{{description}}}</p>
 									</div>
 								</div>
@@ -78,7 +124,11 @@
 		</table>
 	{{else}}
 		<!-- else -->
-		<h3 class="text-muted">There are no events galleries yet.</h3>
+		{{#if isGerman}}
+			<h3 class="text-muted">Es gibt noch keine Veranstaltungen.</h3>
+		{{else}}
+			<h3 class="text-muted">Il n'y a pas encore d'événements.</h3>
+		{{/if}}
 	{{/if}}
 </div>
 
