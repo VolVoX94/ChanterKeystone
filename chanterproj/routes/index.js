@@ -90,7 +90,7 @@ exports = module.exports = function (app) {
 	app.get('/choirfonds', routes.views.choirfonds);
 	app.get('/newsletter', routes.views.newsletter);
 	app.get('/choir', routes.views.choir);
-	app.all('/contact', routes.views.contact);
+	app.all('/ticketSystem', routes.views.ticketSystem);
 
 	app.post('/dashboardChoir', (req,res,next) => {
 		console.log("Choir updated");

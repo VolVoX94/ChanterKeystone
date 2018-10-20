@@ -6,6 +6,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "Ticket";
+	var message = "Support";
+
+	if(language.isGerman === true){
+		title = "Benötigen Sie Hilfe?";
+		message = "Erstellen Sie ein Ticket und beschreiben Sie Ihr Anliegen";
+	}
+	else{
+		title = "Besoin d'aide?";
+		message = "Créez un ticket et décrivez votre problème";
+	}
 
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
@@ -51,5 +62,5 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
-	view.render('contact', { title: 'Contact', message: 'Are you interested? Contact us!', isGerman: language.isGerman  });
+	view.render('ticketManagement', { title: title, message: message, isGerman: language.isGerman  });
 };
