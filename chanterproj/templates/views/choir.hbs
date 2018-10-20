@@ -29,6 +29,7 @@
 				<th class="cursor" onclick="sortTable(3)">Director<img class="imageSort" src="images/sort.png"></th>
 				<th class="cursor" onclick="sortTable(4)">Type Choir<img class="imageSort" src="images/sort.png"></th>
 				<th class="cursor" onclick="sortTable(5)">Language<img class="imageSort" src="images/sort.png"></th>
+				<th>Location</th>
 				<th>Details</th>
 			</tr>
 			</thead>
@@ -41,6 +42,13 @@
 					<td>{{director.name.first}} {{director.name.last}}</td>
 					<td>{{typeChoir}}</td>
 					<td>{{lang}}</td>
+					<td>
+						{{#if linkLocationMap}}
+							<a href="{{linkLocationMap}}"><img src="images/flag.png" height="42" width="30"></a>
+							{{else}}
+							<img src="images/Noflag.png" height="42" width="30">
+						{{/if}}
+					</td>
 					<td>
 						<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">See
 							Details

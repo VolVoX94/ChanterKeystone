@@ -17,6 +17,7 @@ Choir.add({
 	secretary:{type: Types.Relationship, ref: 'User', index: true},
 	cashier: {type: Types.Relationship, ref: 'User', index: true},
 	
+	linkLocationMap:{type: String},
 	
 	foundingYear: {type: Types.Number},
 	typeChoir: {type: Types.Select, options: 'CX, CD, CH, CJ, CE, Select', default: 'Select', index: true},
