@@ -39,7 +39,7 @@ exports = module.exports = function (req, res) {
 	locals.section = 'choir';
 
 	// Load the items by sortOrder
-	view.query('choirs', keystone.list('Choir').model.find().sort('sortOrder')
+	view.query('choirs', keystone.list('Choir').model.find({state: 'published'}).sort('sortOrder')
 		.populate('president', 'name')
 		.populate('cashier', 'name')
 		.populate('secretary', 'name')

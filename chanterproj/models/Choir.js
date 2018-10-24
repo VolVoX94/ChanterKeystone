@@ -18,7 +18,7 @@ Choir.add({
 	cashier: {type: Types.Relationship, ref: 'User', index: true},
 	
 	linkLocationMap:{type: String},
-	
+	state: {type: Types.Select, options: 'draft, published', default: 'draft', index: true},
 	foundingYear: {type: Types.Number},
 	typeChoir: {type: Types.Select, options: 'CX, CD, CH, CJ, CE, Select', default: 'Select', index: true},
 	secondTypeChoir: {type: Types.Select, options: 'CX, CD, CH, CJ, CE, Select', default: 'Select', index: true},
