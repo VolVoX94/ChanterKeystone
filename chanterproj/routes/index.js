@@ -146,6 +146,7 @@ exports = module.exports = function (app) {
 					lang:				req.body.lang,
 					remarks:			req.body.remarks,
 					homepage:			req.body.homepage,
+					state: 				'draft',
 					lastUpdate:			today
 				}
 			}
