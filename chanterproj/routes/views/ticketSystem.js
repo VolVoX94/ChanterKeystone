@@ -42,15 +42,24 @@ exports = module.exports = function (req, res) {
 	locals.validationErrors = {};
 	locals.enquirySubmitted = false;
 
+
+	view.on('init', function (next) {
+		var q = keystone.list('Choir').model.find().sort('sortOrder');
+		q.exec(function (err, results) {
+			locals.choirs = results;
+			next(err);
+		});
+	});
+
 	// On POST requests, add the Enquiry item to the database
 	view.on('post', {action: 'contact'}, function (next) {
 
 		var newEnquiry = new Enquiry.model();
 		var updater = newEnquiry.getUpdateHandler(req);
-
+		
 		updater.process(req.body, {
 			flashErrors: true,
-			fields: 'name, email, phone, enquiryType, message',
+			fields: 'name, email, phone, enquiryType, priority, message, responsible',
 			errorMessage: 'There was a problem submitting your enquiry:',
 		}, function (err) {
 			if (err) {

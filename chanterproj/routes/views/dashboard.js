@@ -72,7 +72,26 @@ exports = module.exports = function (req, res) {
 				next(err);
 			});
 		});
+		
+		if(res.locals.user.isAdmin){
+			console.log("ADMIIN");
+			//AdminTickets
+			view.on('init', function (next) {
+				var q = keystone.list('Enquiry').model.find({responsible: 'admin'}).sort({priority: 1});
+				q.exec(function (err, results) {
+					locals.enquiryItemForAdmin = results;
+					next(err);
+				});
+			});
+		}
 
+		view.on('init', function (next) {
+			var q = keystone.list('Enquiry').model.find({responsible: res.locals.user._id}).sort({priority: 1});
+			q.exec(function (err, results) {
+				locals.enquiryItem = results;
+				next(err);
+			});
+		});
 
 		// Load the items by sortOrder
 		//view.query('choirs', keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name'));

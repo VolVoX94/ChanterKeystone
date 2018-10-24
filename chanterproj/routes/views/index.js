@@ -5,6 +5,17 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	var language = keystone.get('language');
+	var title = "";
+	var message = "";
+
+	if(language.isGerman === true){
+		title = "Herzlich Willkommen";
+		message = "Auf der Webseite der Walliser Gesangvereine";
+	}
+	else{
+		title = "Bienvenue";
+		message = " Sur la page Clubs de chant valaisans";
+	}
 	
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
@@ -34,10 +45,10 @@ exports = module.exports = function (req, res) {
 
 	// Render the view
 	if(language.isGerman==true){
-		view.render('index', { title: 'News', message: 'Allerlei themenbasierte Nachrichten', isGerman: language.isGerman });
+		view.render('index', { title: title, message: message, isGerman: language.isGerman });
 	}
 	else{
-		view.render('index', { title: 'Accueil', message: 'Présentation', isGerman: language.isGerman });
+		view.render('index', { title: title, message: message, isGerman: language.isGerman });
 	}
 		
 	

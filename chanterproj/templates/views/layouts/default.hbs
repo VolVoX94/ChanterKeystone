@@ -63,7 +63,7 @@
 										</li>
 
 										<ul class="nav navbar-nav navbar-default">
-											{{#if ../textLanguage}}
+											{{#if textLanguage}}
 												<li><a href="/pages/page/fete-cantonale">Kantonales Fest 2018</a></li>
 
 											{{else}}
@@ -272,6 +272,15 @@
 					{{#if user.isAdmin}}
 						<li><a href="/newsletter">Newsletter</a></li>
 					{{/if}}
+
+					{{#if textLanguage}}
+						<li><a href="/ticketSystem">Hilfe</a></li>
+
+					{{else}}
+						<li><a href="/ticketSystem">Aide</a></li>
+
+					{{/if}}
+					
 				</ul>
 
 				

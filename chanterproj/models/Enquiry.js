@@ -17,12 +17,18 @@ Enquiry.add({
 	phone: {type: String},
 	enquiryType: {
 		type: Types.Select, options: [
-			{value: 'message', label: 'Just leaving a message'},
-			{value: 'question', label: 'I\'ve got a question'},
-			{value: 'other', label: 'Something else...'},
+			{value: 'message', label:"remark", labelGerman: 'Bemerkung', labelFrench: 'Remarque'},
+			{value: 'question',label:"question", labelGerman: 'Ich habe eine Frage', labelFrench: 'J\'ai une question'},
+			{value: 'bug',label:"bug", labelGerman: 'Verbesserungsvorschlag', labelFrench: 'proposition d\'amélioration'},
 		]
 	},
+	responsible: {type: String},
 	message: {type: Types.Markdown, required: true},
+	priority: {type: Types.Select, options: [
+			{value: '1', label: '1'},
+			{value: '2', label: '2'},
+			{value: '3', label: '3'},
+		]},
 	createdAt: {type: Date, default: Date.now},
 });
 
@@ -32,9 +38,7 @@ Enquiry.schema.pre('save', function (next) {
 });
 
 Enquiry.schema.post('save', function () {
-	if (this.wasNew) {
-		this.sendNotificationEmail();
-	}
+
 });
 
 Enquiry.schema.methods.sendNotificationEmail = function (callback) {

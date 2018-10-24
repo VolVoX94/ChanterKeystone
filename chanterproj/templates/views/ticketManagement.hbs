@@ -1,16 +1,35 @@
 <div class="container">
-	<h1>Contact Us</h1>
+	{{#if textLanguage}}
+		<h1>Kontakt</h1>
+
+	{{else}}
+		<h1>Contact</h1>
+	{{/if}}
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-8 col-md-6">
 			{{#if enquirySubmitted}}
-				<h3>Thanks for getting in touch.</h3>
+				
+				{{#if textLanguage}}
+					<h3>Vielen Dank für das erstellen des Tickets.</h3>
+					Es wurde direkt der zuständigen Person zugestellt.
+
+				{{else}}
+					<h3>Merci d'avoir créé le billet.</h3>
+					Elle a été remise directement au responsable.
+				{{/if}}
 			{{else}}
 				<form method="post">
 					<input type="hidden" name="action" value="contact">
 					<div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
-						<label>Name</label>
+						<label>
+							{{#if textLanguage}}
+								Name:
+							{{else}}
+								Nom:
+							{{/if}}							
+						</label>
 						<input type="text" name="name.full" class="form-control" value="{{formData.[name.full]}}">
 					</div>
 					<div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
@@ -18,26 +37,95 @@
 						<input type="email" name="email" class="form-control" value="{{formData.email}}">
 					</div>
 					<div class="form-group">
-						<label>Phone</label>
+						<label>
+							{{#if textLanguage}}
+								Telefon:
+							{{else}}
+								Téléphone:
+							{{/if}}
+						</label>
 						<input type="text" name="phone" placeholder="(optional)" class="form-control"
 							   value="{{formData.phone}}">
 					</div>
 					<div class="form-group {{#if validationErrors.enquiryType}}has-error{{/if}}">
-						<label>What are you contacting us about?</label>
+						<label>
+							{{#if textLanguage}}
+								Was ist Ihr Anliegen?
+							{{else}}
+								Qu'est-ce qui vous préoccupe?
+							{{/if}}
+						</label>
 						<select name="enquiryType" class="form-control">
-							<option value="">(select one)</option>
-							{{#each enquiryTypes}}
-								<option value="{{value}}">{{label}}</option>
-							{{/each}}
+							{{#if textLanguage}}
+							<option value="">Wählen Sie..</option>
+								{{#each enquiryTypes}}
+									<option value="{{value}}">{{labelGerman}}</option>
+								{{/each}}
+							{{else}}
+								<option value="">Choisissez..</option>
+								{{#each enquiryTypes}}
+									<option value="{{value}}">{{labelFrench}}</option>
+								{{/each}}
+							{{/if}}
+						</select>
+					</div>
+					<div class="form-group {{#if validationErrors.enquiryType}}has-error{{/if}}">
+						<label>
+							{{#if textLanguage}}
+								An wen richten Sie Ihr Ticket?
+							{{else}}
+								A qui adressez-vous votre billet?
+							{{/if}}
+						</label>
+						<select name="responsible" class="form-control">
+							{{#if textLanguage}}
+								<option value="">Wählen Sie..</option>
+								<option value="admin">Administrator</option>
+								{{#each choirs}}
+									<option value="{{choirAdmin}}">Chor: {{name}}</option>
+								{{/each}}
+							{{else}}
+								<option value="">Choisissez..</option>
+								{{#each enquiryTypes}}
+									<option value="{{value}}">Choir: {{labelFrench}}</option>
+								{{/each}}
+							{{/if}}
+						</select>
+					</div>
+					<div class="form-group {{#if validationErrors.enquiryType}}has-error{{/if}}">
+						<label>
+							{{#if textLanguage}}
+								Wie wichtig ist Ihr Anliegen? 1 = Wichtig
+							{{else}}
+								Quelle est l'importance de votre demande ? 1 = Important
+							{{/if}}
+						</label>
+						<select name="priority" class="form-control">
+							<option value="">Wählen Sie..</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
 						</select>
 					</div>
 					<div class="form-group {{#if validationErrors.message}}has-error{{/if}} ">
 						<label>Message</label>
-						<textarea name="message" placeholder="Leave us a message..." rows="4"
+						<textarea name="message"
+							{{#if textLanguage}}
+								  placeholder="Schreibe uns eine Nachricht..."
+							{{else}}
+								  placeholder="Ecrivez-nous un message...."
+							{{/if}}
+								  rows="4"
 								  class="form-control">{{formData.message}}</textarea>
 					</div>
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Send</button>
+						<button type="submit" class="btn btn-primary">
+							{{#if textLanguage}}
+								Senden
+							{{else}}
+								Envoi
+							{{/if}}
+						</button>
 					</div>
 				</form>
 			{{/if}}
