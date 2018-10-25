@@ -5,32 +5,66 @@
 		<div class="row">
 			<div class="col-lg-8">
 				<input type="text" class="myInput" id="myInput"
-					   placeholder="Search for names, dates or whatever you like...">
+				{{#if isGerman}}
+					<input type="text" class="myInput" id="myInput"
+						   placeholder="Suche nach Namen, Präsident oder anderen Informationen...">
+				{{else}}
+					<input type="text" class="myInput" id="myInput"
+						   placeholder="Recherchez des noms, des présidents ou tout autre information...">
+				{{/if}}
 			</div>
 			<div class="col-lg-2">
-				<button id="btn1" class="btn-info myInput" onclick="addFilter()">Add Filter</button>
+				<button id="btn1" class="btn-info myInput" onclick="addFilter()">
+					{{#if isGerman}}
+						Einen Filter hinzufügen
+					{{else}}
+						Ajouter un filtre
+					{{/if}}
+				</button>
 			</div>
 			<div id="dynFil" class="col-lg-2">
 				<ol id="list" style="list-style: none">
-					<li><strong>Filters</strong></li>
+					<li>
+						{{#if isGerman}}
+							<strong>Filter</strong>
+						{{else}}
+							<strong>Filtres</strong>
+						{{/if}}
+					</li>
 				</ol>
 			</div>
 		</div>
 
 		
-		
-		<button type="button" class="btn btn-primary" onclick="pdf()">Download List as PDF</button>
+	
+		{{#if isGerman}}
+			<button type="button" class="btn btn-primary" onclick="pdf()">Laden Sie die Liste im PDF-Format herunter</button>
+		{{else}}
+			<button type="button" class="btn btn-primary" onclick="pdf()">Télécharger la liste en PDF</button>
+		{{/if}}
 		<table id="myTable" class="table myTable">
 			<thead>
 			<tr>
-				<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(1)">Ort<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(2)">President<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(3)">Director<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(4)">Type Choir<img class="imageSort" src="images/sort.png"></th>
-				<th class="cursor" onclick="sortTable(5)">Language<img class="imageSort" src="images/sort.png"></th>
-				<th>Location</th>
-				<th>Details</th>
+				
+				{{#if isGerman}}
+					<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(1)">Ort<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(2)">Präsident<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(3)">Direktor<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(4)">Typ<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(5)">Sprache<img class="imageSort" src="images/sort.png"></th>
+					<th>Lokalisation</th>
+					<th>Details</th>
+				{{else}}
+					<th class="cursor" onclick="sortTable(0)">Nom<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(1)">Ville<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(2)">Président<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(3)">Directeur<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(4)">Type de choeur<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(5)">Langage<img class="imageSort" src="images/sort.png"></th>
+					<th>Localisation</th>
+					<th>Détails</th>
+				{{/if}}
 			</tr>
 			</thead>
 			<tbody>
@@ -50,8 +84,12 @@
 						{{/if}}
 					</td>
 					<td>
-						<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">See
-							Details
+						<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">
+							{{#if isGerman}}
+								Siehe Details
+							{{else}}
+								Voir les details
+							{{/if}}
 						</button>
 					</td>
 				</tr>
@@ -65,50 +103,97 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body">
-								<div class="row">
-									<div class="col-lg-3">
-										<p><strong>Ort: </strong>{{place}}</p>
+							{{#if isGerman}}
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-lg-3">
+											<p><strong>Ort: </strong>{{place}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Plz: </strong>{{plz}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Präsident: </strong>{{president.name.first}} {{president.name.last}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Direktor: </strong>{{director.name.first}} {{director.name.last}}</p>
+										</div>
 									</div>
-									<div class="col-lg-3">
-										<p><strong>Plz: </strong>{{plz}}</p>
+									<div class="row">
+										<div class="col-lg-3">
+											<p><strong>Sekretär: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Kassierer: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Typ: </strong>{{typeChoir}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Sprache: </strong>{{lang}}</p>
+										</div>
 									</div>
-									<div class="col-lg-3">
-										<p><strong>President: </strong>{{president.name.first}} {{president.name.last}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Direktor: </strong>{{director.name.first}} {{director.name.last}}</p>
+									<div class="row">
+										<div class="col-lg-3">
+											<p><strong>Zweittyp: </strong>{{secondTypeChoir}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Member FC: </strong>{{memberFC}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Member USC: </strong>{{memberUSC}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Gründungsjahr: </strong>{{foundingYear}}</p>
+										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-lg-3">
-										<p><strong>Sekretär: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
+							{{else}}
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-lg-3">
+											<p><strong>Ville: </strong>{{place}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Code postal: </strong>{{plz}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Président: </strong>{{president.name.first}} {{president.name.last}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Directeur: </strong>{{director.name.first}} {{director.name.last}}</p>
+										</div>
 									</div>
-									<div class="col-lg-3">
-										<p><strong>Kassierer: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
+									<div class="row">
+										<div class="col-lg-3">
+											<p><strong>Secrétaire: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>caissier: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Type de choeur: </strong>{{typeChoir}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Langage: </strong>{{lang}}</p>
+										</div>
 									</div>
-									<div class="col-lg-3">
-										<p><strong>Typ: </strong>{{typeChoir}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Sprache: </strong>{{lang}}</p>
+									<div class="row">
+										<div class="col-lg-3">
+											<p><strong>Second Type: </strong>{{secondTypeChoir}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Membre FSCV: </strong>{{memberFC}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Membre GCVC: </strong>{{memberUSC}}</p>
+										</div>
+										<div class="col-lg-3">
+											<p><strong>Année de fondation: </strong>{{foundingYear}}</p>
+										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-lg-3">
-										<p><strong>Zweittyp: </strong>{{secondTypeChoir}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Member FC: </strong>{{memberFC}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Member USC: </strong>{{memberUSC}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>Gründungsjahr: </strong>{{foundingYear}}</p>
-									</div>
-								</div>
-							</div>
+							{{/if}}
 						</div>
 					</div>
 				</div>
@@ -117,7 +202,11 @@
 		</table>
 	{{else}}
 		<!-- else -->
-		<h3 class="text-muted">There are no choirs yet.</h3>
+		{{#if isGerman}}
+			<h3 class="text-muted">Es gibt keinen Chor.</h3>
+		{{else}}
+			<h3 class="text-muted">Il n'y a aucun choeur.</h3>
+		{{/if}}
 	{{/if}}
 </div>
 
