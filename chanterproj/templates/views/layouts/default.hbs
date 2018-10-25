@@ -42,7 +42,14 @@
 							<ul class="nav navbar-nav navbar-left">
 
 										<li class="dropdown nav">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Presentation <span class="caret"></span></a>
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												{{#if textLanguage}}
+													Präsentation
+												{{else}}
+													Présentation
+												{{/if}}
+												<span class="caret"></span></a>
+											
 											<ul class="dropdown-menu">
 												{{#if textLanguage}}
 													<li><a href="/presentation">Präsentation</a></li>
@@ -52,8 +59,8 @@
 													<li role="separator" class="divider"></li>
 													<li><a href="/honor">Ehrenmitglieder</a></li>
 												{{else}}
-													<li><a href="/presentation">Presentation</a></li>
-													<li><a href="/comitee">Comite de la FSCV</a></li>
+													<li><a href="/presentation">Présentation</a></li>
+													<li><a href="/comitee">Comité de la FSCV</a></li>
 													<li><a href="/commission">Commission de Musique</a></li>
 													<li><a href="/pages/page/groupement">Groupements</a></li>
 													<li role="separator" class="divider"></li>
@@ -85,12 +92,12 @@
 												{{#if textLanguage}}
 													<li><a href="/pages/page/choeur-en-herbe">Lager 2018</a></li>
 													<li><a href="/pages/page/frappfestival">Frapp’Festival</a></li>
-													<li><a href="/pages/page/un-air-de-montagne">Eine Bergmelodie</a></li>
+													<li><a href="/pages/page/un-air-de-montagne">Eine Bergmelodie 2018</a></li>
 
 												{{else}}
-													<li><a href="/pages/page/choeur-en-herbe">Choeur en Herbe</a></li>
-													<li><a href="/pages/page/frappfestival">Frapp’Festival</a></li>
-													<li><a href="/pages/page/un-air-de-montagne">Un air de montagne</a></li>
+													<li><a href="/pages/page/choeur-en-herbe">Choeur en Herbe 2018</a></li>
+													<li><a href="/pages/page/frappfestival">Frapp’Festival 2016</a></li>
+													<li><a href="/pages/page/un-air-de-montagne">Un Air de montagne 2018</a></li>
 
 												{{/if}}
 											</ul>
@@ -109,7 +116,7 @@
 												<li><a href="/events">Unsere Events</a></li>
 											{{else}}
 												<li><a href="/choir">Chercher un choeur</a></li>
-												<li><a href="/events">Nos evenements</a></li>
+												<li><a href="/events">Nos évènements</a></li>
 											{{/if}}
 										</ul>
 									</li>
@@ -129,8 +136,8 @@
 													<li><a href="/pages/page/travail-vocal-en-chorale">Gesangsarbeit im Chor</a></li>
 
 												{{else}}
-													<li><a href="/pages/page/plan-general">Plan général de formation </a></li>
-													<li><a href="/pages/page/conference-mouvement-et-musique">Conférence</a></li>
+													<li><a href="/pages/page/plan-general">Plan général de formation 2018-2019</a></li>
+													<li><a href="/pages/page/conference-mouvement-et-musique">Conférence 2018 - Mouvement et musique</a></li>
 													<li><a href="/pages/page/travail-vocal-en-chorale">Travail vocal en chorale</a></li>
 
 												{{/if}}
@@ -152,9 +159,9 @@
 													<li><a href="/choirfonds">Chörefond AVCC</a></li>
 													<li><a href="/pages/page/avccformation">Zukunft AVCC</a></li>
 												{{else}}
-													<li><a href="/pages/page/avcc">Presentation AVCC</a></li>
+													<li><a href="/pages/page/avcc">Présentation AVCC</a></li>
 													<li><a href="/pages/page/avcchistory">Historique AVCC</a></li>
-													<li><a href="/pages/page/avcccommittee">Comite AVCC</a></li>
+													<li><a href="/pages/page/avcccommittee">Comité AVCC</a></li>
 													<li><a href="/choirfonds">Fonds choral et Foyer AVCC</a></li>
 													<li><a href="/pages/page/avccformation">Prochaine formation AVCC</a></li>
 												{{/if}}
@@ -162,7 +169,13 @@
 										</li>
 
 										<li class="dropdown nav">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Service<span class="caret"></span></a>
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												{{#if textLanguage}}
+													Service
+												{{else}}
+													Services
+												{{/if}}
+												<span class="caret"></span></a>
 											<ul class="dropdown-menu">
 												{{#if ../textLanguage}}
 													<li><a href="/blog">Kleinanzeigen</a></li>
@@ -171,11 +184,11 @@
 													<li><a href="/subscribeNewsletter">Newsletter Service</a></li>
 													<li><a href="/pages/page/supportsite">Fehlerbehebungsdienst</a></li>
 												{{else}}
-													<li><a href="/blog">Petite annonces</a></li>
-													<li><a href="/pages/page/forum-des-presidents-et-contrats">Forum des présidents</a></li>
-													<li><a href="/pages/page/skjf">Soutien aux choeurs</a></li>
-													<li><a href="/subscribeNewsletter">newsletter service</a></li>
-													<li><a href="/pages/page/supportsite">Service depannage</a></li>
+													<li><a href="/blog">Petites annonces</a></li>
+													<li><a href="/pages/page/forum-des-presidents-et-contrats">Forum des présidents et contrats</a></li>
+													<li><a href="/pages/page/skjf">Soutien aux choeurs d'enfants et de jeunes</a></li>
+													<li><a href="/subscribeNewsletter">Newsletter</a></li>
+													<li><a href="/pages/page/supportsite">Service dépannage</a></li>
 												{{/if}}
 											</ul>
 										</li>
@@ -206,7 +219,7 @@
 									{{#if textLanguage}}
 										Ausloggen
 									{{else}}
-										deconnexion
+										déconnexion
 									{{/if}}
 								</a></li>
 								{{else}}
