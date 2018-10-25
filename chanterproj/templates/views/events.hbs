@@ -41,11 +41,13 @@
 					<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(1)">Anfang<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(2)">Ort<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(3)">Veranstalter<img class="imageSort" src="images/sort.png"></th>
 					<th>Details</th>
 				{{else}}
 					<th class="cursor" onclick="sortTable(0)">Titre<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(1)">Date<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(2)">Ville<img class="imageSort" src="images/sort.png"></th>
+					<th class="cursor" onclick="sortTable(3)">Organisatrice<img class="imageSort" src="images/sort.png"></th>
 					<th>Détails</th>
 				{{/if}}
 			</tr>
@@ -56,8 +58,9 @@
 					<td>{{name}}</td>
 					<td>{{date startTime}}</td>
 					<td>{{location.suburb}}</td>
+					<td>{{organizer}}</td>
 					<td>
-						{{#if isGerman}}
+						{{#if ../isGerman}}
 							<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">Siehe Details</button>
 						{{else}}
 							<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">Voir les details</button>
@@ -77,37 +80,44 @@
 							<div class="modal-body">
 								<div class="row">
 									<div class="col-lg-3">
-										{{#if isGerman}}
+										{{#if ../isGerman}}
 											<p><strong>Ort: </strong>{{location.suburb}}</p>
 										{{else}}
 											<p><strong>Ville: </strong>{{location.suburb}}</p>
 										{{/if}}
 									</div>
 									<div class="col-lg-3">
-										{{#if isGerman}}
+										{{#if ../isGerman}}
 											<p><strong>Straße: </strong>{{location.street1}}</p>
 										{{else}}
 											<p><strong>Rue: </strong>{{location.street1}}</p>
 										{{/if}}
 									</div>
 									<div class="col-lg-3">
-										{{#if isGerman}}
+										{{#if ../isGerman}}
 											<p><strong>Anfang: </strong>{{date startTime}}</p>
 										{{else}}
 											<p><strong>Début: </strong>{{date startTime}}</p>
 										{{/if}}
 									</div>
 									<div class="col-lg-3">
-										{{#if isGerman}}
+										{{#if ../isGerman}}
 											<p><strong>Ende: </strong>{{date endTime}}</p>
 										{{else}}
 											<p><strong>Fin: </strong>{{date endTime}}</p>
 										{{/if}}
 									</div>
+									<div class="col-lg-3">
+										{{#if ../isGerman}}
+											<p><strong>Veranstalter: </strong>{{organizer}}</p>
+										{{else}}
+											<p><strong>Organisatrice: </strong>{{organizer}}</p>
+										{{/if}}
+									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-10 col-lg-offset-1">
-										{{#if isGerman}}
+										{{#if ../isGerman}}
 											<h3>Beschreibung</h3>
 										{{else}}
 											<h3>Description</h3>
