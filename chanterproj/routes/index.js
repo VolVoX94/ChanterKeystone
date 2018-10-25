@@ -92,6 +92,73 @@ exports = module.exports = function (app) {
 	app.get('/choir', routes.views.choir);
 	app.all('/ticketSystem', routes.views.ticketSystem);
 
+
+	app.post('/dashboardEvents', (req,res,next) => {
+		var Event = keystone.list('Event');
+		var lang = keystone.get('language').isGerman;
+		
+		if(req.body.cost === undefined){
+			req.body.cost = 0;
+		}
+		
+		var newEvent = new Event.model({
+			name: req.body.nameEvent,
+			description: req.body.descriptionEvent,
+			cost: req.body.costEvent,
+			organizer: req.body.organizer,
+			startTime: '2018-10-01 18:22:39.000',
+			endTime: '2018-10-01 18:22:39.000',
+			location: {street1: req.body.addressEvent, state: req.body.placeEvent, postcode: req.body.plzEvent},
+			publishDate: '2018-10-01 18:22:39.000',
+		});
+
+		newEvent.save(function(err) {
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Fehler beim Erstellen des Events' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Erreur lors de la suppression du evenement' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich den Event erstellt' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Vous avez fermé le evenement avec succès' });
+				}
+			}
+			res.redirect('/dashboard');
+		});
+	});
+	
+	app.post('/dashboardTicket', (req,res,next) => {
+		var Enquiry = keystone.list('Enquiry');
+		var lang = keystone.get('language').isGerman;
+		console.log(req.body.id);
+		Enquiry.model.findById(req.body.id)
+			.remove(function(err) {
+				if(err){
+					if(lang === true){
+						req.flash('error', { title: 'Hoppla', detail: 'Fehler beim schliessen des Tickets' });
+					}
+					else{
+						req.flash('error', { title: 'Hoppla!', detail: 'Erreur lors de la suppression du ticket' });
+					}
+				}
+				else{
+					if(lang === true){
+						req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich das Ticket geschlossen' });
+					}
+					else{
+						req.flash('success', { title: 'Succès!', detail: 'Vous avez fermé le ticket avec succès' });
+					}
+				}
+				res.redirect('/dashboard');
+			});
+	});
+
 	app.post('/dashboardChoir', (req,res,next) => {
 		console.log("Choir updated");
 		var today = new Date();

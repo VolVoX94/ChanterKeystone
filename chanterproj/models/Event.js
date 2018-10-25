@@ -6,6 +6,7 @@ Event.add({
 	name: {type: String, required: true, initial: true},
 	description: {type: Types.Html, wysiwyg: true},
 	cost: {type: Number, default: 0, size: 'small'},
+	organizer: {type: String},
 	startTime: {type: Types.Datetime, required: true, initial: true, index: true},
 	endTime: {type: Types.Datetime, required: true, initial: true, index: true},
 	location: {type: Types.Location, initial: true},

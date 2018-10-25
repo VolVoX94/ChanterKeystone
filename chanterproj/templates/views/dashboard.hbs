@@ -10,41 +10,48 @@
 <p/>
 
 
-
-
 <div class="container">
 	<ul class="nav nav-tabs">
 		<li id="one" class="active">
 			<a data-toggle="tab" href="#home">
 				{{#if isGerman}}
 					Benutzer
-					{{else}}
+				{{else}}
 					Utilisateur
-				{{/if}}		
-			</a>
-		</li>
-	{{#if choirs}}
-		<li id="two" class="">
-			<a data-toggle="tab" href="#menu1">
-				{{#if isGerman}}
-					Chöre
-				{{else}}
-					Choir
 				{{/if}}
 			</a>
 		</li>
-	{{/if}}
-	{{#if user.isAdmin}}
-		<li id="three" class="">
-			<a data-toggle="tab" href="#menu2">
-				{{#if isGerman}}
-					Statistik
-				{{else}}
-					Statistique
-				{{/if}}
-			</a>
-		</li>
-	{{/if}}
+		{{#if choirs}}
+			<li id="two" class="">
+				<a data-toggle="tab" href="#menu1">
+					{{#if isGerman}}
+						Chöre
+					{{else}}
+						Choir
+					{{/if}}
+				</a>
+			</li>
+			<li id="two" class="">
+				<a data-toggle="tab" href="#menu4">
+					{{#if isGerman}}
+						Events
+					{{else}}
+						Evenement
+					{{/if}}
+				</a>
+			</li>
+		{{/if}}
+		{{#if user.isAdmin}}
+			<li id="three" class="">
+				<a data-toggle="tab" href="#menu2">
+					{{#if isGerman}}
+						Statistik
+					{{else}}
+						Statistique
+					{{/if}}
+				</a>
+			</li>
+		{{/if}}
 		<li id="two" class="">
 			<a data-toggle="tab" href="#menu3">
 				Ticket
@@ -54,8 +61,8 @@
 
 	<div class="tab-content">
 		<div id="home" class="tab-pane fade in active">
-			
-			<form action="/dashboardUser" method = "post" class="form-horizontal">
+
+			<form action="/dashboardUser" method="post" class="form-horizontal">
 				<div id="heada" class="">
 					<h1>
 						{{#if isGerman}}
@@ -76,7 +83,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" value="{{user.name.first}}" class="form-control" name="firstname" placeholder="Enter firstname">
+						<input required type="text" value="{{user.name.first}}" class="form-control" name="firstname"
+							   placeholder="Enter firstname">
 					</div>
 				</div>
 
@@ -85,25 +93,28 @@
 						{{#if isGerman}}
 							Nachname:
 						{{else}}
-							Nom de famille: 
+							Nom de famille:
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" name="lastname" value="{{user.name.last}}" class="form-control" placeholder="Enter lastname">
+						<input required type="text" name="lastname" value="{{user.name.last}}" class="form-control"
+							   placeholder="Enter lastname">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">Email:</label>
 					<div class="col-sm-10">
-						<input required type="email" name="email" value="{{user.email}}" class="form-control" placeholder="Enter email">
+						<input required type="email" name="email" value="{{user.email}}" class="form-control"
+							   placeholder="Enter email">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="address">Adresse:</label>
 					<div class="col-sm-10">
-						<input required type="text" name="address" value="{{user.address}}" class="form-control" placeholder="Enter place">
+						<input required type="text" name="address" value="{{user.address}}" class="form-control"
+							   placeholder="Enter place">
 					</div>
 				</div>
 
@@ -116,7 +127,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input type="text" name="secondAddress" value="{{user.secondAddress}}" class="form-control" placeholder="Enter place">
+						<input type="text" name="secondAddress" value="{{user.secondAddress}}" class="form-control"
+							   placeholder="Enter place">
 					</div>
 				</div>
 
@@ -129,7 +141,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="number" name="plz" value="{{user.plz}}" class="form-control" placeholder="Enter plz">
+						<input required type="number" name="plz" value="{{user.plz}}" class="form-control"
+							   placeholder="Enter plz">
 					</div>
 				</div>
 
@@ -142,7 +155,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" name="place" value="{{user.place}}" class="form-control" placeholder="Enter place">
+						<input required type="text" name="place" value="{{user.place}}" class="form-control"
+							   placeholder="Enter place">
 					</div>
 				</div>
 
@@ -155,7 +169,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input type="text" name="privatePhone" value="{{user.privatePhone}}" class="form-control" placeholder="Enter private phone">
+						<input type="text" name="privatePhone" value="{{user.privatePhone}}" class="form-control"
+							   placeholder="Enter private phone">
 					</div>
 				</div>
 
@@ -168,7 +183,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input type="text" name="businessPhone" value="{{user.businessPhone}}" class="form-control" placeholder="Enter business phone">
+						<input type="text" name="businessPhone" value="{{user.businessPhone}}" class="form-control"
+							   placeholder="Enter business phone">
 					</div>
 				</div>
 
@@ -180,7 +196,7 @@
 						<input type="text" name="fax" value="{{user.fax}}" class="form-control" placeholder="Enter fax">
 					</div>
 				</div>
-				
+
 
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">
@@ -191,7 +207,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="password" name="password" id="password" value="" class="form-control" placeholder="Enter new password" onkeyup='check();'>
+						<input required type="password" name="password" id="password" value="" class="form-control"
+							   placeholder="Enter new password" onkeyup='check();'>
 					</div>
 				</div>
 
@@ -200,11 +217,12 @@
 						{{#if isGerman}}
 							Passwort bestätigen:
 						{{else}}
-							Confirmer le mot de passe: 
+							Confirmer le mot de passe:
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="password" id="confirm_password" value="" class="form-control" placeholder="Confirm new password" onkeyup='check();'>
+						<input required type="password" id="confirm_password" value="" class="form-control"
+							   placeholder="Confirm new password" onkeyup='check();'>
 					</div>
 				</div>
 
@@ -228,12 +246,12 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<div class="checkbox">
-							<label><input name="subscriber" 
-										  type="checkbox" 
-											{{#if user.isSubscriber}}
-										  		checked
-											{{/if}}
-								>
+							<label><input name="subscriber"
+										  type="checkbox"
+								{{#if user.isSubscriber}}
+										  checked
+								{{/if}}
+							>
 								{{#if isGerman}}
 									Newsletter abonniert
 								{{else}}
@@ -252,15 +270,15 @@
 					</div>
 				</div>
 			</form>
-			
-			
+
+
 		</div>
 		<div id="menu1" class="tab-pane fade">
 
 
 			{{#each choirs}}
-				<div class="col-lg-6">
-					<form action="/dashboardChoir" method = "post" class="form-horizontal">
+				<div class="col-lg-12">
+					<form action="/dashboardChoir" method="post" class="form-horizontal">
 						<h1>
 							{{#if ../isGerman}}
 								Dein Chor:
@@ -279,7 +297,8 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input required type="text" value="{{name}}" class="form-control" name="name" placeholder="Enter Name">
+								<input required type="text" value="{{name}}" class="form-control" name="name"
+									   placeholder="Enter Name">
 							</div>
 						</div>
 
@@ -292,7 +311,8 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="number" value="{{plz}}" class="form-control" name="plz" placeholder="Enter plz">
+								<input type="number" value="{{plz}}" class="form-control" name="plz"
+									   placeholder="Enter plz">
 							</div>
 						</div>
 
@@ -305,7 +325,8 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{place}}" class="form-control" name="place" placeholder="Enter place">
+								<input type="text" value="{{place}}" class="form-control" name="place"
+									   placeholder="Enter place">
 							</div>
 						</div>
 
@@ -362,7 +383,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="cashier">
 								{{#if ../isGerman}}
@@ -408,17 +429,19 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="number" value="{{foundingYear}}" class="form-control" name="foundingYear" placeholder="Enter founding year">
+								<input type="number" value="{{foundingYear}}" class="form-control" name="foundingYear"
+									   placeholder="Enter founding year">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="homepage">Homepage:</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{homepage}}" class="form-control" name="homepage" placeholder="Enter homepage">
+								<input type="text" value="{{homepage}}" class="form-control" name="homepage"
+									   placeholder="Enter homepage">
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="typeChoir">
 								{{#if ../isGerman}}
@@ -481,7 +504,7 @@
 								</select>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="entranceGroupMt">
 								{{#if ../isGerman}}
@@ -492,23 +515,25 @@
 							</label>
 							<div class="col-sm-10">
 								{{entranceGroupMt}}
-								<input type="date" value="" class="form-control" name="entranceGroupMt" placeholder="Enter entrance GroupMt">
-								<input type="hidden" value="{{entranceGroupMt}}" class="form-control" name="entranceGroupMtPrevious">
+								<input type="date" value="" class="form-control" name="entranceGroupMt"
+									   placeholder="Enter entrance GroupMt">
+								<input type="hidden" value="{{entranceGroupMt}}" class="form-control"
+									   name="entranceGroupMtPrevious">
 							</div>
 						</div>
 
 						<div class="form-group">
-								<div class="checkbox">
-									<label class="control-label col-sm-2" for="chGospel" ><b>ChGospel</b></label>
-									<div class="col-sm-10">
-										<input name="chGospel" type="checkbox" {{#if chGospel}}checked{{/if}}>
-									</div>
+							<div class="checkbox">
+								<label class="control-label col-sm-2" for="chGospel"><b>ChGospel</b></label>
+								<div class="col-sm-10">
+									<input name="chGospel" type="checkbox" {{#if chGospel}}checked{{/if}}>
 								</div>
+							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="checkbox">
-								<label class="control-label col-sm-2" for="chGospel" ><b>ChEglise</b></label>
+								<label class="control-label col-sm-2" for="chGospel"><b>ChEglise</b></label>
 								<div class="col-sm-10">
 									<input name="chEglise" type="checkbox" {{#if chEglise}}checked{{/if}}>
 								</div>
@@ -524,7 +549,8 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{type2}}" class="form-control" name="type2" placeholder="Enter type2">
+								<input type="text" value="{{type2}}" class="form-control" name="type2"
+									   placeholder="Enter type2">
 							</div>
 						</div>
 
@@ -537,11 +563,12 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{memberUSC}}" class="form-control" name="memberUSC" placeholder="Enter memberUSC">
+								<input type="text" value="{{memberUSC}}" class="form-control" name="memberUSC"
+									   placeholder="Enter memberUSC">
 							</div>
 						</div>
 
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="entranceUSC">
 								{{#if ../isGerman}}
@@ -552,8 +579,10 @@
 							</label>
 							<div class="col-sm-10">
 								{{entranceUSC}}
-								<input type="date" value="{{entranceUSC}}" class="form-control" name="entranceUSC" placeholder="Enter entrance entranceUSC">
-								<input type="hidden" value="{{entranceUSC}}" class="form-control" name="entranceUSCprevious">
+								<input type="date" value="{{entranceUSC}}" class="form-control" name="entranceUSC"
+									   placeholder="Enter entrance entranceUSC">
+								<input type="hidden" value="{{entranceUSC}}" class="form-control"
+									   name="entranceUSCprevious">
 							</div>
 						</div>
 
@@ -566,7 +595,8 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{memberFC}}" class="form-control" name="memberFC" placeholder="Enter memberFC">
+								<input type="text" value="{{memberFC}}" class="form-control" name="memberFC"
+									   placeholder="Enter memberFC">
 							</div>
 						</div>
 
@@ -580,8 +610,10 @@
 							</label>
 							<div class="col-sm-10">
 								{{entranceFC}}
-								<input type="date" value="" class="form-control" name="entranceFC" placeholder="Enter entrance entranceFC">
-								<input type="hidden" value="{{entranceFC}}" class="form-control" name="entranceFCprevious">
+								<input type="date" value="" class="form-control" name="entranceFC"
+									   placeholder="Enter entrance entranceFC">
+								<input type="hidden" value="{{entranceFC}}" class="form-control"
+									   name="entranceFCprevious">
 							</div>
 						</div>
 
@@ -594,14 +626,16 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{courierName}}" class="form-control" name="courierName" placeholder="Enter courierName">
+								<input type="text" value="{{courierName}}" class="form-control" name="courierName"
+									   placeholder="Enter courierName">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="dekanat">Dekanat:</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{dekanat}}" class="form-control" name="dekanat" placeholder="Enter dekanat">
+								<input type="text" value="{{dekanat}}" class="form-control" name="dekanat"
+									   placeholder="Enter dekanat">
 							</div>
 						</div>
 
@@ -634,10 +668,11 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-10">
-								<input type="text" value="{{remarks}}" class="form-control" name="remarks" placeholder="Enter remark">
+								<input type="text" value="{{remarks}}" class="form-control" name="remarks"
+									   placeholder="Enter remark">
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-1" for="lastUpdate">
 								{{#if ../isGerman}}
@@ -647,25 +682,29 @@
 								{{/if}}
 							</label>
 							<div class="col-sm-12">
-								<input type="text" value="{{lastUpdate}}" class="form-control" name="lastUpdate" readonly>
+								<input type="text" value="{{lastUpdate}}" class="form-control" name="lastUpdate"
+									   readonly>
 							</div>
 						</div>
-						
-						<button id="submit1" type="submit" value="Submit" class="btn btn-default" onclick="setChoirsActive()">
+
+						<button id="submit1" type="submit" value="Submit" class="btn btn-default"
+								onclick="setChoirsActive()">
 							{{#if ../isGerman}}
-								Speichern:
+								Speichern
 							{{else}}
-								confirmer:
+								confirmer
 							{{/if}}
 						</button>
 					</form>
+
+					<hr/>
 				</div>
+
 			{{/each}}
-			
-			
+
+
 		</div>
 		<div id="menu2" class="tab-pane fade">
-
 
 			<h1>
 				{{#if isGerman}}
@@ -676,7 +715,6 @@
 			</h1>
 
 			<div class="card m-5">
-				
 				<h3>
 					{{#if isGerman}}
 						Statistik Total:
@@ -685,7 +723,7 @@
 					{{/if}}
 				</h3>
 				<canvas id="totalChart" style="max-width: 1200px"></canvas>
-				
+
 				<h3>
 					{{#if isGerman}}
 						Monatliche Statistik:
@@ -723,11 +761,11 @@
 					</div>
 				</div>
 				<canvas id="myChart" style="max-width: 1200px"></canvas>
-				
+
 
 			</div>
-			
-			
+
+
 		</div>
 		<div id="menu3" class="tab-pane fade">
 			{{#if isGerman}}
@@ -735,15 +773,15 @@
 			{{else}}
 				<h1>Vous avez reçu les tickets suivants</h1>
 			{{/if}}
-			
-			<br />
-			
+
+			<br/>
+
 			{{#if enquiryItemForAdmin}}
 				{{#if isGerman}}
 					<h2>Für Masteradmin</h2>
 				{{else}}
 					<h2>Pour MasterAdmin</h2>
-				{{/if}}	
+				{{/if}}
 				{{#each enquiryItemForAdmin}}
 					<div class="col-sm-2">
 						<img src="/images/prio{{priority}}Ticket.png" height="150px"/>
@@ -755,8 +793,13 @@
 							<p><b>Email:</b> {{email}}  </p>
 							<p><b>Nachricht:</b> {{{message.html}}}</p>
 							<p><b>Priority:</b> {{{priority}}}</p>
-							<p><button class="btn-primary" onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">Antwort senden</button></p>
-							<hr />
+							<p>
+								<button class="btn-primary"
+										onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
+									Antwort senden
+								</button>
+							</p>
+							<hr/>
 						</div>
 					{{else}}
 						<div class="col-sm-10">
@@ -765,10 +808,15 @@
 							<p><b>Email:</b> {{email}}</p>
 							<p><b>Message:</b> {{{message.html}}}</p>
 							<p><b>Priority:</b> {{{priority}}}</p>
-							<p><button class="btn-primary" onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">Envoyer la réponse</button></p>
-							<hr />
+							<p>
+								<button class="btn-primary"
+										onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
+									Envoyer la réponse
+								</button>
+							</p>
+							<hr/>
 						</div>
-					{{/if}}	
+					{{/if}}
 				{{/each}}
 			{{else}}
 				{{#if user.isAdmin}}
@@ -779,112 +827,731 @@
 						<h2>Pour MasterAdmin</h2>
 						<h3>Aucun ticket en circulation</h3>
 					{{/if}}
-				{{/if}}	
-			{{/if}}
-
-		<br />
-		
-		{{#if enquiryItem}}
-			{{#if isGerman}}
-					<h2>Für Choradmin</h2>
-			{{else}}
-					<h2>Pour admin de choir</h2>
-			{{/if}}
-			{{#each enquiryItem}}
-				<div class="col-sm-2">
-					<img src="/images/prio{{priority}}Ticket.png" height="150px"/>
-				</div>
-				{{#if ../isGerman}}
-					<div class="col-sm-10">
-						<p><b>Typ:</b> {{enquiryType}}</p>
-						<p><b>Ticketname:</b> {{name.first}}</p>
-						<p><b>Email:</b> {{email}}  </p>
-						<p><b>Nachricht:</b> {{{message.html}}}</p>
-						<p><b>Priority:</b> {{{priority}}}</p>
-						<p><button class="btn-primary" onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">Antwort senden</button></p>
-						<hr />
-					</div>
-				{{else}}
-				<div class="col-sm-10">
-					<p><b>Typ:</b> {{enquiryType.labelFrench}}</p>
-					<p><b>Nom du ticket:</b> {{name.first}}</p>
-					<p><b>Email:</b> {{email}}</p>
-					<p><b>Message:</b> {{{message.html}}}</p>
-					<p><b>Priority:</b> {{{priority}}}</p>
-					<p><button class="btn-primary" onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">Envoyer la réponse</button></p>
-					<hr />
-				</div>
 				{{/if}}
-			{{/each}}
+			{{/if}}
 
-		{{else}}
-			{{#if user.isAdmin}}
-				<!-- For Admin not necessary -->
-			{{else}}
+			<br/>
+
+			{{#if enquiryItem}}
 				{{#if isGerman}}
-					<h3>Keine ausstehenden Tickets</h3>
+					<h2>Für Choradmin</h2>
 				{{else}}
-					<h3>Aucun ticket en circulation</h3>
+					<h2>Pour admin de choir</h2>
+				{{/if}}
+				{{#each enquiryItem}}
+					<div class="col-sm-2">
+						<img src="/images/prio{{priority}}Ticket.png" height="150px"/>
+					</div>
+						<div class="col-sm-10">
+							<form action="/dashboardTicket" method="post" class="form-horizontal">
+								<input type="hidden" name="id" value="{{_id}}" readonly style="border:none">
+								<p>
+									{{#if ../isGerman}}
+										<b>Typ:</b>
+									{{else}}
+										<b>Type:</b>
+									{{/if}}
+									<input type="text" name="type" value="{{enquiryType}}" readonly style="border:none">
+								</p>
+								<p>
+									{{#if ../isGerman}}
+										<b>Ticketname:</b>
+									{{else}}
+										<b>Nom du ticket:</b>
+									{{/if}}
+									
+									<input type="text" name="ticketName" value="{{name.first}}" readonly style="border:none">
+								</p>
+								<p>
+									{{#if ../isGerman}}
+										<b>Email:</b>
+									{{else}}
+										<b>Email:</b>
+									{{/if}}
+									
+									<input type="text" name="email" value="{{email}}" readonly style="border:none">
+								</p>
+								<p>
+									{{#if ../isGerman}}
+										<b>Nachricht:</b>
+									{{else}}
+										<b>Message:</b>
+									{{/if}}
+
+									{{{message.html}}}
+								</p>
+								<p>
+									<b>Priority:</b>
+									<input type="text" name="priority" value="{{priority}}" readonly style="border:none">
+								</p>
+								<p>
+									<button id="submit1" type="submit" value="Submit" class="btn btn-warning">
+										{{#if ../isGerman}}
+											<b>Ticket schliessen</b>
+										{{else}}
+											<b>Fermer le ticket</b>
+										{{/if}}
+									</button>
+								</p>
+							</form>
+							<p>
+								<button class="btn-primary"
+										onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
+									{{#if ../isGerman}}
+										<b>Antwort senden</b>
+									{{else}}
+										<b>Envoyer la réponse</b>
+									{{/if}}
+								</button>
+							</p>
+							<hr/>
+						</div>					
+				{{/each}}
+			{{else}}
+				{{#if user.isAdmin}}
+					<!-- For Admin not necessary -->
+				{{else}}
+					{{#if isGerman}}
+						<h3>Keine ausstehenden Tickets</h3>
+					{{else}}
+						<h3>Aucun ticket en circulation</h3>
+					{{/if}}
 				{{/if}}
 			{{/if}}
-		{{/if}}
 
+		</div>
+		<div id="menu4" class="tab-pane fade">
+
+			{{#if isGerman}}
+				<h1>Events</h1>
+				Erstellen einer Veranstaltung im Namen des Chores
+			{{else}}
+				<h1>Evenement</h1>
+				Créer un événement au nom de la chorale
+			{{/if}}
+					<form action="/dashboardEvents" method="post" class="form-horizontal">
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="nameEvent">
+								{{#if isGerman}}
+									Name.:
+								{{else}}
+									Nom:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input type="text" required class="form-control" name="nameEvent" placeholder="Enter name of event">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="descriptionEvent">
+								{{#if isGerman}}
+									Beschreibung:
+								{{else}}
+									Description:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input type="text" required class="form-control" name="descriptionEvent" placeholder="Enter description of event">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="costEvent">
+								{{#if isGerman}}
+									Kosten:
+								{{else}}
+									dépenses:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" name="costEvent" placeholder="Enter cost of event">
+							</div>	
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="choirs">
+								{{#if isGerman}}
+									Veranstalter:
+								{{else}}
+									organisatrice:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<select required name="organizer" class="form-control">
+									<option value="">Select</option>
+									{{#each choirs}}
+										<option value="{{_id}}">{{name}} </option>
+									{{/each}}
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="startEvent">
+								{{#if isGerman}}
+									Start der Veranstaltung:
+								{{else}}
+									Début de l'événement:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input required type="datetime-local" class="form-control" name="startEvent"  placeholder="Enter start of event">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">
+								{{#if isGerman}}
+									Ende der Veranstaltung:
+								{{else}}
+									Fin de l'événement:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input required type="datetime-local" class="form-control" name="endEvent" placeholder="Enter end of event">
+							</div>	
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">
+								{{#if isGerman}}
+									Adresse der Veranstaltung:
+								{{else}}
+									Adresse de l'événement:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input required type="text" class="form-control" name="addressEvent" placeholder="Enter address of event">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">
+								{{#if isGerman}}
+									Ort der Veranstaltung:
+								{{else}}
+									Lieu de l'événement:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input required type="text" class="form-control" name="placeEvent" placeholder="Enter place of event">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">
+								{{#if isGerman}}
+									PLZ der Veranstaltung:
+								{{else}}
+									code postal de l'événement:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input required type="number" class="form-control" name="plzEvent" placeholder="Enter postalcode of event">
+							</div>	
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="dekanat">
+								{{#if isGerman}}
+									Publikationsdatum:
+								{{else}}
+									date de publication:
+								{{/if}}
+							</label>
+							<div class="col-sm-10">
+								<input type="date" class="form-control" name="publishDateEvent" placeholder="Enter publishDate of event">
+							</div>	
+						</div>
+						<div class="form-group">
+							<button id="submit1" type="submit" value="Submit" class="btn btn-info">send</button>
+						</div>
+					</form>
+				<hr/>
 		</div>
 	</div>
 
-		<!-- SCRIPTS -->
-		<!-- JQuery -->
-		<script type="text/javascript" src="diagramm/js/jquery-3.3.1.min.js"></script>
-		<!-- Bootstrap tooltips -->
-		<script type="text/javascript" src="diagramm/js/popper.min.js"></script>
-		<!-- Bootstrap core JavaScript -->
-		<script type="text/javascript" src="diagramm/js/bootstrap.min.js"></script>
-		<!-- MDB core JavaScript -->
-		<script type="text/javascript" src="diagramm/js/mdb.min.js"></script>
+	<!-- SCRIPTS -->
+	<!-- JQuery -->
+	<script type="text/javascript" src="diagramm/js/jquery-3.3.1.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="diagramm/js/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="diagramm/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="diagramm/js/mdb.min.js"></script>
 
-		<script>
-			var ctx = document.getElementById("myChart").getContext('2d');
-			var ttx = document.getElementById("totalChart").getContext('2d');
+	<script>
+		var ctx = document.getElementById("myChart").getContext('2d');
+		var ttx = document.getElementById("totalChart").getContext('2d');
 
-			//used for monthyl statistics
-			var dataset = [];
-			
-			//used for total statistic
-			var dataSetTotal = [0,0,0,0,0,0,0,0,0];
-			
-				{{#each statistic}}
-					
-					dataSetTotal = [
+		//used for monthyl statistics
+		var dataset = [];
+
+		//used for total statistic
+		var dataSetTotal = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+			{{#each statistic}}
+
+			dataSetTotal = [
+				//Index	
+					{{countIndex}}+dataSetTotal[0],
+				//Gallery	
+				{{countGallery}} +dataSetTotal[1],
+				//Events	
+					{{countEvents}}+dataSetTotal[2],
+				//Contacts	
+				{{countContact}} +dataSetTotal[3],
+				//Blog	
+				{{countBlog}} +dataSetTotal[4],
+				//Choir	
+				{{countChoir}} +dataSetTotal[5],
+				//Dashboard	
+				{{countDashboard}} +dataSetTotal[6],
+				//Sent tickets	
+				{{countSentTicket}} +dataSetTotal[7],
+				//Sent newsletters	
+				{{countSentNewsletter}} +dataSetTotal[8]
+			];
+			{{/each}}
+
+		//---------------------- TOTAL STATISTIC
+
+		var totalChart = new Chart(ttx, {
+			type: 'bar',
+			data: {
+				labels: ["Index", "Gallery", "Events", "Contact", "Blog", "Choir", "Dashboard", "Sent tickets", "sent newsletters"],
+				datasets: [{
+					label: '# of Votes',
+					data: dataSetTotal,
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(153, 102, 255, 0.2)'
+					],
+					borderColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(153, 102, 255, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+		//----------------------- MONTHLY STATISTIC
+		function getJanData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 0) {
+					dataset = [
 						//Index	
-						{{countIndex}}+ dataSetTotal[0],
+						{{countIndex}},
 						//Gallery	
-						{{countGallery}} + dataSetTotal[1],
+						{{countGallery}},
 						//Events	
-						{{countEvents}}+ dataSetTotal[2],
+						{{countEvents}},
 						//Contacts	
-						{{countContact}} + dataSetTotal[3],
+						{{countContact}},
 						//Blog	
-						{{countBlog}} + dataSetTotal[4],
+						{{countBlog}},
 						//Choir	
-						{{countChoir}} + dataSetTotal[5],
+						{{countChoir}},
 						//Dashboard	
-						{{countDashboard}} + dataSetTotal[6],
+						{{countDashboard}},
 						//Sent tickets	
-						{{countSentTicket}} + dataSetTotal[7],
+						{{countSentTicket}},
 						//Sent newsletters	
-						{{countSentNewsletter}} + dataSetTotal[8]
+						{{countSentNewsletter}}
 					];
-				{{/each}}
-			
-			//---------------------- TOTAL STATISTIC
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
 
-			var totalChart = new Chart(ttx, {
+		function getFebData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 1) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getMarData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 2) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getAprData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 3) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getMaiData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 4) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getJunData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 5) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getJulData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 6) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getAugData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 7) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getSepData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 8) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getOctData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 9) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getNovData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 10) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function getDezData() {
+			var actuelMonth;
+			dataset = [];
+
+			{{#each statistic}}
+				actuelMonth = {{actuelMonth}}
+				if (actuelMonth === 11) {
+					dataset = [
+						//Index	
+						{{countIndex}},
+						//Gallery	
+						{{countGallery}},
+						//Events	
+						{{countEvents}},
+						//Contacts	
+						{{countContact}},
+						//Blog	
+						{{countBlog}},
+						//Choir	
+						{{countChoir}},
+						//Dashboard	
+						{{countDashboard}},
+						//Sent tickets	
+						{{countSentTicket}},
+						//Sent newsletters	
+						{{countSentNewsletter}}
+					];
+				}
+			{{/each}}
+			loadDiagramm(dataset);
+		}
+
+		function loadDiagramm(dataset) {
+			var myChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
 					labels: ["Index", "Gallery", "Events", "Contact", "Blog", "Choir", "Dashboard", "Sent tickets", "sent newsletters"],
 					datasets: [{
 						label: '# of Votes',
-						data: dataSetTotal,
+						data: dataset,
 						backgroundColor: [
 							'rgba(255, 99, 132, 0.2)',
 							'rgba(54, 162, 235, 0.2)',
@@ -914,485 +1581,39 @@
 					scales: {
 						yAxes: [{
 							ticks: {
-								beginAtZero:true
+								beginAtZero: true
 							}
 						}]
 					}
 				}
 			});
-			
+		}
+
+		//------------ END MONTHLY STATISTICs
 
 
-
-
-
-			//----------------------- MONTHLY STATISTIC
-			function getJanData(){
-				var actuelMonth;
-				dataset = [];
-				
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 0)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
+		var check = function () {
+			if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
+				document.getElementById('message').style.color = 'green';
+				document.getElementById('message').innerHTML = 'matching';
+				document.getElementById('submit').disabled = false;
+			} else {
+				document.getElementById('message').style.color = 'red';
+				document.getElementById('message').innerHTML = 'not matching';
+				document.getElementById('submit').disabled = true;
 			}
+		}
 
-			function getFebData(){
-				var actuelMonth;
-				dataset = [];
+		var setChoirsActive = function () {
+			var one = document.getElementById('one');
+			var two = document.getElementById('two');
+			one.classList.toggle("active");
+			two.classList.toggle("active");
+		}
 
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 1)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getMarData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 2)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getAprData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 3)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getMaiData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 4)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getJunData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 5)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getJulData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 6)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getAugData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 7)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getSepData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 8)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getOctData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 9)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getNovData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 10)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-
-			function getDezData(){
-				var actuelMonth;
-				dataset = [];
-
-				{{#each statistic}}
-					actuelMonth = {{actuelMonth}}
-					if(actuelMonth === 11)
-					{
-						dataset = [
-							//Index	
-							{{countIndex}},
-							//Gallery	
-							{{countGallery}},
-							//Events	
-							{{countEvents}},
-							//Contacts	
-							{{countContact}},
-							//Blog	
-							{{countBlog}},
-							//Choir	
-							{{countChoir}},
-							//Dashboard	
-							{{countDashboard}},
-							//Sent tickets	
-							{{countSentTicket}},
-							//Sent newsletters	
-							{{countSentNewsletter}}
-						];
-					}
-				{{/each}}
-				loadDiagramm(dataset);
-			}
-			
-			function loadDiagramm(dataset){
-				var myChart = new Chart(ctx, {
-					type: 'bar',
-					data: {
-						labels: ["Index", "Gallery", "Events", "Contact", "Blog", "Choir", "Dashboard", "Sent tickets", "sent newsletters"],
-						datasets: [{
-							label: '# of Votes',
-							data: dataset,
-							backgroundColor: [
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(255, 159, 64, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(153, 102, 255, 0.2)'
-							],
-							borderColor: [
-								'rgba(255,99,132,1)',
-								'rgba(54, 162, 235, 1)',
-								'rgba(255, 206, 86, 1)',
-								'rgba(75, 192, 192, 1)',
-								'rgba(153, 102, 255, 1)',
-								'rgba(255, 159, 64, 1)',
-								'rgba(153, 102, 255, 1)',
-								'rgba(153, 102, 255, 1)',
-								'rgba(153, 102, 255, 1)'
-							],
-							borderWidth: 1
-						}]
-					},
-					options: {
-						scales: {
-							yAxes: [{
-								ticks: {
-									beginAtZero:true
-								}
-							}]
-						}
-					}
-				});
-			}
-			
-			//------------ END MONTHLY STATISTICs
-			
-
-			var check = function() {
-				if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
-					document.getElementById('message').style.color = 'green';
-					document.getElementById('message').innerHTML = 'matching';
-					document.getElementById('submit').disabled = false;
-				} else {
-					document.getElementById('message').style.color = 'red';
-					document.getElementById('message').innerHTML = 'not matching';
-					document.getElementById('submit').disabled = true;
-				}
-			}
-
-			var setChoirsActive = function() {
-				var one = document.getElementById('one');
-				var two = document.getElementById('two');
-				one.classList.toggle("active");
-				two.classList.toggle("active"); 
-			}
-
-			var setStatisticsActive = function() {
-				var three = document.getElementById('three');
-				three.classList.toggle("active");
-			}
-		</script>
+		var setStatisticsActive = function () {
+			var three = document.getElementById('three');
+			three.classList.toggle("active");
+		}
+	</script>
 </div>
