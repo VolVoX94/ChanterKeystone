@@ -7,13 +7,13 @@ Statistic.add({
 	countIndex: {type: Types.Number, required: true, initial: true},
 	countGallery: {type: Types.Number, required: true, initial: true},
 	countEvents: {type: Types.Number, required: true, initial: true},
-	countBlog: {type: Types.Number, required: true, initial: true},
+	countAds: {type: Types.Number, required: true, initial: true},
+	countHelp: {type: Types.Number, required: true, initial: true},
 	countChoir: {type: Types.Number, required: true, initial: true},
-	countContact: {type: Types.Number, required: true, initial: true},
 	countDashboard: {type: Types.Number, required: true, initial: true},
 	
 	countSentTicket: {type: Types.Number, required: true, initial: true},
-	countSentNewsletter: {type: Types.Number, required: true, initial: true},
+	countClosedTicket: {type: Types.Number, required: true, initial: true},
 		
 	actuelMonth: {type: Types.Number, required: true, initial: true},
 });

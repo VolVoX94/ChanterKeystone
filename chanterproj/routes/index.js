@@ -136,7 +136,24 @@ exports = module.exports = function (app) {
 	app.post('/dashboardTicket', (req,res,next) => {
 		var Enquiry = keystone.list('Enquiry');
 		var lang = keystone.get('language').isGerman;
-		console.log(req.body.id);
+		
+		//---------------- STATISTIC COUNTER --------------------------------
+		var d = new Date();
+		var n = d.getMonth();
+
+		keystone.list('Statistic').model.update(
+			{actuelMonth: n},
+			{
+				$inc: {
+					countClosedTicket: 1
+				}
+			},
+			{upsert: true}
+		).exec(function(err,result){
+			//Query will be executed
+		});
+		//---------------- STATISTIC COUNTER --------------------------------
+
 		Enquiry.model.findById(req.body.id)
 			.remove(function(err) {
 				if(err){

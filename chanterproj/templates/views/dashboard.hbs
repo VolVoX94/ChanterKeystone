@@ -786,37 +786,70 @@
 					<div class="col-sm-2">
 						<img src="/images/prio{{priority}}Ticket.png" height="150px"/>
 					</div>
-					{{#if ../isGerman}}
-						<div class="col-sm-10">
-							<p><b>Typ:</b> {{enquiryType}}</p>
-							<p><b>Ticketname:</b> {{name.first}}</p>
-							<p><b>Email:</b> {{email}}  </p>
-							<p><b>Nachricht:</b> {{{message.html}}}</p>
-							<p><b>Priority:</b> {{{priority}}}</p>
+					<div class="col-sm-10">
+						<form action="/dashboardTicket" method="post" class="form-horizontal">
+							<input type="hidden" name="id" value="{{_id}}" readonly style="border:none">
 							<p>
-								<button class="btn-primary"
-										onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
-									Antwort senden
+								{{#if ../isGerman}}
+									<b>Typ:</b>
+								{{else}}
+									<b>Type:</b>
+								{{/if}}
+								<input type="text" name="type" value="{{enquiryType}}" readonly style="border:none">
+							</p>
+							<p>
+								{{#if ../isGerman}}
+									<b>Ticketname:</b>
+								{{else}}
+									<b>Nom du ticket:</b>
+								{{/if}}
+
+								<input type="text" name="ticketName" value="{{name.first}}" readonly style="border:none">
+							</p>
+							<p>
+								{{#if ../isGerman}}
+									<b>Email:</b>
+								{{else}}
+									<b>Email:</b>
+								{{/if}}
+
+								<input type="text" name="email" value="{{email}}" readonly style="border:none">
+							</p>
+							<p>
+								{{#if ../isGerman}}
+									<b>Nachricht:</b>
+								{{else}}
+									<b>Message:</b>
+								{{/if}}
+
+								{{{message.html}}}
+							</p>
+							<p>
+								<b>Priority:</b>
+								<input type="text" name="priority" value="{{priority}}" readonly style="border:none">
+							</p>
+							<p>
+								<button id="submit1" type="submit" value="Submit" class="btn btn-warning">
+									{{#if ../isGerman}}
+										<b>Ticket schliessen</b>
+									{{else}}
+										<b>Fermer le ticket</b>
+									{{/if}}
 								</button>
 							</p>
-							<hr/>
-						</div>
-					{{else}}
-						<div class="col-sm-10">
-							<p><b>Typ:</b> {{enquiryType.labelFrench}}</p>
-							<p><b>Nom du ticket:</b> {{name.first}}</p>
-							<p><b>Email:</b> {{email}}</p>
-							<p><b>Message:</b> {{{message.html}}}</p>
-							<p><b>Priority:</b> {{{priority}}}</p>
-							<p>
-								<button class="btn-primary"
-										onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
-									Envoyer la réponse
-								</button>
-							</p>
-							<hr/>
-						</div>
-					{{/if}}
+						</form>
+						<p>
+							<button class="btn-primary"
+									onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
+								{{#if ../isGerman}}
+									<b>Antwort senden</b>
+								{{else}}
+									<b>Envoyer la réponse</b>
+								{{/if}}
+							</button>
+						</p>
+						<hr/>
+					</div>
 				{{/each}}
 			{{else}}
 				{{#if user.isAdmin}}
@@ -1093,23 +1126,23 @@
 
 			dataSetTotal = [
 				//Index	
-					{{countIndex}}+dataSetTotal[0],
+				{{countIndex}}+dataSetTotal[0],
 				//Gallery	
 				{{countGallery}} +dataSetTotal[1],
-				//Events	
-					{{countEvents}}+dataSetTotal[2],
+				//Events
+				{{countEvents}}+dataSetTotal[2],
 				//Contacts	
-				{{countContact}} +dataSetTotal[3],
+				{{countHelp}} +dataSetTotal[3],
 				//Blog	
-				{{countBlog}} +dataSetTotal[4],
+				{{countAds}} +dataSetTotal[4],
 				//Choir	
 				{{countChoir}} +dataSetTotal[5],
 				//Dashboard	
 				{{countDashboard}} +dataSetTotal[6],
 				//Sent tickets	
 				{{countSentTicket}} +dataSetTotal[7],
-				//Sent newsletters	
-				{{countSentNewsletter}} +dataSetTotal[8]
+				//Closed tickets	
+				{{countClosedTicket}} +dataSetTotal[8]
 			];
 			{{/each}}
 
@@ -1118,7 +1151,7 @@
 		var totalChart = new Chart(ttx, {
 			type: 'bar',
 			data: {
-				labels: ["Index", "Gallery", "Events", "Contact", "Blog", "Choir", "Dashboard", "Sent tickets", "sent newsletters"],
+				labels: ["Index", "Gallery", "Events", "Help", "ADs", "Choir", "Dashboard", "Sent tickets", "Closed tickets"],
 				datasets: [{
 					label: '# of Votes',
 					data: dataSetTotal,
@@ -1129,9 +1162,9 @@
 						'rgba(75, 192, 192, 0.2)',
 						'rgba(153, 102, 255, 0.2)',
 						'rgba(255, 159, 64, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(153, 102, 255, 0.2)'
+						'rgba(12, 32, 20, 0.2)',
+						'rgba(80, 250, 255, 0.2)',
+						'rgba(250, 20, 20, 0.2)'
 					],
 					borderColor: [
 						'rgba(255,99,132,1)',
@@ -1140,9 +1173,9 @@
 						'rgba(75, 192, 192, 1)',
 						'rgba(153, 102, 255, 1)',
 						'rgba(255, 159, 64, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(153, 102, 255, 1)'
+						'rgba(12, 32, 20, 1)',
+						'rgba(80, 250, 255, 1)',
+						'rgba(250, 20, 20, 1)'
 					],
 					borderWidth: 1
 				}]

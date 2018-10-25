@@ -26,7 +26,7 @@ exports = module.exports = function (req, res) {
 		{actuelMonth: n},
 		{
 			$inc: {
-				countContact: 1
+				countHelp: 1
 			}
 		},
 		{upsert: true}
@@ -56,6 +56,21 @@ exports = module.exports = function (req, res) {
 
 		var newEnquiry = new Enquiry.model();
 		var updater = newEnquiry.getUpdateHandler(req);
+
+		//---------------- STATISTIC COUNTER --------------------------------
+		keystone.list('Statistic').model.update(
+			{actuelMonth: n},
+			{
+				$inc: {
+					countSentTicket: 1
+				}
+			},
+			{upsert: true}
+		).exec(function(err,result){
+			//Query will be executed
+		});
+		//---------------- STATISTIC COUNTER --------------------------------
+		
 		
 		updater.process(req.body, {
 			flashErrors: true,

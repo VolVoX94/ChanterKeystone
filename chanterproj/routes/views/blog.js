@@ -27,7 +27,7 @@ exports = module.exports = function (req, res) {
 		{actuelMonth: n},
 		{
 			$inc: {
-				countBlog: 1
+				countAds: 1
 			}
 		},
 		{upsert: true}
