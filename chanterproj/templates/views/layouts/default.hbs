@@ -68,7 +68,24 @@
 												{{/if}}
 											</ul>
 										</li>
-
+								<li class="dropdown nav">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										{{#if textLanguage}}
+											Chöre
+										{{else}}
+											Choeurs
+										{{/if}}
+										<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										{{#if textLanguage}}
+											<li><a href="/choir">Suche einen Chor</a></li>
+											<li><a href="/events">Unsere Events</a></li>
+										{{else}}
+											<li><a href="/choir">Chercher un choeur</a></li>
+											<li><a href="/events">Nos evenements</a></li>
+										{{/if}}
+									</ul>
+								</li>
 										<ul class="nav navbar-nav navbar-default">
 											{{#if textLanguage}}
 												<li><a href="/pages/page/fete-cantonale">Kantonales Fest 2018</a></li>
@@ -102,6 +119,7 @@
 												{{/if}}
 											</ul>
 										</li>
+<<<<<<< HEAD
 									<li class="dropdown nav">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 											{{#if textLanguage}}
@@ -120,6 +138,9 @@
 											{{/if}}
 										</ul>
 									</li>
+=======
+									
+>>>>>>> 6f50976ad9ee4f258f3912a4fe4535b54341a08a
 								
 										<li class="dropdown nav">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
