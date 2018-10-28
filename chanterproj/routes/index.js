@@ -92,24 +92,90 @@ exports = module.exports = function (app) {
 	app.get('/choir', routes.views.choir);
 	app.all('/ticketSystem', routes.views.ticketSystem);
 
+	app.post('/dashboardValidateEvent', (req,res,next) => {
+		var lang = keystone.get('language').isGerman;		
+		
+		console.log(req.body.id);
+		keystone.list('Event').model.update(
+			{ _id: req.body.id },
+			{
+				$set: {
+					published: true
+				}
+			}
+		).exec(function(err,result){
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Fehler beim publizieren des Events' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Erreur de publication de l\'événement' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Event erfolgreich publiziert' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Événement publié avec succès' });
+				}
+			}
+			res.redirect('/dashboard');
+		});
+		
+	});
 
+	app.post('/dashboardDeleteEvent', (req,res,next) => {
+		var lang = keystone.get('language').isGerman;
+		var Event = keystone.list('Event');
+
+		Event.model.findById(req.body.id)
+			.remove(function(err) {
+				if(err){
+					if(lang === true){
+						req.flash('error', { title: 'Hoppla', detail: 'Fehler beim löschen des Events' });
+					}
+					else{
+						req.flash('error', { title: 'Hoppla!', detail: 'Erreur lors de la suppression de l\'événement' });
+					}
+				}
+				else{
+					if(lang === true){
+						req.flash('success', { title: 'Erfolg!', detail: 'Event wurde erfolgreich gelöscht' });
+					}
+					else{
+						req.flash('success', { title: 'Succès!', detail: 'L\'événement a été supprimé avec succès' });
+					}
+				}
+				res.redirect('/dashboard');
+			});
+
+	});
+	
 	app.post('/dashboardEvents', (req,res,next) => {
 		var Event = keystone.list('Event');
 		var lang = keystone.get('language').isGerman;
+		var tempPublishBool = false;
+		
+		console.log(req.body.organizer);
 		
 		if(req.body.cost === undefined){
 			req.body.cost = 0;
 		}
+		if(req.body.publishEvent === 'true'){
+			tempPublishBool = true;
+		}
+		
 		
 		var newEvent = new Event.model({
 			name: req.body.nameEvent,
 			description: req.body.descriptionEvent,
 			cost: req.body.costEvent,
-			organizer: req.body.organizer,
-			startTime: '2018-10-01 18:22:39.000',
-			endTime: '2018-10-01 18:22:39.000',
-			location: {street1: req.body.addressEvent, state: req.body.placeEvent, postcode: req.body.plzEvent},
-			publishDate: '2018-10-01 18:22:39.000',
+			organizerID: req.body.organizer,
+			startTime: req.body.startEvent,
+			endTime: req.body.endEvent,
+			location: {street1: req.body.addressEvent, suburb: req.body.placeEvent, postcode: req.body.plzEvent},
+			published: tempPublishBool
 		});
 
 		newEvent.save(function(err) {

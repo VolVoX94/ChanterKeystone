@@ -41,13 +41,11 @@
 					<th class="cursor" onclick="sortTable(0)">Name<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(1)">Anfang<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(2)">Ort<img class="imageSort" src="images/sort.png"></th>
-					<th class="cursor" onclick="sortTable(3)">Veranstalter<img class="imageSort" src="images/sort.png"></th>
 					<th>Details</th>
 				{{else}}
 					<th class="cursor" onclick="sortTable(0)">Titre<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(1)">Date<img class="imageSort" src="images/sort.png"></th>
 					<th class="cursor" onclick="sortTable(2)">Ville<img class="imageSort" src="images/sort.png"></th>
-					<th class="cursor" onclick="sortTable(3)">Organisatrice<img class="imageSort" src="images/sort.png"></th>
 					<th>Détails</th>
 				{{/if}}
 			</tr>
@@ -58,7 +56,6 @@
 					<td>{{name}}</td>
 					<td>{{date startTime}}</td>
 					<td>{{location.suburb}}</td>
-					<td>{{organizer}}</td>
 					<td>
 						{{#if ../isGerman}}
 							<button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#{{@index}}">Siehe Details</button>
@@ -105,13 +102,6 @@
 											<p><strong>Ende: </strong>{{date endTime}}</p>
 										{{else}}
 											<p><strong>Fin: </strong>{{date endTime}}</p>
-										{{/if}}
-									</div>
-									<div class="col-lg-3">
-										{{#if ../isGerman}}
-											<p><strong>Veranstalter: </strong>{{organizer}}</p>
-										{{else}}
-											<p><strong>Organisatrice: </strong>{{organizer}}</p>
 										{{/if}}
 									</div>
 								</div>

@@ -54,7 +54,20 @@
 		{{/if}}
 		<li id="two" class="">
 			<a data-toggle="tab" href="#menu3">
-				Ticket
+				{{#if isGerman}}
+					Meine Tickets
+				{{else}}
+					Mon Ticket
+				{{/if}}
+			</a>
+		</li>
+		<li id="two" class="">
+			<a data-toggle="tab" href="#menu5">
+				{{#if isGerman}}
+					Vorgeschlagene Events
+				{{else}}
+					Proposez événement,
+				{{/if}}
 			</a>
 		</li>
 	</ul>
@@ -954,151 +967,400 @@
 
 		</div>
 		<div id="menu4" class="tab-pane fade">
-
+			
 			{{#if isGerman}}
-				<h1>Events</h1>
-				Erstellen einer Veranstaltung im Namen des Chores
+				<h1>Event</h1>
+				Event vorschlagen
 			{{else}}
 				<h1>Evenement</h1>
-				Créer un événement au nom de la chorale
+				Proposer un événement
 			{{/if}}
-					<form action="/dashboardEvents" method="post" class="form-horizontal">
-						
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="nameEvent">
-								{{#if isGerman}}
-									Name.:
-								{{else}}
-									Nom:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input type="text" required class="form-control" name="nameEvent" placeholder="Enter name of event">
-							</div>
-						</div>
 
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="descriptionEvent">
-								{{#if isGerman}}
-									Beschreibung:
-								{{else}}
-									Description:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input type="text" required class="form-control" name="descriptionEvent" placeholder="Enter description of event">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="costEvent">
-								{{#if isGerman}}
-									Kosten:
-								{{else}}
-									dépenses:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input type="number" class="form-control" name="costEvent" placeholder="Enter cost of event">
-							</div>	
-						</div>
+			<form action="/dashboardEvents" method="post" class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="nameEvent">
+						{{#if isGerman}}
+							Name.:
+						{{else}}
+							Nom:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input type="text" required class="form-control" name="nameEvent" placeholder="Enter name of event">
+					</div>
+				</div>
 
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="choirs">
-								{{#if isGerman}}
-									Veranstalter:
-								{{else}}
-									organisatrice:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<select required name="organizer" class="form-control">
-									<option value="">Select</option>
-									{{#each choirs}}
-										<option value="{{name}}">{{name}} </option>
-									{{/each}}
-								</select>
-							</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="descriptionEvent">
+						{{#if isGerman}}
+							Beschreibung:
+						{{else}}
+							Description:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input type="text" required class="form-control" name="descriptionEvent" placeholder="Enter description of event">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="costEvent">
+						{{#if isGerman}}
+							Kosten:
+						{{else}}
+							dépenses:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" name="costEvent" placeholder="Enter cost of event">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="choirs">
+						{{#if isGerman}}
+							Veranstalter:
+						{{else}}
+							organisatrice:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<select required name="organizer" class="form-control">
+							<option value="">Select</option>
+							{{#each allChoirs}}
+								<option value="{{choirAdmin}}">{{name}}</option>
+							{{/each}}
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="startEvent">
+						{{#if isGerman}}
+							Start der Veranstaltung:
+						{{else}}
+							Début de l'événement:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input required type="datetime-local" class="form-control" name="startEvent"  placeholder="Enter start of event">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="dekanat">
+						{{#if isGerman}}
+							Ende der Veranstaltung:
+						{{else}}
+							Fin de l'événement:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input required type="datetime-local" class="form-control" name="endEvent" placeholder="Enter end of event">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="dekanat">
+						{{#if isGerman}}
+							Adresse der Veranstaltung:
+						{{else}}
+							Adresse de l'événement:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input required type="text" class="form-control" name="addressEvent" placeholder="Enter address of event">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="dekanat">
+						{{#if isGerman}}
+							Ort der Veranstaltung:
+						{{else}}
+							Lieu de l'événement:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input required type="text" class="form-control" name="placeEvent" placeholder="Enter place of event">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="dekanat">
+						{{#if isGerman}}
+							PLZ der Veranstaltung:
+						{{else}}
+							code postal de l'événement:
+						{{/if}}
+					</label>
+					<div class="col-sm-10">
+						<input required type="number" class="form-control" name="plzEvent" placeholder="Enter postalcode of event">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<input type="hidden" class="form-control" value="false" name="publishEvent">
+				</div>
+				
+				<div class="form-group">
+					<button id="submit1" type="submit" value="Submit" class="btn btn-info">
+						{{#if isGerman}}
+							Senden:
+						{{else}}
+							expédier:
+						{{/if}}
+					</button>
+				</div>
+			</form>
+			
+
+			{{#if isGerman}}
+				<h2>Erstellen</h2>
+				 Im Namen des Chores
+			{{else}}
+				<h2>Créer</h2>
+				 Au nom de la chorale
+			{{/if}}
+			
+			{{#if choirs}}
+				<form action="/dashboardEvents" method="post" class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="nameEvent">
+							{{#if isGerman}}
+								Name.:
+							{{else}}
+								Nom:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input type="text" required class="form-control" name="nameEvent" placeholder="Enter name of event">
 						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="startEvent">
-								{{#if isGerman}}
-									Start der Veranstaltung:
-								{{else}}
-									Début de l'événement:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input required type="datetime-local" class="form-control" name="startEvent"  placeholder="Enter start of event">
-							</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="descriptionEvent">
+							{{#if isGerman}}
+								Beschreibung:
+							{{else}}
+								Description:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input type="text" required class="form-control" name="descriptionEvent" placeholder="Enter description of event">
 						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="dekanat">
-								{{#if isGerman}}
-									Ende der Veranstaltung:
-								{{else}}
-									Fin de l'événement:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input required type="datetime-local" class="form-control" name="endEvent" placeholder="Enter end of event">
-							</div>	
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="costEvent">
+							{{#if isGerman}}
+								Kosten:
+							{{else}}
+								dépenses:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input type="number" class="form-control" name="costEvent" placeholder="Enter cost of event">
 						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="dekanat">
-								{{#if isGerman}}
-									Adresse der Veranstaltung:
-								{{else}}
-									Adresse de l'événement:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input required type="text" class="form-control" name="addressEvent" placeholder="Enter address of event">
-							</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="choirs">
+							{{#if isGerman}}
+								Veranstalter:
+							{{else}}
+								organisatrice:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<select required name="organizer" class="form-control">
+								<option value="">Select</option>
+								{{#each allChoirs}}
+									<option value="{{choirAdmin}}">{{name}} </option>
+								{{/each}}
+							</select>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="dekanat">
-								{{#if isGerman}}
-									Ort der Veranstaltung:
-								{{else}}
-									Lieu de l'événement:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input required type="text" class="form-control" name="placeEvent" placeholder="Enter place of event">
-							</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="startEvent">
+							{{#if isGerman}}
+								Start der Veranstaltung:
+							{{else}}
+								Début de l'événement:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input required type="datetime-local" class="form-control" name="startEvent"  placeholder="Enter start of event">
 						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="dekanat">
-								{{#if isGerman}}
-									PLZ der Veranstaltung:
-								{{else}}
-									code postal de l'événement:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input required type="number" class="form-control" name="plzEvent" placeholder="Enter postalcode of event">
-							</div>	
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="dekanat">
+							{{#if isGerman}}
+								Ende der Veranstaltung:
+							{{else}}
+								Fin de l'événement:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input required type="datetime-local" class="form-control" name="endEvent" placeholder="Enter end of event">
 						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-2" for="dekanat">
-								{{#if isGerman}}
-									Publikationsdatum:
-								{{else}}
-									date de publication:
-								{{/if}}
-							</label>
-							<div class="col-sm-10">
-								<input type="date" class="form-control" name="publishDateEvent" placeholder="Enter publishDate of event">
-							</div>	
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="dekanat">
+							{{#if isGerman}}
+								Adresse der Veranstaltung:
+							{{else}}
+								Adresse de l'événement:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input required type="text" class="form-control" name="addressEvent" placeholder="Enter address of event">
 						</div>
-						<div class="form-group">
-							<button id="submit1" type="submit" value="Submit" class="btn btn-info">send</button>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="dekanat">
+							{{#if isGerman}}
+								Ort der Veranstaltung:
+							{{else}}
+								Lieu de l'événement:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input required type="text" class="form-control" name="placeEvent" placeholder="Enter place of event">
 						</div>
-					</form>
-				<hr/>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="dekanat">
+							{{#if isGerman}}
+								PLZ der Veranstaltung:
+							{{else}}
+								code postal de l'événement:
+							{{/if}}
+						</label>
+						<div class="col-sm-10">
+							<input required type="number" class="form-control" name="plzEvent" placeholder="Enter postalcode of event">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<input type="hidden" class="form-control" value="true" name="publishEvent">
+					</div>
+					
+					<div class="form-group">
+						<button id="submit1" type="submit" value="Submit" class="btn btn-info">send</button>
+					</div>
+				</form>
+			{{/if}}
+		</div>
+		<div id="menu5" class="tab-pane fade">
+			{{#if isGerman}}
+				<h1>Meine vorgeschlagene Events</h1>
+			{{else}}
+				<h1>Mes proposed Events</h1>
+			{{/if}}
+			
+			{{#each proposedEvents}}
+			<form action="/dashboardValidateEvent" method="post" class="form-horizontal">
+				<input type="hidden" class="form-control" name="id" value="{{_id}}">
+				{{#if ../isGerman}}
+					<h2>Name: </h2>
+				{{else}}
+					<h2>Nom: </h2>
+				{{/if}}
+					{{name}}
+				<br />
+				{{#if description}}
+					{{#if ../isGerman}}
+						<h2>Beschreibung: </h2>
+					{{else}}
+						<h2>Description: </h2>
+					{{/if}}
+					{{description}}
+					<br />
+				{{/if}}
+
+
+				{{#if cost}}
+					{{#if ../isGerman}}
+						<h2>Kosten: </h2>
+					{{else}}
+						<h2>Tarif: </h2>
+					{{/if}}
+					{{cost}}
+					<br />
+				{{/if}}
+				
+				{{#if organizer}}
+					{{#if ../isGerman}}
+						<h2>Veranstalter: </h2>
+					{{else}}
+						<h2>Organisatrice: </h2>
+					{{/if}}
+					{{organizer}}
+					<br />
+				{{/if}}
+
+				{{#if startTime}}
+					{{#if ../isGerman}}
+						<h2>Begin: </h2>
+					{{else}}
+						<h2>Début: </h2>
+					{{/if}}
+					{{startTime}}
+					<br />
+				{{/if}}
+
+				{{#if endTime}}
+					{{#if ../isGerman}}
+						<h2>Ende: </h2>
+					{{else}}
+						<h2>Fin: </h2>
+					{{/if}}
+					{{endTime}}
+					<br />
+				{{/if}}
+
+				{{#if location.street1}}
+					{{#if ../isGerman}}
+						<h2>Strasse: </h2>
+					{{else}}
+						<h2>Rue: </h2>
+					{{/if}}
+					{{location.street1}}
+					<br />
+				{{/if}}
+
+				{{#if location.suburb}}
+					{{#if ../isGerman}}
+						<h2>Ort: </h2>
+					{{else}}
+						<h2>Ville: </h2>
+					{{/if}}
+					{{location.suburb}}
+					<br />
+				{{/if}}
+				<br />
+				<button id="submit1" type="submit" value="SubmitValidate" class="btn btn-info">
+					{{#if ../isGerman}}
+						<b>Event validieren</b>
+					{{else}}
+						<b>Valide l'événement</b>
+					{{/if}}
+				</button>
+				
+			</form>
+			<br />
+			<form action="/dashboardDeleteEvent" method="post" class="form-horizontal">
+				<input type="hidden" class="form-control" name="id" value="{{_id}}">
+				<button id="submit1" type="submit" value="SubmitDelete" class="btn btn-warning">
+					{{#if ../isGerman}}
+						<b>Event löschen</b>
+					{{else}}
+						<b>Supprimer l'événement</b>
+					{{/if}}
+				</button>
+			</form>
+				<hr />
+			{{/each}}	
 		</div>
 	</div>
 
@@ -1201,24 +1463,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 0) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1233,24 +1495,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 1) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1265,24 +1527,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 2) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1297,24 +1559,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 3) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1329,24 +1591,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 4) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1361,24 +1623,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 5) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1393,24 +1655,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 6) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1425,24 +1687,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 7) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1457,24 +1719,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 8) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1489,24 +1751,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 9) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1521,24 +1783,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 10) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1553,24 +1815,24 @@
 				actuelMonth = {{actuelMonth}}
 				if (actuelMonth === 11) {
 					dataset = [
-						//Index	
+						//Index
 						{{countIndex}},
 						//Gallery	
 						{{countGallery}},
-						//Events	
+						//Events
 						{{countEvents}},
 						//Contacts	
-						{{countContact}},
+						{{countHelp}},
 						//Blog	
-						{{countBlog}},
+						{{countAds}},
 						//Choir	
 						{{countChoir}},
 						//Dashboard	
 						{{countDashboard}},
 						//Sent tickets	
 						{{countSentTicket}},
-						//Sent newsletters	
-						{{countSentNewsletter}}
+						//Closed tickets	
+						{{countClosedTicket}}
 					];
 				}
 			{{/each}}
@@ -1581,7 +1843,7 @@
 			var myChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
-					labels: ["Index", "Gallery", "Events", "Contact", "Blog", "Choir", "Dashboard", "Sent tickets", "sent newsletters"],
+					labels: ["Index", "Gallery", "Events", "Help", "ADs", "Choir", "Dashboard", "Sent tickets", "Closed tickets"],
 					datasets: [{
 						label: '# of Votes',
 						data: dataset,
@@ -1592,9 +1854,9 @@
 							'rgba(75, 192, 192, 0.2)',
 							'rgba(153, 102, 255, 0.2)',
 							'rgba(255, 159, 64, 0.2)',
-							'rgba(153, 102, 255, 0.2)',
-							'rgba(153, 102, 255, 0.2)',
-							'rgba(153, 102, 255, 0.2)'
+							'rgba(12, 32, 20, 0.2)',
+							'rgba(80, 250, 255, 0.2)',
+							'rgba(250, 20, 20, 0.2)'
 						],
 						borderColor: [
 							'rgba(255,99,132,1)',
@@ -1603,9 +1865,9 @@
 							'rgba(75, 192, 192, 1)',
 							'rgba(153, 102, 255, 1)',
 							'rgba(255, 159, 64, 1)',
-							'rgba(153, 102, 255, 1)',
-							'rgba(153, 102, 255, 1)',
-							'rgba(153, 102, 255, 1)'
+							'rgba(12, 32, 20, 1)',
+							'rgba(80, 250, 255, 1)',
+							'rgba(250, 20, 20, 1)'
 						],
 						borderWidth: 1
 					}]

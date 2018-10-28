@@ -58,6 +58,19 @@ exports = module.exports = function (req, res) {
 		});
 
 		view.on('init', function (next) {
+			var q = keystone.list('Choir').model.find().sort('sortOrder')
+				.populate('president', 'name')
+				.populate('cashier', 'name')
+				.populate('secretary', 'name')
+				.populate('director', 'name')
+				.populate('secondDirector', 'name');
+			q.exec(function (err, results) {
+				locals.allChoirs = results;
+				next(err);
+			});
+		});
+
+		view.on('init', function (next) {
 			var q = keystone.list('Statistic').model.find().sort();
 			q.exec(function (err, results) {
 				locals.statistic = results;
@@ -74,7 +87,6 @@ exports = module.exports = function (req, res) {
 		});
 		
 		if(res.locals.user.isAdmin){
-			console.log("ADMIIN");
 			//AdminTickets
 			view.on('init', function (next) {
 				var q = keystone.list('Enquiry').model.find({responsible: 'admin'}).sort({priority: 1});
@@ -93,9 +105,14 @@ exports = module.exports = function (req, res) {
 			});
 		});
 
-		// Load the items by sortOrder
-		//view.query('choirs', keystone.list('Choir').model.find({president: res.locals.user}).sort('sortOrder').populate('president', 'name'));
-
+		view.on('init', function (next) {
+			var q = keystone.list('Event').model.find({organizerID: res.locals.user._id, published: 'false'}).sort();
+			q.exec(function (err, results) {
+				locals.proposedEvents = results;
+				next(err);
+			});
+		});
+		
 		// Render the view
 		view.render('dashboard', { title: title, message: message, isGerman: language.isGerman  });
 	}
