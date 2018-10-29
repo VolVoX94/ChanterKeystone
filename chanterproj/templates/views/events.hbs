@@ -115,6 +115,30 @@
 										<p>{{{description}}}</p>
 									</div>
 								</div>
+
+								<ul class="nav nav-pills">
+									{{#each formSpreadsheet}}
+										{{#ifeq @index 0}}
+											<li class="active"><a data-toggle="pill" href="#{{name}}">{{name}}</a></li>
+										{{else}}
+											<li><a data-toggle="pill" href="#{{name}}">{{name}}</a></li>
+										{{/ifeq}}
+									{{/each}}
+								</ul>
+
+								<div class="tab-content">
+									{{#each formSpreadsheet}}
+										{{#ifeq @index 0}}
+											<div id="{{name}}" class="tab-pane fade in active">
+												{{{form}}}
+											</div>
+										{{else}}
+											<div id="{{name}}" class="tab-pane fade in">
+												{{{form}}}
+											</div>
+										{{/ifeq}}
+									{{/each}}
+								</div>
 							</div>
 						</div>
 					</div>

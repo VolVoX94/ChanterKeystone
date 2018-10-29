@@ -40,7 +40,7 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 
 	// Load the events by sortOrder
-	view.query('events', keystone.list('Event').model.find({published: 'true'}).sort('sortOrder'));
+	view.query('events', keystone.list('Event').model.find({published: 'true'}).sort('sortOrder').populate('formSpreadsheet'));
 
 	// Render the view
 	view.render('events', { title: title, message: message, isGerman: language.isGerman  });

@@ -13,6 +13,7 @@ Event.add({
 	location: {type: Types.Location, initial: true},
 	published: {type: Boolean},
 	publishDate: {type: Types.Date, index: true},
+	formSpreadsheet: {type: Types.Relationship, ref: 'Forms', index: true, many: true},
 });
 
 Event.schema.virtual('canAccessKeystone').get(function () {
