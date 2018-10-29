@@ -112,6 +112,14 @@ exports = module.exports = function (req, res) {
 				next(err);
 			});
 		});
+
+		view.on('init', function (next) {
+			var q = keystone.list('Post').model.find({state: 'draft'}).sort();
+			q.exec(function (err, results) {
+				locals.draftPost = results;
+				next(err);
+			});
+		});
 		
 		// Render the view
 		view.render('dashboard', { title: title, message: message, isGerman: language.isGerman  });

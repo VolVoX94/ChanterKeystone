@@ -70,6 +70,17 @@
 				{{/if}}
 			</a>
 		</li>
+		{{#if user.isAdmin}}
+		<li id="two" class="">
+			<a data-toggle="tab" href="#menu6">
+				{{#if isGerman}}
+					User post's
+				{{else}}
+					Utilisateur AD
+				{{/if}}
+			</a>
+		</li>
+		{{/if}}	
 	</ul>
 
 	<div class="tab-content">
@@ -1361,6 +1372,127 @@
 			</form>
 				<hr />
 			{{/each}}	
+		</div>
+		<div id="menu6" class="tab-pane fade">
+			{{#if isGerman}}
+				<h1>User Posts</h1>
+			{{else}}
+				<h1>Mes proposed Events</h1>
+			{{/if}}
+
+			{{#each draftPost}}
+				<form action="/dashboardValidatePost" method="post" class="form-horizontal">
+					<input type="hidden" class="form-control" name="id" value="{{_id}}">
+					
+					<div class="col-sm-6">
+						{{#if ../isGerman}}
+							<h3>Titel: </h3>
+						{{else}}
+							<h3>Titre: </h3>
+						{{/if}}
+						{{title}}
+					</div>
+
+					<div class="col-sm-6">
+						{{#if ../isGerman}}
+							<h3>Datum: </h3>
+						{{else}}
+							<h3>Date: </h3>
+						{{/if}}
+						{{publishedDate}}
+					</div>
+
+					<div class="col-sm-6">
+					{{#if labelGerman}}
+						{{#if ../isGerman}}
+							<h3>Titel Deutsch: </h3>
+						{{else}}
+							<h3>Titre allemand: </h3>
+						{{/if}}
+						{{labelGerman}}
+					{{/if}}
+					</div>
+
+					<div class="col-sm-6">
+					{{#if labelFrench}}
+						{{#if ../isGerman}}
+							<h3>Titel Französisch: </h3>
+						{{else}}
+							<h3>Titre francaise: </h3>
+						{{/if}}
+						{{labelFrench}}
+					{{/if}}
+					</div>	
+
+					
+					<div class="col-sm-6">
+					{{#if contentGerman}}
+						{{#if ../isGerman}}
+							<h3>Einleitung Deutsch: </h3>
+						{{else}}
+							<h3>remarques introductives allemand: </h3>
+						{{/if}}
+						{{contentGerman.brief}}
+						<br />
+					{{/if}}
+					</div>
+					
+					<div class="col-sm-6">
+					{{#if contentFrench}}
+						{{#if ../isGerman}}
+							<h3>Einleitung Französisch: </h3>
+						{{else}}
+							<h3>remarques introductives francaise: </h3>
+						{{/if}}
+						{{contentFrench.brief}}
+						<br />
+					{{/if}}
+					</div>
+
+					<div class="col-sm-6">
+					{{#if contentGerman}}
+						{{#if ../isGerman}}
+							<h3>Hauptinhalt Deutsch: </h3>
+						{{else}}
+							<h3>contenu principal allemand: </h3>
+						{{/if}}
+						{{contentGerman.extended}}
+					{{/if}}
+					</div>
+
+					<div class="col-sm-6">
+					{{#if contentFrench}}
+						{{#if ../isGerman}}
+							<h3>Hauptinhalt Französisch: </h3>
+						{{else}}
+							<h3>contenu principal francaise: </h3>
+						{{/if}}
+						{{contentFrench.extended}}
+					{{/if}}
+					</div>
+					<br />
+					<button id="submit1" type="submit" value="SubmitValidate" class="btn btn-info">
+						{{#if ../isGerman}}
+							<b>Post validieren</b>
+						{{else}}
+							<b>Valide le post</b>
+						{{/if}}
+					</button>
+				</form>
+
+				<br />
+				<form action="/dashboardDeletePost" method="post" class="form-horizontal">
+					<input type="hidden" class="form-control" name="id" value="{{_id}}">
+					<button id="submit1" type="submit" value="SubmitDelete" class="btn btn-warning">
+						{{#if ../isGerman}}
+							<b>Post löschen</b>
+						{{else}}
+							<b>Supprimer le post</b>
+						{{/if}}
+					</button>
+				</form>
+				<hr />
+			{{/each}}
 		</div>
 	</div>
 
