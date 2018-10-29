@@ -125,6 +125,66 @@ exports = module.exports = function (app) {
 		
 	});
 
+	app.post('/dashboardValidatePost', (req,res,next) => {
+		var lang = keystone.get('language').isGerman;
+
+		console.log(req.body.id);
+		keystone.list('Post').model.update(
+			{ _id: req.body.id },
+			{
+				$set: {
+					state: 'published'
+				}
+			}
+		).exec(function(err,result){
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Fehler beim publizieren des Posts' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Erreur de publication du post' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Post erfolgreich publiziert' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Post publié avec succès' });
+				}
+			}
+			res.redirect('/dashboard');
+		});
+
+	});
+
+	app.post('/dashboardDeletePost', (req,res,next) => {
+		var lang = keystone.get('language').isGerman;
+		var Event = keystone.list('Post');
+
+		Event.model.findById(req.body.id)
+			.remove(function(err) {
+				if(err){
+					if(lang === true){
+						req.flash('error', { title: 'Hoppla', detail: 'Fehler beim löschen des Posts' });
+					}
+					else{
+						req.flash('error', { title: 'Hoppla!', detail: 'Erreur lors de la suppression du post' });
+					}
+				}
+				else{
+					if(lang === true){
+						req.flash('success', { title: 'Erfolg!', detail: 'Post wurde erfolgreich gelöscht' });
+					}
+					else{
+						req.flash('success', { title: 'Succès!', detail: 'Le post a été supprimé avec succès' });
+					}
+				}
+				res.redirect('/dashboard');
+			});
+
+	});
+
 	app.post('/dashboardDeleteEvent', (req,res,next) => {
 		var lang = keystone.get('language').isGerman;
 		var Event = keystone.list('Event');
@@ -240,6 +300,65 @@ exports = module.exports = function (app) {
 				}
 				res.redirect('/dashboard');
 			});
+	});
+
+	
+	app.post('/blogVisitor', async(req,res,next) => {
+		var Post = keystone.list('Post');
+		var lang = keystone.get('language').isGerman;
+		var today = new Date();
+		var visitorCat = await keystone.list('PostCategory').model.find({ key: 'visitor' }).exec();
+
+
+		//---------------- STATISTIC COUNTER --------------------------------
+		var d = new Date();
+		var n = d.getMonth();
+
+		keystone.list('Statistic').model.update(
+			{actuelMonth: n},
+			{
+				$inc: {
+					countVisitorPosts: 1
+				}
+			},
+			{upsert: true}
+		).exec(function(err,result){
+			//Query will be executed
+		});
+		//---------------- STATISTIC COUNTER --------------------------------
+		
+		console.log(visitorCat);
+		
+		var newPost = new Post.model({
+			title: req.body.title,
+			labelGerman: req.body.titleGerman,
+			labelFrench: req.body.titleFrench,
+			state: 'draft',
+			publishedDate: today,
+			contentGerman: {brief: req.body.briefGerman, extended: req.body.contentGerman},
+			contentFrench: {brief: req.body.briefFrench, extended: req.body.contentFrench},
+			categories: visitorCat
+		});
+
+		newPost.save(function(err) {
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Fehler beim Erstellen des AD' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Erreur lors de la suppression du ad' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Sie haben erfolgreich den Post erstellt, nach erfolgreicher Validierung durch den Administrator wird der Post veröffentlicht' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Vous avez créé le mail avec succès, après validation par l\'administrateur, le mail sera publié.' });
+				}
+			}
+			res.redirect('/blog');
+		});
 	});
 
 	app.post('/dashboardChoir', (req,res,next) => {
