@@ -114,6 +114,14 @@ exports = module.exports = function (req, res) {
 		});
 
 		view.on('init', function (next) {
+			var q = keystone.list('Event').model.find({organizerID: res.locals.user._id, published: 'true'}).sort().populate('formSpreadsheet');
+			q.exec(function (err, results) {
+				locals.existingEvents = results;
+				next(err);
+			});
+		});
+
+		view.on('init', function (next) {
 			var q = keystone.list('Post').model.find({state: 'draft'}).sort();
 			q.exec(function (err, results) {
 				locals.draftPost = results;

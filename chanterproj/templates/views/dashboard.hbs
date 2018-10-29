@@ -71,16 +71,27 @@
 			</a>
 		</li>
 		{{#if user.isAdmin}}
-		<li id="two" class="">
-			<a data-toggle="tab" href="#menu6">
-				{{#if isGerman}}
-					User post's
-				{{else}}
-					Utilisateur AD
-				{{/if}}
-			</a>
-		</li>
-		{{/if}}	
+			<li id="two" class="">
+				<a data-toggle="tab" href="#menu6">
+					{{#if isGerman}}
+						User post's
+					{{else}}
+						Utilisateur AD
+					{{/if}}
+				</a>
+			</li>
+		{{/if}}
+		{{#if user.isAdmin}}
+			<li>
+				<a data-toggle="tab" href="#menu7">
+					{{#if isGerman}}
+						Forms
+					{{else}}
+						Forms
+					{{/if}}
+				</a>
+			</li>
+		{{/if}}
 	</ul>
 
 	<div class="tab-content">
@@ -828,7 +839,8 @@
 									<b>Nom du ticket:</b>
 								{{/if}}
 
-								<input type="text" name="ticketName" value="{{name.first}}" readonly style="border:none">
+								<input type="text" name="ticketName" value="{{name.first}}" readonly
+									   style="border:none">
 							</p>
 							<p>
 								{{#if ../isGerman}}
@@ -899,70 +911,71 @@
 					<div class="col-sm-2">
 						<img src="/images/prio{{priority}}Ticket.png" height="150px"/>
 					</div>
-						<div class="col-sm-10">
-							<form action="/dashboardTicket" method="post" class="form-horizontal">
-								<input type="hidden" name="id" value="{{_id}}" readonly style="border:none">
-								<p>
-									{{#if ../isGerman}}
-										<b>Typ:</b>
-									{{else}}
-										<b>Type:</b>
-									{{/if}}
-									<input type="text" name="type" value="{{enquiryType}}" readonly style="border:none">
-								</p>
-								<p>
-									{{#if ../isGerman}}
-										<b>Ticketname:</b>
-									{{else}}
-										<b>Nom du ticket:</b>
-									{{/if}}
-									
-									<input type="text" name="ticketName" value="{{name.first}}" readonly style="border:none">
-								</p>
-								<p>
-									{{#if ../isGerman}}
-										<b>Email:</b>
-									{{else}}
-										<b>Email:</b>
-									{{/if}}
-									
-									<input type="text" name="email" value="{{email}}" readonly style="border:none">
-								</p>
-								<p>
-									{{#if ../isGerman}}
-										<b>Nachricht:</b>
-									{{else}}
-										<b>Message:</b>
-									{{/if}}
-
-									{{{message.html}}}
-								</p>
-								<p>
-									<b>Priority:</b>
-									<input type="text" name="priority" value="{{priority}}" readonly style="border:none">
-								</p>
-								<p>
-									<button id="submit1" type="submit" value="Submit" class="btn btn-warning">
-										{{#if ../isGerman}}
-											<b>Ticket schliessen</b>
-										{{else}}
-											<b>Fermer le ticket</b>
-										{{/if}}
-									</button>
-								</p>
-							</form>
+					<div class="col-sm-10">
+						<form action="/dashboardTicket" method="post" class="form-horizontal">
+							<input type="hidden" name="id" value="{{_id}}" readonly style="border:none">
 							<p>
-								<button class="btn-primary"
-										onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
+								{{#if ../isGerman}}
+									<b>Typ:</b>
+								{{else}}
+									<b>Type:</b>
+								{{/if}}
+								<input type="text" name="type" value="{{enquiryType}}" readonly style="border:none">
+							</p>
+							<p>
+								{{#if ../isGerman}}
+									<b>Ticketname:</b>
+								{{else}}
+									<b>Nom du ticket:</b>
+								{{/if}}
+
+								<input type="text" name="ticketName" value="{{name.first}}" readonly
+									   style="border:none">
+							</p>
+							<p>
+								{{#if ../isGerman}}
+									<b>Email:</b>
+								{{else}}
+									<b>Email:</b>
+								{{/if}}
+
+								<input type="text" name="email" value="{{email}}" readonly style="border:none">
+							</p>
+							<p>
+								{{#if ../isGerman}}
+									<b>Nachricht:</b>
+								{{else}}
+									<b>Message:</b>
+								{{/if}}
+
+								{{{message.html}}}
+							</p>
+							<p>
+								<b>Priority:</b>
+								<input type="text" name="priority" value="{{priority}}" readonly style="border:none">
+							</p>
+							<p>
+								<button id="submit1" type="submit" value="Submit" class="btn btn-warning">
 									{{#if ../isGerman}}
-										<b>Antwort senden</b>
+										<b>Ticket schliessen</b>
 									{{else}}
-										<b>Envoyer la réponse</b>
+										<b>Fermer le ticket</b>
 									{{/if}}
 								</button>
 							</p>
-							<hr/>
-						</div>					
+						</form>
+						<p>
+							<button class="btn-primary"
+									onclick="location.href='mailto:{{email}}?subject=Ticket: {{name.first}}';">
+								{{#if ../isGerman}}
+									<b>Antwort senden</b>
+								{{else}}
+									<b>Envoyer la réponse</b>
+								{{/if}}
+							</button>
+						</p>
+						<hr/>
+					</div>
 				{{/each}}
 			{{else}}
 				{{#if user.isAdmin}}
@@ -978,7 +991,7 @@
 
 		</div>
 		<div id="menu4" class="tab-pane fade">
-			
+
 			{{#if isGerman}}
 				<h1>Event</h1>
 				Event vorschlagen
@@ -997,7 +1010,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input type="text" required class="form-control" name="nameEvent" placeholder="Enter name of event">
+						<input type="text" required class="form-control" name="nameEvent"
+							   placeholder="Enter name of event">
 					</div>
 				</div>
 
@@ -1010,7 +1024,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input type="text" required class="form-control" name="descriptionEvent" placeholder="Enter description of event">
+						<input type="text" required class="form-control" name="descriptionEvent"
+							   placeholder="Enter description of event">
 					</div>
 				</div>
 
@@ -1054,7 +1069,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="datetime-local" class="form-control" name="startEvent"  placeholder="Enter start of event">
+						<input required type="datetime-local" class="form-control" name="startEvent"
+							   placeholder="Enter start of event">
 					</div>
 				</div>
 
@@ -1067,7 +1083,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="datetime-local" class="form-control" name="endEvent" placeholder="Enter end of event">
+						<input required type="datetime-local" class="form-control" name="endEvent"
+							   placeholder="Enter end of event">
 					</div>
 				</div>
 				<div class="form-group">
@@ -1079,7 +1096,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" class="form-control" name="addressEvent" placeholder="Enter address of event">
+						<input required type="text" class="form-control" name="addressEvent"
+							   placeholder="Enter address of event">
 					</div>
 				</div>
 				<div class="form-group">
@@ -1091,7 +1109,8 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="text" class="form-control" name="placeEvent" placeholder="Enter place of event">
+						<input required type="text" class="form-control" name="placeEvent"
+							   placeholder="Enter place of event">
 					</div>
 				</div>
 				<div class="form-group">
@@ -1103,14 +1122,15 @@
 						{{/if}}
 					</label>
 					<div class="col-sm-10">
-						<input required type="number" class="form-control" name="plzEvent" placeholder="Enter postalcode of event">
+						<input required type="number" class="form-control" name="plzEvent"
+							   placeholder="Enter postalcode of event">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<input type="hidden" class="form-control" value="false" name="publishEvent">
 				</div>
-				
+
 				<div class="form-group">
 					<button id="submit1" type="submit" value="Submit" class="btn btn-info">
 						{{#if isGerman}}
@@ -1121,16 +1141,16 @@
 					</button>
 				</div>
 			</form>
-			
+
 
 			{{#if isGerman}}
 				<h2>Erstellen</h2>
-				 Im Namen des Chores
+				Im Namen des Chores
 			{{else}}
 				<h2>Créer</h2>
-				 Au nom de la chorale
+				Au nom de la chorale
 			{{/if}}
-			
+
 			{{#if choirs}}
 				<form action="/dashboardEvents" method="post" class="form-horizontal">
 					<div class="form-group">
@@ -1142,7 +1162,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input type="text" required class="form-control" name="nameEvent" placeholder="Enter name of event">
+							<input type="text" required class="form-control" name="nameEvent"
+								   placeholder="Enter name of event">
 						</div>
 					</div>
 
@@ -1155,7 +1176,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input type="text" required class="form-control" name="descriptionEvent" placeholder="Enter description of event">
+							<input type="text" required class="form-control" name="descriptionEvent"
+								   placeholder="Enter description of event">
 						</div>
 					</div>
 
@@ -1168,7 +1190,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input type="number" class="form-control" name="costEvent" placeholder="Enter cost of event">
+							<input type="number" class="form-control" name="costEvent"
+								   placeholder="Enter cost of event">
 						</div>
 					</div>
 
@@ -1199,7 +1222,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input required type="datetime-local" class="form-control" name="startEvent"  placeholder="Enter start of event">
+							<input required type="datetime-local" class="form-control" name="startEvent"
+								   placeholder="Enter start of event">
 						</div>
 					</div>
 
@@ -1212,7 +1236,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input required type="datetime-local" class="form-control" name="endEvent" placeholder="Enter end of event">
+							<input required type="datetime-local" class="form-control" name="endEvent"
+								   placeholder="Enter end of event">
 						</div>
 					</div>
 					<div class="form-group">
@@ -1224,7 +1249,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input required type="text" class="form-control" name="addressEvent" placeholder="Enter address of event">
+							<input required type="text" class="form-control" name="addressEvent"
+								   placeholder="Enter address of event">
 						</div>
 					</div>
 					<div class="form-group">
@@ -1236,7 +1262,8 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input required type="text" class="form-control" name="placeEvent" placeholder="Enter place of event">
+							<input required type="text" class="form-control" name="placeEvent"
+								   placeholder="Enter place of event">
 						</div>
 					</div>
 					<div class="form-group">
@@ -1248,14 +1275,15 @@
 							{{/if}}
 						</label>
 						<div class="col-sm-10">
-							<input required type="number" class="form-control" name="plzEvent" placeholder="Enter postalcode of event">
+							<input required type="number" class="form-control" name="plzEvent"
+								   placeholder="Enter postalcode of event">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<input type="hidden" class="form-control" value="true" name="publishEvent">
 					</div>
-					
+
 					<div class="form-group">
 						<button id="submit1" type="submit" value="Submit" class="btn btn-info">send</button>
 					</div>
@@ -1268,110 +1296,110 @@
 			{{else}}
 				<h1>Mes proposed Events</h1>
 			{{/if}}
-			
+
 			{{#each proposedEvents}}
-			<form action="/dashboardValidateEvent" method="post" class="form-horizontal">
-				<input type="hidden" class="form-control" name="id" value="{{_id}}">
-				{{#if ../isGerman}}
-					<h2>Name: </h2>
-				{{else}}
-					<h2>Nom: </h2>
-				{{/if}}
+				<form action="/dashboardValidateEvent" method="post" class="form-horizontal">
+					<input type="hidden" class="form-control" name="id" value="{{_id}}">
+					{{#if ../isGerman}}
+						<h2>Name: </h2>
+					{{else}}
+						<h2>Nom: </h2>
+					{{/if}}
 					{{name}}
-				<br />
-				{{#if description}}
-					{{#if ../isGerman}}
-						<h2>Beschreibung: </h2>
-					{{else}}
-						<h2>Description: </h2>
+					<br/>
+					{{#if description}}
+						{{#if ../isGerman}}
+							<h2>Beschreibung: </h2>
+						{{else}}
+							<h2>Description: </h2>
+						{{/if}}
+						{{description}}
+						<br/>
 					{{/if}}
-					{{description}}
-					<br />
-				{{/if}}
 
 
-				{{#if cost}}
-					{{#if ../isGerman}}
-						<h2>Kosten: </h2>
-					{{else}}
-						<h2>Tarif: </h2>
+					{{#if cost}}
+						{{#if ../isGerman}}
+							<h2>Kosten: </h2>
+						{{else}}
+							<h2>Tarif: </h2>
+						{{/if}}
+						{{cost}}
+						<br/>
 					{{/if}}
-					{{cost}}
-					<br />
-				{{/if}}
-				
-				{{#if organizer}}
-					{{#if ../isGerman}}
-						<h2>Veranstalter: </h2>
-					{{else}}
-						<h2>Organisatrice: </h2>
-					{{/if}}
-					{{organizer}}
-					<br />
-				{{/if}}
 
-				{{#if startTime}}
-					{{#if ../isGerman}}
-						<h2>Begin: </h2>
-					{{else}}
-						<h2>Début: </h2>
+					{{#if organizer}}
+						{{#if ../isGerman}}
+							<h2>Veranstalter: </h2>
+						{{else}}
+							<h2>Organisatrice: </h2>
+						{{/if}}
+						{{organizer}}
+						<br/>
 					{{/if}}
-					{{startTime}}
-					<br />
-				{{/if}}
 
-				{{#if endTime}}
-					{{#if ../isGerman}}
-						<h2>Ende: </h2>
-					{{else}}
-						<h2>Fin: </h2>
+					{{#if startTime}}
+						{{#if ../isGerman}}
+							<h2>Begin: </h2>
+						{{else}}
+							<h2>Début: </h2>
+						{{/if}}
+						{{startTime}}
+						<br/>
 					{{/if}}
-					{{endTime}}
-					<br />
-				{{/if}}
 
-				{{#if location.street1}}
-					{{#if ../isGerman}}
-						<h2>Strasse: </h2>
-					{{else}}
-						<h2>Rue: </h2>
+					{{#if endTime}}
+						{{#if ../isGerman}}
+							<h2>Ende: </h2>
+						{{else}}
+							<h2>Fin: </h2>
+						{{/if}}
+						{{endTime}}
+						<br/>
 					{{/if}}
-					{{location.street1}}
-					<br />
-				{{/if}}
 
-				{{#if location.suburb}}
-					{{#if ../isGerman}}
-						<h2>Ort: </h2>
-					{{else}}
-						<h2>Ville: </h2>
+					{{#if location.street1}}
+						{{#if ../isGerman}}
+							<h2>Strasse: </h2>
+						{{else}}
+							<h2>Rue: </h2>
+						{{/if}}
+						{{location.street1}}
+						<br/>
 					{{/if}}
-					{{location.suburb}}
-					<br />
-				{{/if}}
-				<br />
-				<button id="submit1" type="submit" value="SubmitValidate" class="btn btn-info">
-					{{#if ../isGerman}}
-						<b>Event validieren</b>
-					{{else}}
-						<b>Valide l'événement</b>
+
+					{{#if location.suburb}}
+						{{#if ../isGerman}}
+							<h2>Ort: </h2>
+						{{else}}
+							<h2>Ville: </h2>
+						{{/if}}
+						{{location.suburb}}
+						<br/>
 					{{/if}}
-				</button>
-				
-			</form>
-			<br />
-			<form action="/dashboardDeleteEvent" method="post" class="form-horizontal">
-				<input type="hidden" class="form-control" name="id" value="{{_id}}">
-				<button id="submit1" type="submit" value="SubmitDelete" class="btn btn-warning">
-					{{#if ../isGerman}}
-						<b>Event löschen</b>
-					{{else}}
-						<b>Supprimer l'événement</b>
-					{{/if}}
-				</button>
-			</form>
-				<hr />
-			{{/each}}	
+					<br/>
+					<button id="submit1" type="submit" value="SubmitValidate" class="btn btn-info">
+						{{#if ../isGerman}}
+							<b>Event validieren</b>
+						{{else}}
+							<b>Valide l'événement</b>
+						{{/if}}
+					</button>
+
+				</form>
+				<br/>
+				<form action="/dashboardDeleteEvent" method="post" class="form-horizontal">
+					<input type="hidden" class="form-control" name="id" value="{{_id}}">
+					<button id="submit1" type="submit" value="SubmitDelete" class="btn btn-warning">
+						{{#if ../isGerman}}
+							<b>Event löschen</b>
+						{{else}}
+							<b>Supprimer l'événement</b>
+						{{/if}}
+					</button>
+				</form>
+				<hr/>
+			{{/each}}
 		</div>
 		<div id="menu6" class="tab-pane fade">
 			{{#if isGerman}}
@@ -1383,7 +1411,7 @@
 			{{#each draftPost}}
 				<form action="/dashboardValidatePost" method="post" class="form-horizontal">
 					<input type="hidden" class="form-control" name="id" value="{{_id}}">
-					
+
 					<div class="col-sm-6">
 						{{#if ../isGerman}}
 							<h3>Titel: </h3>
@@ -1403,74 +1431,74 @@
 					</div>
 
 					<div class="col-sm-6">
-					{{#if labelGerman}}
-						{{#if ../isGerman}}
-							<h3>Titel Deutsch: </h3>
-						{{else}}
-							<h3>Titre allemand: </h3>
+						{{#if labelGerman}}
+							{{#if ../isGerman}}
+								<h3>Titel Deutsch: </h3>
+							{{else}}
+								<h3>Titre allemand: </h3>
+							{{/if}}
+							{{labelGerman}}
 						{{/if}}
-						{{labelGerman}}
-					{{/if}}
 					</div>
 
 					<div class="col-sm-6">
-					{{#if labelFrench}}
-						{{#if ../isGerman}}
-							<h3>Titel Französisch: </h3>
-						{{else}}
-							<h3>Titre francaise: </h3>
+						{{#if labelFrench}}
+							{{#if ../isGerman}}
+								<h3>Titel Französisch: </h3>
+							{{else}}
+								<h3>Titre francaise: </h3>
+							{{/if}}
+							{{labelFrench}}
 						{{/if}}
-						{{labelFrench}}
-					{{/if}}
-					</div>	
-
-					
-					<div class="col-sm-6">
-					{{#if contentGerman}}
-						{{#if ../isGerman}}
-							<h3>Einleitung Deutsch: </h3>
-						{{else}}
-							<h3>remarques introductives allemand: </h3>
-						{{/if}}
-						{{contentGerman.brief}}
-						<br />
-					{{/if}}
 					</div>
-					
+
+
 					<div class="col-sm-6">
-					{{#if contentFrench}}
-						{{#if ../isGerman}}
-							<h3>Einleitung Französisch: </h3>
-						{{else}}
-							<h3>remarques introductives francaise: </h3>
+						{{#if contentGerman}}
+							{{#if ../isGerman}}
+								<h3>Einleitung Deutsch: </h3>
+							{{else}}
+								<h3>remarques introductives allemand: </h3>
+							{{/if}}
+							{{contentGerman.brief}}
+							<br/>
 						{{/if}}
-						{{contentFrench.brief}}
-						<br />
-					{{/if}}
 					</div>
 
 					<div class="col-sm-6">
-					{{#if contentGerman}}
-						{{#if ../isGerman}}
-							<h3>Hauptinhalt Deutsch: </h3>
-						{{else}}
-							<h3>contenu principal allemand: </h3>
+						{{#if contentFrench}}
+							{{#if ../isGerman}}
+								<h3>Einleitung Französisch: </h3>
+							{{else}}
+								<h3>remarques introductives francaise: </h3>
+							{{/if}}
+							{{contentFrench.brief}}
+							<br/>
 						{{/if}}
-						{{contentGerman.extended}}
-					{{/if}}
 					</div>
 
 					<div class="col-sm-6">
-					{{#if contentFrench}}
-						{{#if ../isGerman}}
-							<h3>Hauptinhalt Französisch: </h3>
-						{{else}}
-							<h3>contenu principal francaise: </h3>
+						{{#if contentGerman}}
+							{{#if ../isGerman}}
+								<h3>Hauptinhalt Deutsch: </h3>
+							{{else}}
+								<h3>contenu principal allemand: </h3>
+							{{/if}}
+							{{contentGerman.extended}}
 						{{/if}}
-						{{contentFrench.extended}}
-					{{/if}}
 					</div>
-					<br />
+
+					<div class="col-sm-6">
+						{{#if contentFrench}}
+							{{#if ../isGerman}}
+								<h3>Hauptinhalt Französisch: </h3>
+							{{else}}
+								<h3>contenu principal francaise: </h3>
+							{{/if}}
+							{{contentFrench.extended}}
+						{{/if}}
+					</div>
+					<br/>
 					<button id="submit1" type="submit" value="SubmitValidate" class="btn btn-info">
 						{{#if ../isGerman}}
 							<b>Post validieren</b>
@@ -1480,7 +1508,7 @@
 					</button>
 				</form>
 
-				<br />
+				<br/>
 				<form action="/dashboardDeletePost" method="post" class="form-horizontal">
 					<input type="hidden" class="form-control" name="id" value="{{_id}}">
 					<button id="submit1" type="submit" value="SubmitDelete" class="btn btn-warning">
@@ -1491,7 +1519,18 @@
 						{{/if}}
 					</button>
 				</form>
-				<hr />
+				<hr/>
+			{{/each}}
+		</div>
+		<div id="menu7" class="tab-pane fade">
+			<h1>Events</h1>
+			{{#each existingEvents}}
+				{{#each formSpreadsheet}}
+					<h4>{{name}} for {{../ name}}</h4>
+					<div class="row">
+						{{{spreadsheet}}}
+					</div>
+				{{/each}}
 			{{/each}}
 		</div>
 	</div>
@@ -1520,11 +1559,11 @@
 
 			dataSetTotal = [
 				//Index	
-				{{countIndex}}+dataSetTotal[0],
+					{{countIndex}}+dataSetTotal[0],
 				//Gallery	
 				{{countGallery}} +dataSetTotal[1],
 				//Events
-				{{countEvents}}+dataSetTotal[2],
+					{{countEvents}}+dataSetTotal[2],
 				//Contacts	
 				{{countHelp}} +dataSetTotal[3],
 				//Blog	
