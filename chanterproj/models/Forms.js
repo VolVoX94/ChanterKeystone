@@ -9,8 +9,6 @@ Forms.add({
 	name: {type: String, required: true},
 	form: {type: Types.Html, required: true, initial: true},
 	spreadsheet: {type: Types.Html, required: true, initial: true},
-	formEditUrl: {type: String, required: true, initial: true},
-	spreadsheetUrl: {type: String, required: true, initial: true},
 });
 
 Forms.register();
