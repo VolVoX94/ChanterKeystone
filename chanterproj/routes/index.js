@@ -308,6 +308,24 @@ exports = module.exports = function (app) {
 		var lang = keystone.get('language').isGerman;
 		var today = new Date();
 		var visitorCat = await keystone.list('PostCategory').model.find({ key: 'visitor' }).exec();
+
+
+		//---------------- STATISTIC COUNTER --------------------------------
+		var d = new Date();
+		var n = d.getMonth();
+
+		keystone.list('Statistic').model.update(
+			{actuelMonth: n},
+			{
+				$inc: {
+					countVisitorPosts: 1
+				}
+			},
+			{upsert: true}
+		).exec(function(err,result){
+			//Query will be executed
+		});
+		//---------------- STATISTIC COUNTER --------------------------------
 		
 		console.log(visitorCat);
 		

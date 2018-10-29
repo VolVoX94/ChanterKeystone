@@ -1514,7 +1514,7 @@
 		var dataset = [];
 
 		//used for total statistic
-		var dataSetTotal = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+		var dataSetTotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 			{{#each statistic}}
 
@@ -1536,7 +1536,9 @@
 				//Sent tickets	
 				{{countSentTicket}} +dataSetTotal[7],
 				//Closed tickets	
-				{{countClosedTicket}} +dataSetTotal[8]
+				{{countClosedTicket}} +dataSetTotal[8],
+				//Visitor Posts	
+				{{countVisitorPosts}} +dataSetTotal[9]
 			];
 			{{/each}}
 
@@ -1545,7 +1547,7 @@
 		var totalChart = new Chart(ttx, {
 			type: 'bar',
 			data: {
-				labels: ["Index", "Gallery", "Events", "Help", "ADs", "Choir", "Dashboard", "Sent tickets", "Closed tickets"],
+				labels: ["Index", "Gallery", "Events", "Help", "ADs", "Choir", "Dashboard", "Sent tickets", "Closed tickets", "Visitor Posts"],
 				datasets: [{
 					label: '# of Votes',
 					data: dataSetTotal,
@@ -1558,7 +1560,8 @@
 						'rgba(255, 159, 64, 0.2)',
 						'rgba(12, 32, 20, 0.2)',
 						'rgba(80, 250, 255, 0.2)',
-						'rgba(250, 20, 20, 0.2)'
+						'rgba(250, 20, 20, 0.2)',
+						'rgba(84, 14, 84, 0.2)'
 					],
 					borderColor: [
 						'rgba(255,99,132,1)',
@@ -1569,7 +1572,8 @@
 						'rgba(255, 159, 64, 1)',
 						'rgba(12, 32, 20, 1)',
 						'rgba(80, 250, 255, 1)',
-						'rgba(250, 20, 20, 1)'
+						'rgba(250, 20, 20, 1)',
+						'rgba(84, 14, 84, 1)'
 					],
 					borderWidth: 1
 				}]
@@ -1612,7 +1616,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1644,7 +1650,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1676,7 +1684,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1708,7 +1718,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1740,7 +1752,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1772,7 +1786,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1804,7 +1820,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1836,7 +1854,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1868,7 +1888,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1900,7 +1922,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1932,7 +1956,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1964,7 +1990,9 @@
 						//Sent tickets	
 						{{countSentTicket}},
 						//Closed tickets	
-						{{countClosedTicket}}
+						{{countClosedTicket}},
+						//Visitor Posts	
+						{{countVisitorPosts}}
 					];
 				}
 			{{/each}}
@@ -1975,7 +2003,7 @@
 			var myChart = new Chart(ctx, {
 				type: 'bar',
 				data: {
-					labels: ["Index", "Gallery", "Events", "Help", "ADs", "Choir", "Dashboard", "Sent tickets", "Closed tickets"],
+					labels: ["Index", "Gallery", "Events", "Help", "ADs", "Choir", "Dashboard", "Sent tickets", "Closed tickets", "Visitor posts"],
 					datasets: [{
 						label: '# of Votes',
 						data: dataset,
@@ -1988,7 +2016,8 @@
 							'rgba(255, 159, 64, 0.2)',
 							'rgba(12, 32, 20, 0.2)',
 							'rgba(80, 250, 255, 0.2)',
-							'rgba(250, 20, 20, 0.2)'
+							'rgba(250, 20, 20, 0.2)',
+							'rgba(84, 14, 84, 0.2)'
 						],
 						borderColor: [
 							'rgba(255,99,132,1)',
@@ -1999,7 +2028,8 @@
 							'rgba(255, 159, 64, 1)',
 							'rgba(12, 32, 20, 1)',
 							'rgba(80, 250, 255, 1)',
-							'rgba(250, 20, 20, 1)'
+							'rgba(250, 20, 20, 1)',
+							'rgba(84, 14, 84, 1)'
 						],
 						borderWidth: 1
 					}]
