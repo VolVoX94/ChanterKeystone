@@ -13,13 +13,25 @@
 	
 				{{#each director}}
 						<button type="button" class="btn bg-transparent  border-button" data-toggle="modal" data-target="#d{{@index}}">
-							<p>{{name.first}} {{name.last}}</p>
+							<p>
+								{{name.first}}
+								{{name.last}}
+								{{#if comiteRole}}
+									({{comiteRole}})
+								{{/if}}
+							</p>
 						</button>
 						<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered modal-lg">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}</h5>
+										<h5 class="modal-title" id="exampleModalLabel">
+											{{name.first}}
+											{{name.last}}
+											{{#if comiteRole}}
+												({{comiteRole}})
+											{{/if}}
+										</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
@@ -103,13 +115,25 @@
 			{{/if}}
 			{{#each president}}
 				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#p{{@index}}">
-					<p>{{name.first}} {{name.last}}</p>
+					<p>
+						{{name.first}}
+						{{name.last}}
+						{{#if comiteRole}}
+							({{comiteRole}})
+						{{/if}}
+					</p>
 				</button>
 				<div class="modal fade" id="p{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}</h5>
+								<h5 class="modal-title" id="exampleModalLabel">
+									{{name.first}}
+									{{name.last}}
+									{{#if comiteRole}}
+										({{comiteRole}})
+									{{/if}}
+								</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -194,13 +218,25 @@
 			{{/if}}
 			{{#each coPresident}}
 				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#cP{{@index}}">
-					<p>{{name.first}} {{name.last}}</p>
+					<p>
+						{{name.first}}
+						{{name.last}}
+						{{#if comiteRole}}
+							({{comiteRole}})
+						{{/if}}
+					</p>
 				</button>
 				<div class="modal fade" id="cP{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}</h5>
+								<h5 class="modal-title" id="exampleModalLabel">
+									{{name.first}}
+									{{name.last}}
+									{{#if comiteRole}}
+										({{comiteRole}})
+									{{/if}}
+								</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -285,13 +321,25 @@
 			{{/if}}
 			{{#each porteDrapeau}}
 				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#pD{{@index}}">
-					<p>{{name.first}} {{name.last}}</p>
+					<p>
+						{{name.first}} 
+						{{name.last}}
+						{{#if comiteRole}}
+							({{comiteRole}})
+						{{/if}}
+					</p>
 				</button>
 				<div class="modal fade" id="pD{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}f</h5>
+								<h5 class="modal-title" id="exampleModalLabel">
+									{{name.first}} 
+									{{name.last}} 
+									{{#if comiteRole}}
+										({{comiteRole}})
+									{{/if}}
+								</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
