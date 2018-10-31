@@ -1,153 +1,206 @@
 <div class="container">
 	{{#if comitees}}
-		{{#if isGerman}}
-			<h2>Leitender Ausschuss</h2>
-		{{else}}
-			<h2>Comité directeur</h2>
-		{{/if}}
-		
 		{{#each comitees}}
-			{{#each director}}
-					<button type="button" class="btn bg-transparent  border-button" data-toggle="modal" data-target="#d{{@index}}">
-						<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
-					</button>
-					<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}} ({{comiteRole}}</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
+			
+			<h1>{{name}}</h1>
+		
+			{{#if director}}
+				{{#if ../isGerman}}
+					<h3>Kommittee Direktor</h3>
+				{{else}}
+					<h3>Comité directeur</h3>
+				{{/if}}
+	
+				{{#each director}}
+						<button type="button" class="btn bg-transparent  border-button" data-toggle="modal" data-target="#d{{@index}}">
+							<p>{{name.first}} {{name.last}}</p>
+						</button>
+						<div class="modal fade" id="d{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										{{#if image}}
+											<img src="{{cloudinaryUrl image	 height='400'}}">
+										{{/if}}
+										{{#if ../../isGerman}}
+											<h4>Kontact</h4>
+										{{else}}
+											<h4>Contact</h4>
+										{{/if}}
+										<div class="row">
+											{{#if email}}
+												<div class="col-lg-3">
+													<p><strong>
+														Email:
+													</strong>{{email}}</p>
+												</div>
+											{{/if}}
+											{{#if address}}
+												<div class="col-lg-3">
+													<p><strong>
+														{{#if ../../isGerman}}
+															Adresse:
+														{{else}}
+															Adresse:
+														{{/if}}
+													</strong>
+													<p>{{address}}</p>
+													<p>{{plz}}</p>
+													<p>{{place}}</p>
+												</div>
+											{{/if}}
+											{{#if businessPhone}}
+												<div class="col-lg-3">
+													{{#if ../../isGerman}}
+														<strong>Telefon geschäftlich:</strong>
+													{{else}}
+														<strong>Téléphone commercialement:</strong>
+													{{/if}} <p>
+	
+													{{businessPhone}}</p>
+												</div>
+											{{/if}}
+											{{#if privatePhone}}
+												<div class="col-lg-3">
+													{{#if ../../isGerman}}
+														<strong>Telefon privat:</strong>
+													{{else}}
+														<strong>Téléphone privé:</strong>
+													{{/if}} <p>
+													{{privatePhone}}</p>
+												</div>
+											{{/if}}
+											{{#if fax}}
+												<div class="col-lg-3">
+													<p><strong>
+														{{#if ../../isGerman}}
+															Faxgerät:
+														{{else}}
+															Fax:
+														{{/if}}
+													</strong>{{fax}}</p>
+												</div>
+											{{/if}}
+										</div>
+									</div>
 								</div>
-								<div class="modal-body">
-									{{#if image}}
-										<img src="{{cloudinaryUrl image	 height='400'}}">
-									{{/if}}
-									{{#if ../../isGerman}}
-										<h4>Kontact</h4>
-									{{else}}
-										<h4>Contact</h4>
-									{{/if}}
-									<div class="row">
+							</div>
+						</div>
+				{{/each}}
+			{{/if}}
+		
+		{{#if president}}
+			{{#if ../isGerman}}
+				<h3>Kantonalvorstand</h3>
+			{{else}}
+				<h3>Présidents des groupements</h3>
+			{{/if}}
+			{{#each president}}
+				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#p{{@index}}">
+					<p>{{name.first}} {{name.last}}</p>
+				</button>
+				<div class="modal fade" id="p{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								{{#if image}}
+									<img src="{{cloudinaryUrl image	 height='400'}}">
+								{{/if}}
+								{{#if ../../isGerman}}
+									<h4>Kontact</h4>
+								{{else}}
+									<h4>Contact</h4>
+								{{/if}}
+								<div class="row">
+									{{#if email}}
 										<div class="col-lg-3">
 											<p><strong>
-												Email: 
+												Email:
 											</strong>{{email}}</p>
 										</div>
+									{{/if}}
+									{{#if address}}
 										<div class="col-lg-3">
 											<p><strong>
 												{{#if ../../isGerman}}
-													Position:
+													Adresse:
 												{{else}}
-													Place:
-												{{/if}} 
-											</strong>{{place}}</p>
+													Adresse:
+												{{/if}}
+											</strong>
+											<p>{{address}}</p>
+											<p>{{plz}}</p>
+											<p>{{place}}</p>
 										</div>
+									{{/if}}
+									{{#if businessPhone}}
 										<div class="col-lg-3">
 											{{#if ../../isGerman}}
-												<strong>Telefon:</strong>
+												<strong>Telefon geschäftlich:</strong>
 											{{else}}
-												<strong>Téléphone:</strong>
+												<strong>Téléphone commercialement:</strong>
 											{{/if}} <p>
-												
+
 											{{businessPhone}}</p>
 										</div>
+									{{/if}}
+									{{#if privatePhone}}
+										<div class="col-lg-3">
+											{{#if ../../isGerman}}
+												<strong>Telefon privat:</strong>
+											{{else}}
+												<strong>Téléphone privé:</strong>
+											{{/if}} <p>
+											{{privatePhone}}</p>
+										</div>
+									{{/if}}
+									{{#if fax}}
 										<div class="col-lg-3">
 											<p><strong>
 												{{#if ../../isGerman}}
 													Faxgerät:
 												{{else}}
 													Fax:
-												{{/if}} 
+												{{/if}}
 											</strong>{{fax}}</p>
 										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			{{/each}}
-			{{#if ../isGerman}}
-				<h2>Kantonalvorstand</h2>
-			{{else}}
-				<h2>Présidents des groupements</h2>
-			{{/if}}
-			{{#each president}}
-				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#p{{@index}}">
-					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
-				</button>
-				<div class="modal fade" id="p{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}} ({{comiteRole}}</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								{{#if image}}
-									<img src="{{cloudinaryUrl image	 height='400'}}">
-								{{/if}}
-								{{#if ../../isGerman}}
-									<h4>Kontact</h4>
-								{{else}}
-									<h4>Contact</h4>
-								{{/if}}
-								<div class="row">
-									<div class="col-lg-3">
-										<p><strong>
-											Email:
-										</strong>{{email}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>
-											{{#if ../../isGerman}}
-												Position:
-											{{else}}
-												Place:
-											{{/if}}
-										</strong>{{place}}</p>
-									</div>
-									<div class="col-lg-3">
-										{{#if ../../isGerman}}
-											<strong>Telefon:</strong>
-										{{else}}
-											<strong>Téléphone:</strong>
-										{{/if}} <p>
-
-										{{businessPhone}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>
-											{{#if ../../isGerman}}
-												Faxgerät:
-											{{else}}
-												Fax:
-											{{/if}}
-										</strong>{{fax}}</p>
-									</div>
+									{{/if}}
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			{{/each}}
+		{{/if}}
+		{{#if coPresident}}
+			
+		
 			{{#if ../isGerman}}
-				<h2>Co-Präsidenten der Musikkommission</h2>
+				<h3>Co-Präsidenten der Musikkommission</h3>
 			{{else}}
-				<h2>Co-Présidents de la Commission de Musique</h2>
+				<h3>Co-Présidents de la Commission de Musique</h3>
 			{{/if}}
 			{{#each coPresident}}
 				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#cP{{@index}}">
-					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
+					<p>{{name.first}} {{name.last}}</p>
 				</button>
 				<div class="modal fade" id="cP{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}} ({{comiteRole}}</h5>
+								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -162,58 +215,83 @@
 									<h4>Contact</h4>
 								{{/if}}
 								<div class="row">
-									<div class="col-lg-3">
-										<p><strong>
-											Email:
-										</strong>{{email}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>
+									{{#if email}}
+										<div class="col-lg-3">
+											<p><strong>
+												Email:
+											</strong>{{email}}</p>
+										</div>
+									{{/if}}
+									{{#if address}}
+										<div class="col-lg-3">
+											<p><strong>
+												{{#if ../../isGerman}}
+													Adresse:
+												{{else}}
+													Adresse:
+												{{/if}}
+											</strong>
+											<p>{{address}}</p>
+											<p>{{plz}}</p>
+											<p>{{place}}</p>
+										</div>
+									{{/if}}
+									{{#if businessPhone}}
+										<div class="col-lg-3">
 											{{#if ../../isGerman}}
-												Position:
+												<strong>Telefon geschäftlich:</strong>
 											{{else}}
-												Place:
-											{{/if}}
-										</strong>{{place}}</p>
-									</div>
-									<div class="col-lg-3">
-										{{#if ../../isGerman}}
-											<strong>Telefon:</strong>
-										{{else}}
-											<strong>Téléphone:</strong>
-										{{/if}} <p>
+												<strong>Téléphone commercialement:</strong>
+											{{/if}} <p>
 
-										{{businessPhone}}</p>
-									</div>
-									<div class="col-lg-3">
-										<p><strong>
+											{{businessPhone}}</p>
+										</div>
+									{{/if}}
+									{{#if privatePhone}}
+										<div class="col-lg-3">
 											{{#if ../../isGerman}}
-												Faxgerät:
+												<strong>Telefon privat:</strong>
 											{{else}}
-												Fax:
-											{{/if}}
-										</strong>{{fax}}</p>
-									</div>
+												<strong>Téléphone privé:</strong>
+											{{/if}} <p>
+											{{privatePhone}}</p>
+										</div>
+									{{/if}}
+									{{#if fax}}
+										<div class="col-lg-3">
+											<p><strong>
+												{{#if ../../isGerman}}
+													Faxgerät:
+												{{else}}
+													Fax:
+												{{/if}}
+											</strong>{{fax}}</p>
+										</div>
+									{{/if}}
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			{{/each}}
+		{{/if}}
+		{{#if porteDrapeau}}
+			
+		
 			{{#if ../isGerman}}
-				<h2>Fähnrich und AGACH</h2>
+				<h3>Fähnrich und AGACH</h3>
 			{{else}}
-				<h2>Porte-Drapeau et délégué AGACH</h2>
+				<h3>Porte-Drapeau et délégué AGACH</h3>
 			{{/if}}
 			{{#each porteDrapeau}}
 				<button type="button" class="btn bg-transparent border-button" data-toggle="modal" data-target="#pD{{@index}}">
-					<p>{{name.first}} {{name.last}} ({{comiteRole}})</p>
+					<p>{{name.first}} {{name.last}}</p>
 				</button>
 				<div class="modal fade" id="pD{{@index}}" tabindex="-1" role="dialog" aria-labelledby="Modal1" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}} ({{comiteRole}}</h5>
+								<h5 class="modal-title" id="exampleModalLabel">{{name.first}} {{name.last}}f</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -223,34 +301,54 @@
 									<img src="{{cloudinaryUrl image	 height='400'}}">
 								{{/if}}
 								{{#if ../../isGerman}}
-									<h4>Kontact</h4>
+									<h4>Kontakt</h4>
 								{{else}}
 									<h4>Contact</h4>
 								{{/if}}
 								<div class="row">
+									{{#if email}}
 									<div class="col-lg-3">
 										<p><strong>
 											Email:
 										</strong>{{email}}</p>
 									</div>
-									<div class="col-lg-3">
-										<p><strong>
-											{{#if ../../isGerman}}
-												Position:
-											{{else}}
-												Place:
-											{{/if}}
-										</strong>{{place}}</p>
-									</div>
+									{{/if}}	
+									{{#if address}}
+										<div class="col-lg-3">
+											<p><strong>
+												{{#if ../../isGerman}}
+													Adresse:
+												{{else}}
+													Adresse:
+												{{/if}}
+											</strong>
+											<p>{{address}}</p>
+											<p>{{plz}}</p>
+											<p>{{place}}</p>
+										</div>
+									{{/if}}
+									{{#if businessPhone}}
 									<div class="col-lg-3">
 										{{#if ../../isGerman}}
-											<strong>Telefon:</strong>
+											<strong>Telefon geschäftlich:</strong>
 										{{else}}
-											<strong>Téléphone:</strong>
+											<strong>Téléphone commercialement:</strong>
 										{{/if}} <p>
 
 										{{businessPhone}}</p>
 									</div>
+									{{/if}}
+									{{#if privatePhone}}
+									<div class="col-lg-3">
+										{{#if ../../isGerman}}
+											<strong>Telefon privat:</strong>
+										{{else}}
+											<strong>Téléphone privé:</strong>
+										{{/if}} <p>
+										{{privatePhone}}</p>
+									</div>
+									{{/if}}
+									{{#if fax}}
 									<div class="col-lg-3">
 										<p><strong>
 											{{#if ../../isGerman}}
@@ -260,12 +358,15 @@
 											{{/if}}
 										</strong>{{fax}}</p>
 									</div>
+									{{/if}}	
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			{{/each}}
+		{{/if}}
+			<hr />
 		{{/each}}
 	{{/if}}
 </div>

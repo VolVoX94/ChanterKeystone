@@ -5,6 +5,7 @@ var Committee = new keystone.List('Committee');
 
 Committee.add({
 	
+	name: {type: String},
 	director: {type: Types.Relationship, ref: 'User', index: true, many: true},
 	president: {type: Types.Relationship, ref: 'User', index: true, many: true},
 	coPresident: {type: Types.Relationship, ref: 'User', index: true, many: true},
@@ -41,5 +42,5 @@ Committee.schema.post('save', function () {
 
 });
 
-Committee.defaultColumns = 'firstName, lastName, address, place';
+Committee.defaultColumns = 'name, director, president, coPresident, porteDrapeau';
 Committee.register();
