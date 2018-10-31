@@ -16,7 +16,6 @@ HeaderPosts.schema.virtual('canAccessKeystone').get(function () {
 
 HeaderPosts.schema.post('save', function () {
 	this.lastUpdate = Date.now();
-
 });
 
 HeaderPosts.defaultColumns = 'firstName, lastName, address, place';

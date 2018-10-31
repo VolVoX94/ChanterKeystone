@@ -129,11 +129,13 @@
 								<div class="tab-content">
 									{{#each formSpreadsheet}}
 										{{#ifeq @index 0}}
-											<div id="{{name}}" class="tab-pane fade in active">
+											<div id="{{name}}" class="tab-pane fade in active big">
+												<br/><br/>
 												{{{form}}}
 											</div>
 										{{else}}
 											<div id="{{name}}" class="tab-pane fade in">
+												<br/><br/>
 												{{{form}}}
 											</div>
 										{{/ifeq}}

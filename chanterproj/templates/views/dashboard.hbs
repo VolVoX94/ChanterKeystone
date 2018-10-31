@@ -81,13 +81,24 @@
 				</a>
 			</li>
 		{{/if}}
-		{{#if user.isAdmin}}
+		{{#if existingEvents}}
 			<li>
 				<a data-toggle="tab" href="#menu7">
 					{{#if isGerman}}
 						Forms
 					{{else}}
 						Forms
+					{{/if}}
+				</a>
+			</li>
+		{{/if}}
+		{{#if existingEvents}}
+			<li>
+				<a data-toggle="tab" href="#menu8">
+					{{#if isGerman}}
+						Verwaltete Events
+					{{else}}
+						Forms guerre
 					{{/if}}
 				</a>
 			</li>
@@ -1532,6 +1543,150 @@
 					</div>
 				{{/each}}
 			{{/each}}
+		</div>
+		<div id="menu8" class="tab-pane fade">
+		{{#if existingEvents}}
+			{{#if isGerman}}
+				<h1>Verwaltete Events</h1>
+			{{else}}
+				<h1>Events gérée</h1>
+			{{/if}}
+
+			{{#each existingEvents}}
+				<form action="/dashBoardAddForm" method="post" class="form-horizontal">
+					<input type="hidden" class="form-control" name="id" value="{{_id}}">
+					{{#if ../isGerman}}
+						<h2>Name: </h2>
+					{{else}}
+						<h2>Nom: </h2>
+					{{/if}}
+					{{name}}
+					<br/>
+					{{#if description}}
+						{{#if ../isGerman}}
+							<h2>Beschreibung: </h2>
+						{{else}}
+							<h2>Description: </h2>
+						{{/if}}
+						{{description}}
+						<br/>
+					{{/if}}
+
+
+					{{#if cost}}
+						{{#if ../isGerman}}
+							<h2>Kosten: </h2>
+						{{else}}
+							<h2>Tarif: </h2>
+						{{/if}}
+						{{cost}}
+						<br/>
+					{{/if}}
+
+					{{#if organizer}}
+						{{#if ../isGerman}}
+							<h2>Veranstalter: </h2>
+						{{else}}
+							<h2>Organisatrice: </h2>
+						{{/if}}
+						{{organizer}}
+						<br/>
+					{{/if}}
+
+					{{#if startTime}}
+						{{#if ../isGerman}}
+							<h2>Begin: </h2>
+						{{else}}
+							<h2>Début: </h2>
+						{{/if}}
+						{{startTime}}
+						<br/>
+					{{/if}}
+
+					{{#if endTime}}
+						{{#if ../isGerman}}
+							<h2>Ende: </h2>
+						{{else}}
+							<h2>Fin: </h2>
+						{{/if}}
+						{{endTime}}
+						<br/>
+					{{/if}}
+
+					{{#if location.street1}}
+						{{#if ../isGerman}}
+							<h2>Strasse: </h2>
+						{{else}}
+							<h2>Rue: </h2>
+						{{/if}}
+						{{location.street1}}
+						<br/>
+					{{/if}}
+
+					{{#if location.suburb}}
+						{{#if ../isGerman}}
+							<h2>Ort: </h2>
+						{{else}}
+							<h2>Ville: </h2>
+						{{/if}}
+						{{location.suburb}}
+						<br/>
+					{{/if}}
+					<br/>
+
+					<div class="form-group">
+						<label class="control-label col-sm-1" for="name">
+							{{#if ../isGerman}}
+								Name:
+							{{else}}
+								Nom:
+							{{/if}}
+						</label>
+						<div class="col-sm-7">
+							<input required type="text" class="form-control" name="name"
+								   placeholder="Enter the name of the form">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-sm-1" for="form">
+							{{#if ../isGerman}}
+								Form:
+							{{else}}
+								Form:
+							{{/if}}
+						</label>
+						<div class="col-sm-7">
+							<input required type="text" class="form-control" name="form"
+								   placeholder="Paste the IFRAME of the form into this data field">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-1" for="spreadsheet">
+							{{#if ../isGerman}}
+								Spreadsheet:
+							{{else}}
+								Spreadsheet:
+							{{/if}}
+						</label>
+						<div class="col-sm-7">
+							<input required type="text" class="form-control" name="spreadsheet"
+								   placeholder="Paste the IFRAME of the spreadsheet into this data field">
+						</div>
+					</div>
+					
+					
+					<button id="submitFormForEvent" type="submit" class="btn btn-info">
+						{{#if ../isGerman}}
+							<b>Form hinzufügen</b>
+						{{else}}
+							<b>Ajouter une forme</b>
+						{{/if}}
+					</button>
+				</form>
+			{{/each}}
+		{{/if}}
 		</div>
 	</div>
 

@@ -212,6 +212,48 @@ exports = module.exports = function (app) {
 
 	});
 	
+	app.post('/dashBoardAddForm', (req, res, next)=>{
+		var lang = keystone.get('language').isGerman;
+		var Event = keystone.list('Event');
+		var Form = keystone.list('Forms');
+		
+		var newForm = new Form.model({
+			name: req.body.name,
+			form: req.body.form,
+			spreadsheet: req.body.spreadsheet
+		});
+
+		newForm.save(function(err){});
+
+		Event.model.update(
+			{ _id: req.body.id },
+			{
+				$push: {
+					formSpreadsheet: newForm
+				}
+			}
+		).exec(function(err,result){
+			if(err){
+				if(lang === true){
+					req.flash('error', { title: 'Hoppla', detail: 'Fehler beim Hinzufügen der Form' });
+				}
+				else{
+					req.flash('error', { title: 'Hoppla!', detail: 'Erreur lors de l\'ajout du formulaire' });
+				}
+			}
+			else{
+				if(lang === true){
+					req.flash('success', { title: 'Erfolg!', detail: 'Formular erfolgreich hinzugefügt' });
+				}
+				else{
+					req.flash('success', { title: 'Succès!', detail: 'Formulaire ajouté avec succès' });
+				}
+			}
+			res.redirect('/dashboard');
+		});
+		
+	});
+	
 	app.post('/dashboardEvents', (req,res,next) => {
 		var Event = keystone.list('Event');
 		var lang = keystone.get('language').isGerman;
