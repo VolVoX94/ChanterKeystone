@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 	}
 	else{
 		title = "Bienvenue";
-		message = " Sur la page Clubs de chant valaisans";
+		message = " Sur la page de la Fédération des sociétés de chant du valais";
 	}
 	
 	//---------------- STATISTIC COUNTER --------------------------------
