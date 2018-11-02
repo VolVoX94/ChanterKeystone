@@ -1,27 +1,26 @@
 version:                   '3.7'
 
-networks:
-  testNet:
-    driver: bridge
-
 services:
   app:
     container_name: docker-chanter
     build: .
-    ports:
-      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      VIRTUAL_HOST: ${DOMAINS}
+      LETSENCRYPT_HOST: ${DOMAINS}
+      LETSENCRYPT_EMAIL:  ${EMAIL}
     restart: always
     depends_on:
       - mongo
-    networks:
-      - testNet
       
   mongo:
     container_name: mongo
     image: mongo
+    restart: always
     environment:
-      MONGO_INITDB_DATABASE: myMongo
-    ports:
-      - '27017:27017'
-    networks:
-      - testNet
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+      
+networks:
+  default:
+    external:
+      name: ${NETWORK}
