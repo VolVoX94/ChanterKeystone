@@ -13,7 +13,7 @@ exports = module.exports = function (req, res) {
 		message = "Registrieren Sie sich für den Newsletter";
 	}
 	else{
-		title = "Newsletter registratio";
+		title = "Newsletter enregistration";
 		message = "S'inscrire à la newsletter";
 	}
 	
