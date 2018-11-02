@@ -11,7 +11,7 @@ exports = module.exports = function (req, res) {
 		message = "Lesen Sie unsere neusten Kleinanzeigen";
 	}
 	else{
-		title = "Petite annonces";
+		title = "Petites annonces";
 		message = "Lisez nos dernières petites annonces";
 	}
 
