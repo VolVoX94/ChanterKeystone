@@ -1,7 +1,12 @@
 <body>
 <div class="container">
 
-	<h2>Actual Subscribers:</h2>
+	<
+	{{#if isGerman}}
+		<h2>Tatsächliche Abonnenten:</h2>
+	{{else}}
+		<h2>Abonnés actuels:</h2>
+	{{/if}}
 	{{#each useritem}}
 		{{email}},
 	{{/each}}
@@ -13,7 +18,7 @@
 	{{#if isGerman}}
 		Geben Sie eine E-Mail Adresse ein, an die Sie die Test-Email senden wollen:
 	{{else}}
-		Entrez l'adresse e-mail à laquelle vous souhaitez envoyer l'e-mail de test:
+		Entrez l'adresse email à laquelle vous souhaitez envoyer l'email de test:
 	{{/if}}
 	
 	<input id="email" type="email" name="email" placeholder="Enter email">
@@ -32,7 +37,11 @@
 		{{/each}}
 	{{else}}
 		<!-- else -->
-		<h3 class="text-muted">There are no newsletters</h3>
+		{{#if isGerman}}
+			<h3 class="text-muted">Es gibt keine Newsletter.</h3>
+		{{else}}
+			<h3 class="text-muted">Il n'y a pas de newsletters.</h3>
+		{{/if}}
 	{{/if}}
 </div>
 
