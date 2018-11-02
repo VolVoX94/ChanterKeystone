@@ -37,7 +37,6 @@ Choir.add({
 	remarks: {type: String},
 	homepage: {type: String},
 	lastUpdate: {type: Date},
-
 });
 
 Choir.schema.virtual('canAccessKeystone').get(function () {

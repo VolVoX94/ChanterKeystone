@@ -18,6 +18,7 @@ exports = module.exports = function (req, res) {
 		message = "Voir nos chœurs";
 	}
 	
+	
 	//---------------- STATISTIC COUNTER --------------------------------
 	var d = new Date();
 	var n = d.getMonth();
@@ -34,7 +35,7 @@ exports = module.exports = function (req, res) {
 		//Query will be executed
 	});
 	//---------------- STATISTIC COUNTER --------------------------------
-
+	
 	// Set locals
 	locals.section = 'choir';
 

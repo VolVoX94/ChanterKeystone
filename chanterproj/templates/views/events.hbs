@@ -75,7 +75,8 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<div class="row">
+							<div class="row">
+								{{#if location.suburb}}
 									<div class="col-lg-3">
 										{{#if ../isGerman}}
 											<p><strong>Ort: </strong>{{location.suburb}}</p>
@@ -83,6 +84,8 @@
 											<p><strong>Ville: </strong>{{location.suburb}}</p>
 										{{/if}}
 									</div>
+								{{/if}}
+								{{#if location.street1}}
 									<div class="col-lg-3">
 										{{#if ../isGerman}}
 											<p><strong>Straße: </strong>{{location.street1}}</p>
@@ -90,6 +93,8 @@
 											<p><strong>Rue: </strong>{{location.street1}}</p>
 										{{/if}}
 									</div>
+								{{/if}}
+								{{#if startTime}}
 									<div class="col-lg-3">
 										{{#if ../isGerman}}
 											<p><strong>Anfang: </strong>{{date startTime}}</p>
@@ -97,6 +102,8 @@
 											<p><strong>Début: </strong>{{date startTime}}</p>
 										{{/if}}
 									</div>
+								{{/if}}
+								{{#if endTime}}
 									<div class="col-lg-3">
 										{{#if ../isGerman}}
 											<p><strong>Ende: </strong>{{date endTime}}</p>
@@ -105,17 +112,19 @@
 										{{/if}}
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-lg-10 col-lg-offset-1">
-										{{#if ../isGerman}}
-											<h3>Beschreibung</h3>
-										{{else}}
-											<h3>Description</h3>
-										{{/if}}
-										<p>{{{description}}}</p>
+								{{/if}}
+								{{#if description}}
+									<div class="row">
+										<div class="col-lg-10 col-lg-offset-1">
+											{{#if ../isGerman}}
+												<h3>Beschreibung</h3>
+											{{else}}
+												<h3>Description</h3>
+											{{/if}}
+											<p>{{{description}}}</p>
+										</div>
 									</div>
-								</div>
-
+								{{/if}}
 								<ul class="nav nav-pills">
 									{{#each formSpreadsheet}}
 										{{#ifeq @index 0}}

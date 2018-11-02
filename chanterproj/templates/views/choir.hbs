@@ -106,91 +106,139 @@
 							{{#if ../isGerman}}
 								<div class="modal-body">
 									<div class="row">
-										<div class="col-lg-3">
-											<p><strong>Ort: </strong>{{place}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Plz: </strong>{{plz}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Präsident: </strong>{{president.name.first}} {{president.name.last}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Direktor: </strong>{{director.name.first}} {{director.name.last}}</p>
-										</div>
+										{{#if place}}
+											<div class="col-lg-3">
+												<p><strong>Ort: </strong>{{place}}</p>
+											</div>
+										{{/if}}
+										{{#if plz}}
+											<div class="col-lg-3">
+												<p><strong>Plz: </strong>{{plz}}</p>
+											</div>
+										{{/if}}
+										{{#if president.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Präsident: </strong>{{president.name.first}} {{president.name.last}}</p>
+											</div>
+										{{/if}}
+										{{#if director.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Direktor: </strong>{{director.name.first}} {{director.name.last}}</p>
+											</div>
+										{{/if}}
 									</div>
 									<div class="row">
-										<div class="col-lg-3">
-											<p><strong>Sekretär: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Kassierer: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Typ: </strong>{{typeChoir}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Sprache: </strong>{{lang}}</p>
-										</div>
+										{{#if secretary.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Sekretär: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
+											</div>
+										{{/if}}
+										{{#if cashier.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Kassierer: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
+											</div>
+										{{/if}}
+										{{#if typeChoir}}
+											<div class="col-lg-3">
+												<p><strong>Typ: </strong>{{typeChoir}}</p>
+											</div>
+										{{/if}}
+										{{#if lang}}
+											<div class="col-lg-3">
+												<p><strong>Sprache: </strong>{{lang}}</p>
+											</div>
+										{{/if}}
 									</div>
 									<div class="row">
-										<div class="col-lg-3">
-											<p><strong>Zweittyp: </strong>{{secondTypeChoir}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Member FC: </strong>{{memberFC}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Member USC: </strong>{{memberUSC}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Gründungsjahr: </strong>{{foundingYear}}</p>
-										</div>
+										{{#if secondTypeChoir}}
+											<div class="col-lg-3">
+												<p><strong>Zweittyp: </strong>{{secondTypeChoir}}</p>
+											</div>
+										{{/if}}
+										{{#if memberFC}}
+											<div class="col-lg-3">
+												<p><strong>Member FC: </strong>{{memberFC}}</p>
+											</div>
+										{{/if}}
+										{{#if memberUSC}}
+											<div class="col-lg-3">
+												<p><strong>Member USC: </strong>{{memberUSC}}</p>
+											</div>
+										{{/if}}
+										{{#if foundingYear}}
+											<div class="col-lg-3">
+												<p><strong>Gründungsjahr: </strong>{{foundingYear}}</p>
+											</div>
+										{{/if}}
 									</div>
 								</div>
 							{{else}}
 								<div class="modal-body">
 									<div class="row">
-										<div class="col-lg-3">
-											<p><strong>Ville: </strong>{{place}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Code postal: </strong>{{plz}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Président: </strong>{{president.name.first}} {{president.name.last}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Directeur: </strong>{{director.name.first}} {{director.name.last}}</p>
-										</div>
+										{{#if place}}
+											<div class="col-lg-3">
+												<p><strong>Ville: </strong>{{place}}</p>
+											</div>
+										{{/if}}
+										{{#if plz}}
+											<div class="col-lg-3">
+												<p><strong>Code postal: </strong>{{plz}}</p>
+											</div>
+										{{/if}}
+										{{#if president.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Président: </strong>{{president.name.first}} {{president.name.last}}</p>
+											</div>
+										{{/if}}
+										{{#if director.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Directeur: </strong>{{director.name.first}} {{director.name.last}}</p>
+											</div>
+										{{/if}}
 									</div>
 									<div class="row">
-										<div class="col-lg-3">
-											<p><strong>Secrétaire: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>caissier: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Type de choeur: </strong>{{typeChoir}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Langage: </strong>{{lang}}</p>
-										</div>
+										{{#if secretary.name.first}}
+											<div class="col-lg-3">
+												<p><strong>Secrétaire: </strong>{{secretary.name.first}} {{secretary.name.last}}</p>
+											</div>
+										{{/if}}
+										{{#if cashier.name.first}}
+											<div class="col-lg-3">
+												<p><strong>caissier: </strong>{{cashier.name.first}} {{cashier.name.last}}</p>
+											</div>
+										{{/if}}
+										{{#if typeChoir}}
+											<div class="col-lg-3">
+												<p><strong>Type de choeur: </strong>{{typeChoir}}</p>
+											</div>
+										{{/if}}
+										{{#if lang}}
+											<div class="col-lg-3">
+												<p><strong>Langage: </strong>{{lang}}</p>
+											</div>
+										{{/if}}
 									</div>
 									<div class="row">
-										<div class="col-lg-3">
-											<p><strong>Second Type: </strong>{{secondTypeChoir}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Membre FSCV: </strong>{{memberFC}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Membre GCVC: </strong>{{memberUSC}}</p>
-										</div>
-										<div class="col-lg-3">
-											<p><strong>Année de fondation: </strong>{{foundingYear}}</p>
-										</div>
+										{{#if secondTypeChoir}}
+											<div class="col-lg-3">
+												<p><strong>Second Type: </strong>{{secondTypeChoir}}</p>
+											</div>
+										{{/if}}
+										{{#if memberFC}}
+											<div class="col-lg-3">
+												<p><strong>Membre FSCV: </strong>{{memberFC}}</p>
+											</div>
+										{{/if}}
+										{{#if memberUSC}}
+											<div class="col-lg-3">
+												<p><strong>Membre GCVC: </strong>{{memberUSC}}</p>
+											</div>
+										{{/if}}
+										{{#if foundingYear}}
+											<div class="col-lg-3">
+												<p><strong>Année de fondation: </strong>{{foundingYear}}</p>
+											</div>
+										{{/if}}
 									</div>
 								</div>
 							{{/if}}
