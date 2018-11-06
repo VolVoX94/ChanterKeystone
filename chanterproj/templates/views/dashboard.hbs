@@ -1155,15 +1155,17 @@
 			</form>
 
 
-			{{#if isGerman}}
-				<h2>Erstellen</h2>
-				Im Namen des Chores
-			{{else}}
-				<h2>Créer</h2>
-				Au nom de la chorale
-			{{/if}}
 
 			{{#if choirs}}
+
+				{{#if isGerman}}
+					<h2>Erstellen</h2>
+					Im Namen des Chores
+				{{else}}
+					<h2>Créer</h2>
+					Au nom de la chorale
+				{{/if}}
+				
 				<form action="/dashboardEvents" method="post" class="form-horizontal">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="nameEvent">
