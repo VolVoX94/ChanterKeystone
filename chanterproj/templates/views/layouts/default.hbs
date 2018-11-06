@@ -336,17 +336,17 @@
 		var home = "http://192.168.99.100:3000";
 		var home2 = "http://localhost:3000";
 
-		if(url.length > home2.length+1){
+		if(url.length > server.length+1){
 			if(url.includes("/pages/page")){
-				url = url.substring(home2.length+11); // also /pages/page will be cutted off
+				url = url.substring(server.length+11); // also /pages/page will be cutted off
 				url = url + "DynamicPage"
 			}
 			else if (url.includes("/blog/post")){
-				url = url.substring(home2.length+10); // also /pages/page will be cutted off
+				url = url.substring(server.length+10); // also /pages/page will be cutted off
 				url = url + "AdsPage"
 			}
 			else{
-				url = url.substring(home2.length);
+				url = url.substring(server.length);
 			}
 		}
 		else{
@@ -362,17 +362,17 @@
 		var home = "http://192.168.99.100:3000";
 		var home2 = "http://localhost:3000";
 
-		if(url.length > home2.length+1){
+		if(url.length > server.length+1){
 			if(url.includes("/pages/page")){
-				url = url.substring(home2.length+11); // also /pages/page will be cutted off
+				url = url.substring(server.length+11); // also /pages/page will be cutted off
 				url = url + "DynamicPage"
 			}
 			else if (url.includes("/blog/post")){
-				url = url.substring(home2.length+10); // also /pages/page will be cutted off
+				url = url.substring(server.length+10); // also /pages/page will be cutted off
 				url = url + "AdsPage"
 			}
 			else{
-				url = url.substring(home2.length);
+				url = url.substring(server.length);
 			}
 		}
 		else{
