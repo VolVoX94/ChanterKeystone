@@ -10,15 +10,15 @@ services:
       LETSENCRYPT_EMAIL:  ${EMAIL}
     restart: always
     depends_on:
-      - mongo
+      - mymongodb
       
-  mongo:
+  mymongodb:
     image: mongo
     restart: always
     ports:
       - '27006:27017'
-    environment:
-      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    #environment:
+    #  MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
       
 networks:
   default:
