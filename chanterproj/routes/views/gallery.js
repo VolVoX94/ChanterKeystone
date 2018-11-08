@@ -30,6 +30,12 @@ exports = module.exports = function (req, res) {
 	view.query('galleries', keystone.list('Gallery').model.find().sort('sortOrder'));
 
 	// Render the view
-	view.render('gallery', { title: 'Gallery', message: 'See what our gallery has to offer to you eyes!', isGerman: language.isGerman  });
+	
+	if(language.isGerman==true){
+		view.render('gallery', { title: 'Galerie', message: 'Sehen Sie sich unsere Bilder an!', isGerman: language.isGerman  });
+	}
+	else{
+		view.render('gallery', { title: 'Galerie', message: 'Voir nos photos!', isGerman: language.isGerman  });
+	}
 
 };
